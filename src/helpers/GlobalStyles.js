@@ -6,8 +6,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     border: none;
-    outline: none;
     text-decoration: none;
+    font-family: sans-serif;
+  }
+
+  body {
+    background-color: #3c3c3c;
   }
 
   html {
