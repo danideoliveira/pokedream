@@ -10,7 +10,7 @@ export default function PokemonList() {
 
   useEffect(() => {
     async function getApi() {
-      for (let i = 1; i <= 20; i++) {
+      for (let i = 1; i <= 6; i++) {
         await axios
           .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then((response) => response.data)
@@ -18,7 +18,6 @@ export default function PokemonList() {
             setPokemon((oldList) => [...oldList, data]);
           });
       }
-
     }
     getApi();
   }, []);
@@ -31,7 +30,7 @@ export default function PokemonList() {
             key={pokemon.name}
             name={pokemon.name}
             weight={pokemon.weight}
-            types={pokemon.types}
+            pokemonTypes={pokemon.types}
           />
         ))}
       </Grid>
