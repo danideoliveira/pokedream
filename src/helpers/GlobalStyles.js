@@ -1,13 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`  
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: none;
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: "Nunito", sans-serif, Arial, Helvetica;
+    outline: 1px solid rebeccapurple;
   }
 
   body {
