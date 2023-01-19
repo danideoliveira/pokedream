@@ -20,7 +20,7 @@ export default function Card({ name, weight, height, pokemonTypes }) {
       </PokemonImageContainer>
       <div className="div-pokemon-name">
         <Text fontSize="2rem" color={colors.cardText} fontWeight="700">
-          {name.toUpperCase()}
+          {name.charAt(0).toUpperCase() + name.slice(1)}
         </Text>
       </div>
       <div className="div-pokemon-type">
