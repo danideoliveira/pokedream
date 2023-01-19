@@ -1,4 +1,4 @@
-import { Container, Grid } from "./PokemonList.styled";
+import { Container, ContainerSecondary, Grid } from "./PokemonList.styled";
 import { useState, useEffect } from "react";
 import Card from "../../components/Card/Card";
 import axios from "axios";
@@ -24,16 +24,19 @@ export default function PokemonList() {
 
   return (
     <Container>
-      <Grid>
-        {pokemon.map((pokemon) => (
-          <Card
-            key={pokemon.name}
-            name={pokemon.name}
-            weight={pokemon.weight}
-            pokemonTypes={pokemon.types}
-          />
-        ))}
-      </Grid>
+      <ContainerSecondary>
+        <Grid>
+          {pokemon.map((pokemon) => (
+            <Card
+              key={pokemon.name}
+              name={pokemon.name}
+              weight={pokemon.weight}
+              height={pokemon.height}
+              pokemonTypes={pokemon.types}
+            />
+          ))}
+        </Grid>
+      </ContainerSecondary>
     </Container>
   );
 }

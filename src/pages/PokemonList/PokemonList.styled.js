@@ -2,6 +2,12 @@ import styled from "styled-components";
 import { setFlexbox } from "../../helpers/Mixins";
 
 export const Container = styled.div`
+  ${setFlexbox("center", "center", "row")};
+  width: 100%;
+  height: auto;
+`;
+
+export const ContainerSecondary = styled.div`
   ${setFlexbox("center", "flex-start", "row")};
   width: 100%;
   height: auto;
