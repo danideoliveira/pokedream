@@ -1,21 +1,26 @@
-import { CardContainer, PokemonTypeContainer, Text } from "./Card.styled";
+import {
+  CardContainer,
+  PokemonImageContainer,
+  PokemonTypeContainer,
+  Text,
+} from "./Card.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
+import { colors } from "../../helpers/ColorPalette";
 
-export default function Card({ name, weight, pokemonTypes }) {
+export default function Card({ name, weight, height, pokemonTypes }) {
   return (
     <CardContainer key={name}>
-      <div className="div-pokemon-img">
+      <PokemonImageContainer
+        background={PokemonConfig[pokemonTypes[0].type.name].gradientColor}
+      >
         <img
           src={`https://play.pokemonshowdown.com/sprites/ani/${name}.gif`}
           alt={`${name} gif`}
         />
-      </div>
+      </PokemonImageContainer>
       <div className="div-pokemon-name">
-        <Text fontSize="2rem" color="#fff" fontWeight="700">
+        <Text fontSize="2rem" color={colors.cardText} fontWeight="700">
           {name.toUpperCase()}
-        </Text>
-        <Text fontSize="1.6rem" color="#dfdfdf" fontWeight="400">
-          Weight: {weight / 10} kg
         </Text>
       </div>
       <div className="div-pokemon-type">
@@ -24,7 +29,7 @@ export default function Card({ name, weight, pokemonTypes }) {
             key={PokemonConfig[pokemonType.type.name].typeColor}
             typeColor={PokemonConfig[pokemonType.type.name].typeColor}
           >
-            <Text fontSize="1.6rem" color="#dfdfdf" fontWeight="700">
+            <Text fontSize="1.6rem" color={colors.cardText} fontWeight="700">
               {pokemonType.type.name}
             </Text>
             <img
@@ -33,6 +38,23 @@ export default function Card({ name, weight, pokemonTypes }) {
             />
           </PokemonTypeContainer>
         ))}
+      </div>
+      <div className="div-pokemon-base">
+        <div className="pokemon-weight">
+          <img src={PokemonConfig["dark"].img} width="10" alt="logo" />
+          <Text fontSize="1.6rem" color={colors.cardText} fontWeight="700">
+            {weight / 10} kg
+          </Text>
+        </div>
+        <div className="pokemon-height">
+          <img src={PokemonConfig["grass"].img} width="10" alt="logo" />
+          <Text fontSize="1.6rem" color={colors.cardText} fontWeight="700">
+            {height / 10} m
+          </Text>
+        </div>
+      </div>
+      <div className="div-show-stats">
+        <button>&uarr;</button>
       </div>
     </CardContainer>
   );
