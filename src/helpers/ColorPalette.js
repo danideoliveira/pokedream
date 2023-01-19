@@ -9,6 +9,7 @@ const palette = {
   white: {
     light: "#FFFFFF",
     mid: "#EFEFEF",
+    dark: "#AEAEAE"
   },
 
   black: {
@@ -50,7 +51,7 @@ export const colors = {
   // CARDS
   cardBackground: palette.grey.dark,
   cardText: palette.white.mid,
-  cardId: palette.grey.light,
+  cardId: palette.white.dark,
   cardButton: palette.grey.mid,
   cardButtonHover: palette.grey.midSecondary,
 
