@@ -44,6 +44,14 @@ export const colors = {
   homeButton: palette.grey.mid,
   HomeText: palette.white.mid,
 
+  // POKEMON LIST
+  listBackground: palette.grey.mid,
+
+  // CARDS
+  cardBackground: palette.grey.dark,
+  cardText: palette.grey.mid,
+  cardButton: palette.grey.midSecondary,
+
   // STATS
   statsHp: palette.green.mid,
   statsAtk: palette.yellow.light,
