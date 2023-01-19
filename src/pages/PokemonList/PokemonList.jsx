@@ -30,6 +30,7 @@ export default function PokemonList() {
             <Card
               key={pokemon.name}
               name={pokemon.name}
+              id={pokemon.id}
               weight={pokemon.weight}
               height={pokemon.height}
               pokemonTypes={pokemon.types}

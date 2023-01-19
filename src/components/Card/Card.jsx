@@ -7,7 +7,7 @@ import {
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
 
-export default function Card({ name, weight, height, pokemonTypes }) {
+export default function Card({ name, id, weight, height, pokemonTypes }) {
   return (
     <CardContainer key={name}>
       <PokemonImageContainer
@@ -21,6 +21,9 @@ export default function Card({ name, weight, height, pokemonTypes }) {
       <div className="div-pokemon-name">
         <Text fontSize="2rem" color={colors.cardText} fontWeight="700">
           {name.charAt(0).toUpperCase() + name.slice(1)}
+        </Text>
+        <Text fontSize="2rem" color={colors.cardId} fontWeight="700">
+          #{id}
         </Text>
       </div>
       <div className="div-pokemon-type">
