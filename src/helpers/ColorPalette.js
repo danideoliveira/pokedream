@@ -49,8 +49,10 @@ export const colors = {
 
   // CARDS
   cardBackground: palette.grey.dark,
-  cardText: palette.grey.mid,
-  cardButton: palette.grey.midSecondary,
+  cardText: palette.white.mid,
+  cardId: palette.grey.light,
+  cardButton: palette.grey.mid,
+  cardButtonHover: palette.grey.midSecondary,
 
   // STATS
   statsHp: palette.green.mid,
