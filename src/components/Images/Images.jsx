@@ -15,6 +15,7 @@ import rock from "../../assets/img/rock.svg";
 import fighting from "../../assets/img/fighting.svg";
 import electric from "../../assets/img/electric.svg";
 import ice from "../../assets/img/ice.svg";
+import fairy from "../../assets/img/fairy.svg";
 
 // Icons
 import iconWeight from "../../assets/img/iconWeight.svg";
@@ -45,4 +46,5 @@ export const images = {
   fighting,
   electric,
   ice,
+  fairy
 };

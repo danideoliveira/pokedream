@@ -72,7 +72,7 @@ export default function Card({ name, id, weight, height, pokemonTypes }) {
         {pokemonTypes.map((pokemonType) => (
           <PokemonTypeContainer
             key={PokemonConfig[pokemonType.type.name].typeColor}
-            typeColor={PokemonConfig[pokemonType.type.name].typeColor}
+            typeColor={PokemonConfig[pokemonType.type.name].gradientColor}
           >
             <Text fontSize="1.8rem" color={colors.cardText} fontWeight="700">
               {pokemonType.type.name}
