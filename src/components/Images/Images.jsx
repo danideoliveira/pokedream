@@ -23,6 +23,8 @@ import iconHeight from "../../assets/img/iconHeight.svg";
 import iconTopArrow from "../../assets/img/iconTopArrow.svg";
 import iconMale from "../../assets/img/iconMale.svg";
 import iconFemale from "../../assets/img/iconFemale.svg";
+import iconSearch from "../../assets/img/iconSearch.svg";
+import iconDownArrow from "../../assets/img/iconDownArrow.svg";
 
 export const images = {
   bug,
@@ -35,6 +37,8 @@ export const images = {
   iconTopArrow,
   iconMale,
   iconFemale,
+  iconSearch,
+  iconDownArrow,
   water,
   ghost,
   normal,
@@ -46,5 +50,5 @@ export const images = {
   fighting,
   electric,
   ice,
-  fairy
+  fairy,
 };
