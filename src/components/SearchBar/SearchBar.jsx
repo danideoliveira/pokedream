@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { SearchBarContainer, InputSearch, Dropdown } from "./SearchBar.styled";
+import {
+  SearchBarContainer,
+  InputSearch,
+  Dropdown,
+  PokemonCompareContainer,
+} from "./SearchBar.styled";
 import { images } from "../Images/Images";
 
 export default function SearchBar() {
@@ -14,8 +19,10 @@ export default function SearchBar() {
   return (
     <SearchBarContainer>
       <InputSearch>
-        <input type="text" placeholder="Nome ou id do pokemon"/>
-        <button><img src={images.iconSearch} alt="search icon" /></button>
+        <input type="text" placeholder="Nome ou id do pokemon" />
+        <button>
+          <img src={images.iconSearch} alt="search icon" />
+        </button>
       </InputSearch>
 
       <Dropdown
@@ -25,7 +32,7 @@ export default function SearchBar() {
       >
         <div className="select">
           <span className="selected">{menuValue}</span>
-          <img src={images.iconDownArrow} alt="down arrow"/>
+          <img src={images.iconDownArrow} alt="down arrow" />
         </div>
 
         <ul className={`menu ${activeDropdown}`}>
@@ -110,6 +117,22 @@ export default function SearchBar() {
           </li>
         </ul>
       </Dropdown>
+      <PokemonCompareContainer>
+        <div className="first-pokemon">
+          <img
+            src="https://play.pokemonshowdown.com/sprites/ani/charizard.gif"
+            alt="first pokemon"
+          />
+        </div>
+        <span className="versus">VS</span>
+        <div className="second-pokemon">
+          <img
+            src="https://play.pokemonshowdown.com/sprites/ani/dragonite.gif"
+            alt="second pokemon"
+          />
+        </div>
+        <button className="compare-button">Comparar</button>
+      </PokemonCompareContainer>
     </SearchBarContainer>
   );
 }

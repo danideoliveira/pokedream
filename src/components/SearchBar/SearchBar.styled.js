@@ -8,6 +8,7 @@ export const SearchBarContainer = styled.div`
   height: auto;
   margin-bottom: 50px;
   background-color: ${colors.searchBarBackground};
+  padding: 2rem 0;
 `;
 
 export const InputSearch = styled.div`
@@ -43,6 +44,7 @@ export const InputSearch = styled.div`
 `;
 
 export const Dropdown = styled.div`
+  width: 15%;
   min-width: 16rem;
   position: relative;
   margin: 2rem;
@@ -60,6 +62,7 @@ export const Dropdown = styled.div`
     font-weight: 600;
     border-radius: 5px;
     height: 4rem;
+    width: 100%;
 
     &:hover {
       background: ${colors.selectedItemBackgroundHover};
@@ -103,5 +106,43 @@ export const Dropdown = styled.div`
   .menu-open {
     display: block;
     opacity: 1;
+  }
+`;
+
+export const PokemonCompareContainer = styled.div`
+  ${setFlexbox("space-evenly", "center", "row")}
+  width: 30%;
+  height: 100%;
+
+  .versus {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: ${colors.versusColor};
+  }
+
+  .first-pokemon,
+  .second-pokemon {
+    ${setFlexbox("center", "center", "row")}
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(180deg, #efa83d 0%, #ff5f2d 100%);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .compare-button {
+    ${setFlexbox("center", "center", "row")}
+    height: 30px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.7rem;
+    border-radius: 5px;
+    color: ${colors.compareButtonColor};
+    background: ${colors.compareButtonBackground};
+    cursor: pointer;
+
+    &:hover {
+      background: ${colors.compareButtonBackgroundHover};
+    }
   }
 `;

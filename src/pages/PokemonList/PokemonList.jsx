@@ -32,7 +32,7 @@ export default function PokemonList() {
         <SearchBar />
         {!loading && <PreLoader />}
         <Grid>
-          {/* {pokemon.map((pokemon) => (
+          {pokemon.map((pokemon) => (
             <Card
               key={pokemon.name}
               name={pokemon.name}
@@ -41,7 +41,7 @@ export default function PokemonList() {
               height={pokemon.height}
               pokemonTypes={pokemon.types}
             />
-          ))}; */}
+          ))};
         </Grid>
       </ContainerSecondary>
     </Container>
