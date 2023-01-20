@@ -78,6 +78,12 @@ export const colors = {
   optionColor: palette.white.light,
   optionColorHover: palette.grey.dark,
 
+  // POKEMON COMPARE
+  versusColor: palette.grey.midSecondary,
+  compareButtonColor: palette.grey.light,
+  compareButtonBackground: palette.green.light,
+  compareButtonBackgroundHover: palette.green.dark,
+
   // CARDS
   cardBackground: palette.grey.dark,
   cardText: palette.white.mid,
