@@ -9,7 +9,7 @@ const palette = {
   white: {
     light: "#FFFFFF",
     mid: "#EFEFEF",
-    dark: "#AEAEAE"
+    dark: "#AEAEAE",
   },
 
   black: {
@@ -43,10 +43,40 @@ export const colors = {
   // HOME
   homeBackground: palette.grey.dark,
   homeButton: palette.grey.mid,
-  HomeText: palette.white.mid,
+  homeText: palette.white.mid,
 
   // POKEMON LIST
   listBackground: palette.grey.mid,
+
+  // SEARCH BAR
+  searchBarBackground: palette.grey.dark,
+
+  // SEARCH BAR - INPUT & BUTTON
+  searchInputBackground: palette.grey.mid,
+  searchInputColor: palette.white.dark,
+  searchButtonColor: palette.white.light,
+  searchButtonBackground: palette.grey.mid,
+
+  // DROPDOWN - SELECTED ITEM
+  selectedItemBackground: palette.grey.mid,
+  selectedItemBackgroundHover: palette.grey.mid,
+  selectedItemBorder: palette.grey.mid,
+  selectedItemColor: palette.white.dark,
+
+  // DROPDOWN - MENU
+  menuBackground: palette.grey.dark,
+  menuBorder: palette.grey.dark,
+  menuColor: palette.white.light,
+
+  // DROPDOWN - LIST ITEM
+  listItemColor: palette.white.light,
+  listItemBackgroundHover: palette.grey.midSecondary,
+  listItemColorHover: palette.grey.dark,
+
+  optionBackground: palette.grey.dark,
+  optionBackgroundHover: palette.grey.mid,
+  optionColor: palette.white.light,
+  optionColorHover: palette.grey.dark,
 
   // CARDS
   cardBackground: palette.grey.dark,
