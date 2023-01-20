@@ -31,6 +31,12 @@ export const PokemonConfig = {
     gradientColor: "linear-gradient(180deg, #FF5AEF 0%, #C213FF 100%)",
     img: images.poison,
   },
+  fairy: {
+    name: "fairy",
+    typeColor: "#d84e87",
+    gradientColor: "linear-gradient(180deg, #ffa8cc 0%, #d84e87 100%)",
+    img: images.fairy,
+  },
   ghost: {
     name: "ghost",
     typeColor: "#4F00B5",
