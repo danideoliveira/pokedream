@@ -62,4 +62,7 @@ export const colors = {
   statsSpAtk: palette.orange.light,
   statsSpDef: palette.blue.light,
   statsSpeed: palette.green.dark,
+
+  // LOADER
+  loaderColor: palette.green.light,
 };
