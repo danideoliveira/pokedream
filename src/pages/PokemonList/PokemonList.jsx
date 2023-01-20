@@ -8,17 +8,17 @@ export default function PokemonList() {
   // https://play.pokemonshowdown.com/sprites/ani/charmander.gif
   // https://pokeapi.co/api/v2/pokemon/ditto
   const [pokemon, setPokemon] = useState([]);
-  const [removeLoading, setRemoveLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getApi() {
-      for (let i = 29; i <= 34; i++) {
+      for (let i = 1; i <= 6; i++) {
         await axios
           .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then((response) => response.data)
           .then((data) => {
             setPokemon((oldList) => [...oldList, data]);
-            setRemoveLoading(true);
+            setLoading(true);
           });
       }
     }
@@ -28,7 +28,7 @@ export default function PokemonList() {
   return (
     <Container>
       <ContainerSecondary>
-        {!removeLoading && <PreLoader />}
+        {!loading && <PreLoader />}
         <Grid>
           {pokemon.map((pokemon) => (
             <Card
@@ -39,7 +39,7 @@ export default function PokemonList() {
               height={pokemon.height}
               pokemonTypes={pokemon.types}
             />
-          ))}
+          ))};
         </Grid>
       </ContainerSecondary>
     </Container>
