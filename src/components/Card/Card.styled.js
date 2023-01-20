@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
   grid-row-gap: 10px;
   background-color: ${colors.cardBackground};
   padding: 10px 10px 0 10px;
-  border-radius: 10px;
+  border-radius: 10px 10px 20px 20px;
   overflow: hidden;
 
   .div-pokemon-img {
@@ -32,7 +32,7 @@ export const CardContainer = styled.div`
     gap: 10px;
 
     img {
-      width: 20px;
+      width: 2rem;
     }
   }
 
@@ -46,7 +46,7 @@ export const CardContainer = styled.div`
       width: 100%;
 
       img {
-        width: 15px;
+        width: 2rem;
         margin: 10px 5px;
       }
     }
@@ -54,10 +54,11 @@ export const CardContainer = styled.div`
 
   .div-show-stats {
     width: 150%;
-    height: 30px;
+    height: 5rem;
     cursor: pointer;
 
     button {
+      ${setFlexbox("center", "center", "row")};
       width: 100%;
       height: 100%;
       cursor: pointer;
@@ -88,11 +89,20 @@ export const PokemonTypeContainer = styled.div`
 `;
 
 export const Text = styled.p`
+  ${setFlexbox("center", "center", "row")};
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.color};
+
+  img {
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-left: 5px;
+  }
 `;
 
 export const PokemonType = styled.img`
   width: 20px;
 `;
+
+export const Icon = styled.img``;
