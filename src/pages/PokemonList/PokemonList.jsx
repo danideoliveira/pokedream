@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Card from "../../components/Card/Card";
 import axios from "axios";
 import PreLoader from "../../components/PreLoader/PreLoader";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 export default function PokemonList() {
   // https://play.pokemonshowdown.com/sprites/ani/charmander.gif
@@ -28,9 +29,10 @@ export default function PokemonList() {
   return (
     <Container>
       <ContainerSecondary>
+        <SearchBar />
         {!loading && <PreLoader />}
         <Grid>
-          {pokemon.map((pokemon) => (
+          {/* {pokemon.map((pokemon) => (
             <Card
               key={pokemon.name}
               name={pokemon.name}
@@ -39,7 +41,7 @@ export default function PokemonList() {
               height={pokemon.height}
               pokemonTypes={pokemon.types}
             />
-          ))};
+          ))}; */}
         </Grid>
       </ContainerSecondary>
     </Container>

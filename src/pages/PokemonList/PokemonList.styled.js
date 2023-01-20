@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const ContainerSecondary = styled.div`
-  ${setFlexbox("center", "flex-start", "row")};
+  ${setFlexbox("center", "flex-start", "column")};
   width: 100%;
   height: auto;
 `;
