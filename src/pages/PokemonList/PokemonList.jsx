@@ -41,7 +41,7 @@ export default function PokemonList() {
     }
 
     allPokemons.forEach((currentPokemon) => {
-      if (currentPokemon.name.includes(name)) {
+      if (currentPokemon.name.includes(name.toLowerCase())) {
         filteredPokemon.push(currentPokemon);
       }
     });
