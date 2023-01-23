@@ -6,33 +6,56 @@ import PreLoader from "../../components/PreLoader/PreLoader";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 export default function PokemonList() {
-  // https://play.pokemonshowdown.com/sprites/ani/charmander.gif
-  // https://pokeapi.co/api/v2/pokemon/ditto
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    async function getApi() {
-      for (let i = 1; i <= 6; i++) {
+  async function getApi() {
+    try {
+      const pokemonData = [];
+      for (let i = 1; i <= 3; i++) {
         await axios
           .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then((response) => response.data)
           .then((data) => {
-            setPokemon((oldList) => [...oldList, data]);
+            pokemonData.push(data);
             setLoading(true);
           });
       }
+      setPokemons(pokemonData);
+      return pokemonData;
+    } catch (e) {
+      console.log(e);
     }
+  }
+
+  useEffect(() => {
     getApi();
   }, []);
+
+  const pokemonFilter = async (name) => {
+    const allPokemons = await getApi();
+    const filteredPokemon = [];
+    if (!name) {
+      await getApi();
+      return;
+    }
+
+    allPokemons.forEach((currentPokemon) => {
+      if (currentPokemon.name.includes(name)) {
+        filteredPokemon.push(currentPokemon);
+      }
+    });
+
+    setPokemons(filteredPokemon);
+  };
 
   return (
     <Container>
       <ContainerSecondary>
-        <SearchBar />
+        <SearchBar pokemonFilter={pokemonFilter} />
         {!loading && <PreLoader />}
         <Grid>
-          {pokemon.map((pokemon) => (
+          {pokemons.map((pokemon) => (
             <Card
               key={pokemon.name}
               name={pokemon.name}
@@ -41,7 +64,8 @@ export default function PokemonList() {
               height={pokemon.height}
               pokemonTypes={pokemon.types}
             />
-          ))};
+          ))}
+          ;
         </Grid>
       </ContainerSecondary>
     </Container>

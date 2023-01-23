@@ -7,10 +7,10 @@ import {
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 
-export default function SearchBar() {
+export default function SearchBar({ pokemonFilter }) {
   const [menuValue, setMenuValue] = useState("Procurar por tipo...");
   const [activeDropdown, setActiveDropdown] = useState("");
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(true);
 
   useEffect(() => {
     !toggleMenu ? setActiveDropdown("menu-open") : setActiveDropdown("");
@@ -19,7 +19,11 @@ export default function SearchBar() {
   return (
     <SearchBarContainer>
       <InputSearch>
-        <input type="text" placeholder="Nome ou id do pokemon" />
+        <input
+          type="text"
+          placeholder="Nome ou id do pokemon"
+          onChange={async (e) => await pokemonFilter(e.target.value)}
+        />
         <button>
           <img src={images.iconSearch} alt="search icon" />
         </button>
