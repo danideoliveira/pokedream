@@ -32,16 +32,19 @@ export default function PokemonList() {
     getApi();
   }, []);
 
-  const pokemonFilter = async (name) => {
+  const pokemonFilter = async (filterValue) => {
     const allPokemons = await getApi();
     const filteredPokemon = [];
-    if (!name) {
+    if (!filterValue) {
       await getApi();
       return;
     }
 
     allPokemons.forEach((currentPokemon) => {
-      if (currentPokemon.name.includes(name.toLowerCase())) {
+      if (
+        currentPokemon.name.includes(filterValue.toLowerCase()) ||
+        currentPokemon.id.toString().includes(filterValue)
+      ) {
         filteredPokemon.push(currentPokemon);
       }
     });
