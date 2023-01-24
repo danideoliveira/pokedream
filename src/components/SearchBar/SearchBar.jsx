@@ -4,6 +4,7 @@ import {
   InputSearch,
   Dropdown,
   PokemonCompareContainer,
+  SelectedPokemon,
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
@@ -82,19 +83,19 @@ export default function SearchBar({ pokemonFilter, typeFilter }) {
         </ul>
       </Dropdown>
       <PokemonCompareContainer>
-        <div className="first-pokemon">
+        <SelectedPokemon gradientColor="linear-gradient(180deg, #efa83d 0%, #ff5f2d 100%)">
           <img
             src="https://play.pokemonshowdown.com/sprites/ani/charizard.gif"
             alt="first pokemon"
           />
-        </div>
+        </SelectedPokemon>
         <span className="versus">VS</span>
-        <div className="second-pokemon">
+        <SelectedPokemon gradientColor="linear-gradient(180deg, #efa83d 0%, #ff5f2d 100%)">
           <img
             src="https://play.pokemonshowdown.com/sprites/ani/dragonite.gif"
             alt="second pokemon"
           />
-        </div>
+        </SelectedPokemon>
         <button className="compare-button">Comparar</button>
       </PokemonCompareContainer>
     </SearchBarContainer>

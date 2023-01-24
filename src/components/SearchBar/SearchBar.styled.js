@@ -111,23 +111,13 @@ export const Dropdown = styled.div`
 
 export const PokemonCompareContainer = styled.div`
   ${setFlexbox("space-evenly", "center", "row")}
-  width: 30%;
+  width: 50%;
   height: 100%;
 
   .versus {
     font-size: 1.4rem;
     font-weight: 600;
     color: ${colors.versusColor};
-  }
-
-  .first-pokemon,
-  .second-pokemon {
-    ${setFlexbox("center", "center", "row")}
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(180deg, #efa83d 0%, #ff5f2d 100%);
-    border-radius: 50%;
-    overflow: hidden;
   }
 
   .compare-button {
@@ -145,4 +135,13 @@ export const PokemonCompareContainer = styled.div`
       background: ${colors.compareButtonBackgroundHover};
     }
   }
+`;
+
+export const SelectedPokemon = styled.div`
+  ${setFlexbox("center", "center", "row")}
+  width: 120px;
+  height: 120px;
+  background: ${props => props.gradientColor};
+  border-radius: 50%;
+  overflow: hidden;
 `;
