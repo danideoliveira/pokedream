@@ -7,7 +7,7 @@ import {
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 
-export default function SearchBar({ pokemonFilter }) {
+export default function SearchBar({ pokemonFilter, typeFilter }) {
   const [menuValue, setMenuValue] = useState("Procurar por tipo...");
   const [activeDropdown, setActiveDropdown] = useState("");
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -35,93 +35,175 @@ export default function SearchBar({ pokemonFilter }) {
         }
       >
         <div className="select">
-          <span className="selected">{menuValue}</span>
+          <span
+            classNameasync ="selected"
+            onChange={async (e) => {
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+          >
+            {menuValue}
+          </span>
           <img src={images.iconDownArrow} alt="down arrow" />
         </div>
 
         <ul className={`menu ${activeDropdown}`}>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value=""
             className="active"
           >
             Todos
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="grass">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="grass"
+          >
             Grass
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="fire">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="fire"
+          >
             Fire
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="water">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="water"
+          >
             Water
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="flying"
           >
             Flying
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="ground"
           >
             Ground
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="rock">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="rock"
+          >
             Rock
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="bug">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="bug"
+          >
             Bug
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="fighting"
           >
             Fighting
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="ice">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="ice"
+          >
             Ice
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="fairy">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="fairy"
+          >
             Fairy
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="normal"
           >
             Normal
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="dragon"
           >
             Dragon
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="poison"
           >
             Poison
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="psychic"
           >
             Psychic
           </li>
           <li
-            onClick={(e) => setMenuValue(e.target.textContent)}
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
             value="electric"
           >
             Electric
           </li>
-          <li onClick={(e) => setMenuValue(e.target.textContent)} value="ghost">
+          <li
+            onClick={async (e) => {
+              setMenuValue(e.target.textContent);
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+            value="ghost"
+          >
             Ghost
           </li>
         </ul>
       </Dropdown>
-      <PokemonCompareContainer>
+      {/* <PokemonCompareContainer>
         <div className="first-pokemon">
           <img
             src="https://play.pokemonshowdown.com/sprites/ani/charizard.gif"
@@ -136,7 +218,7 @@ export default function SearchBar({ pokemonFilter }) {
           />
         </div>
         <button className="compare-button">Comparar</button>
-      </PokemonCompareContainer>
+      </PokemonCompareContainer> */}
     </SearchBarContainer>
   );
 }

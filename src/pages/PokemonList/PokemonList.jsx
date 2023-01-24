@@ -12,7 +12,7 @@ export default function PokemonList() {
   async function getApi() {
     try {
       const pokemonData = [];
-      for (let i = 1; i <= 3; i++) {
+      for (let i = 1; i <= 10; i++) {
         await axios
           .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then((response) => response.data)
@@ -34,7 +34,7 @@ export default function PokemonList() {
 
   const pokemonFilter = async (filterValue) => {
     const allPokemons = await getApi();
-    const filteredPokemon = [];
+    const filteredPokemons = [];
     if (!filterValue) {
       await getApi();
       return;
@@ -45,17 +45,36 @@ export default function PokemonList() {
         currentPokemon.name.includes(filterValue.toLowerCase()) ||
         currentPokemon.id.toString().includes(filterValue)
       ) {
-        filteredPokemon.push(currentPokemon);
+        filteredPokemons.push(currentPokemon);
       }
     });
 
-    setPokemons(filteredPokemon);
+    setPokemons(filteredPokemons);
+  };
+
+  const typeFilter = async (pokemonType) => {
+    const allPokemons = await getApi();
+    const filteredPokemons = [];
+    if (!pokemonType) {
+      await getApi();
+      return;
+    }
+
+    allPokemons.forEach((currentPokemon) => {
+      currentPokemon.types.map((currentType) => {
+        if (currentType.type.name === pokemonType) {
+          filteredPokemons.push(currentPokemon);
+        }
+      });
+    });
+
+    setPokemons(filteredPokemons);
   };
 
   return (
     <Container>
       <ContainerSecondary>
-        <SearchBar pokemonFilter={pokemonFilter} />
+        <SearchBar pokemonFilter={pokemonFilter} typeFilter={typeFilter} />
         {!loading && <PreLoader />}
         <Grid>
           {pokemons.map((pokemon) => (
