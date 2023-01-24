@@ -6,11 +6,21 @@ import {
   PokemonCompareContainer,
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
+import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 
 export default function SearchBar({ pokemonFilter, typeFilter }) {
   const [menuValue, setMenuValue] = useState("Procurar por tipo...");
   const [activeDropdown, setActiveDropdown] = useState("");
   const [toggleMenu, setToggleMenu] = useState(true);
+  const [pokemonTypes, setPokemonTypes] = useState([]);
+
+  useEffect(() => {
+    const pokemonTypesArr = [];
+    for (let type in PokemonConfig) {
+      pokemonTypesArr.push(type);
+    }
+    setPokemonTypes(pokemonTypesArr);
+  }, []);
 
   useEffect(() => {
     !toggleMenu ? setActiveDropdown("menu-open") : setActiveDropdown("");
@@ -36,7 +46,7 @@ export default function SearchBar({ pokemonFilter, typeFilter }) {
       >
         <div className="select">
           <span
-            classNameasync ="selected"
+            className="selected"
             onChange={async (e) => {
               await typeFilter(e.target.textContent.toLowerCase());
             }}
@@ -57,153 +67,21 @@ export default function SearchBar({ pokemonFilter, typeFilter }) {
           >
             Todos
           </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="grass"
-          >
-            Grass
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="fire"
-          >
-            Fire
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="water"
-          >
-            Water
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="flying"
-          >
-            Flying
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="ground"
-          >
-            Ground
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="rock"
-          >
-            Rock
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="bug"
-          >
-            Bug
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="fighting"
-          >
-            Fighting
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="ice"
-          >
-            Ice
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="fairy"
-          >
-            Fairy
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="normal"
-          >
-            Normal
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="dragon"
-          >
-            Dragon
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="poison"
-          >
-            Poison
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="psychic"
-          >
-            Psychic
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="electric"
-          >
-            Electric
-          </li>
-          <li
-            onClick={async (e) => {
-              setMenuValue(e.target.textContent);
-              await typeFilter(e.target.textContent.toLowerCase());
-            }}
-            value="ghost"
-          >
-            Ghost
-          </li>
+
+          {pokemonTypes.map((type) => (
+            <li
+              key={type}
+              onClick={async (e) => {
+                setMenuValue(e.target.textContent);
+                await typeFilter(e.target.textContent.toLowerCase());
+              }}
+            >
+              {type.charAt(0).toUpperCase() + type.slice(1)}
+            </li>
+          ))}
         </ul>
       </Dropdown>
-      {/* <PokemonCompareContainer>
+      <PokemonCompareContainer>
         <div className="first-pokemon">
           <img
             src="https://play.pokemonshowdown.com/sprites/ani/charizard.gif"
@@ -218,7 +96,7 @@ export default function SearchBar({ pokemonFilter, typeFilter }) {
           />
         </div>
         <button className="compare-button">Comparar</button>
-      </PokemonCompareContainer> */}
+      </PokemonCompareContainer>
     </SearchBarContainer>
   );
 }

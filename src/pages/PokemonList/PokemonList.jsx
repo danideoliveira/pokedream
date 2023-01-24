@@ -55,7 +55,7 @@ export default function PokemonList() {
   const typeFilter = async (pokemonType) => {
     const allPokemons = await getApi();
     const filteredPokemons = [];
-    if (!pokemonType) {
+    if (!pokemonType || pokemonType.includes("todos")) {
       await getApi();
       return;
     }
