@@ -4,10 +4,13 @@ import Card from "../../components/Card/Card";
 import axios from "axios";
 import PreLoader from "../../components/PreLoader/PreLoader";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Modal from "../../components/Modal/Modal";
 
 export default function PokemonList() {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [pokemonInfo, setPokemonInfo] = useState({});
 
   async function getApi() {
     try {
@@ -71,6 +74,15 @@ export default function PokemonList() {
     setPokemons(filteredPokemons);
   };
 
+  function handleOpenModal(info) {
+    setModalIsOpen(true);
+    setPokemonInfo(info);
+  }
+
+  function handleCloseModal() {
+    setModalIsOpen(false);
+  }
+
   return (
     <Container>
       <ContainerSecondary>
@@ -84,11 +96,17 @@ export default function PokemonList() {
               id={pokemon.id}
               weight={pokemon.weight}
               height={pokemon.height}
+              stats={pokemon.stats}
               pokemonTypes={pokemon.types}
+              handleOpenModal={handleOpenModal}
             />
           ))}
-          ;
         </Grid>
+        <Modal
+          modalIsOpen={modalIsOpen}
+          handleCloseModal={handleCloseModal}
+          pokemonInfo={pokemonInfo}
+        />
       </ContainerSecondary>
     </Container>
   );

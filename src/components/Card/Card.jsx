@@ -8,7 +8,15 @@ import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { images } from "../Images/Images";
 
-export default function Card({ name, id, weight, height, pokemonTypes }) {
+export default function Card({
+  name,
+  id,
+  weight,
+  height,
+  stats,
+  pokemonTypes,
+  handleOpenModal,
+}) {
   const verify = {
     nidoranm: {
       newName: "nidoran",
@@ -27,7 +35,7 @@ export default function Card({ name, id, weight, height, pokemonTypes }) {
   const pokemonVerifyUrl = (name) => {
     const nameJoin = name.replace("-", "");
     if (verify[nameJoin]) {
-      return (name = verify[nameJoin].urlName);
+      return verify[nameJoin].urlName;
     } else {
       return name;
     }
@@ -99,7 +107,9 @@ export default function Card({ name, id, weight, height, pokemonTypes }) {
         </div>
       </div>
       <div className="div-show-stats">
-        <button>
+        <button
+          onClick={() => handleOpenModal({ name, id, weight, height, stats })}
+        >
           <img src={images.iconTopArrow} />
         </button>
       </div>
