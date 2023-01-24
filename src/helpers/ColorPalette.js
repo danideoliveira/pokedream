@@ -99,6 +99,13 @@ export const colors = {
   statsSpDef: palette.blue.light,
   statsSpeed: palette.green.dark,
 
+  // MODAL
+  modalBackground: palette.grey.dark,
+  modalPokemonNameColor: palette.white.mid,
+  modalPokemonIdColor: palette.grey.midSecondary,
+  modalStatsColor: palette.white.dark,
+  modalProgressBackground: palette.grey.dark,
+
   // LOADER
   loaderColor: palette.green.light,
 };
