@@ -105,8 +105,10 @@ export const colors = {
   modalPokemonIdColor: palette.grey.midSecondary,
   modalStatsColor: palette.white.dark,
   modalProgressBackground: palette.grey.dark,
-  modalCloseButton: palette.white.mid,
+  modalCloseButtonColor: palette.white.mid,
   modalTypeNameColor: palette.white.mid,
+  modalCompareButtonBackground: palette.green.light,
+  modalCompareButtonColor: palette.grey.dark,
 
   // LOADER
   loaderColor: palette.green.light,
