@@ -18,6 +18,7 @@ import {
   ContainerType,
   ContainerPokemonImage,
   PokemonImage,
+  CompareButton,
 } from "./Modal.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { images } from "../Images/Images";
@@ -190,6 +191,8 @@ export default function Modal({ modalIsOpen, handleCloseModal, pokemonInfo }) {
             </>
           )}
         </ContainerStats>
+
+        <CompareButton>Comparar</CompareButton>
       </RightContent>
     </ContainerModal>
   );

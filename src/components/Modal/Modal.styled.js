@@ -16,7 +16,6 @@ export const ContainerModal = styled(ReactModal)`
   z-index: 2;
 `;
 
-
 // LEFT CONTENT
 export const LeftContent = styled.div`
   ${setFlexbox("center", "center", "column")}
@@ -60,9 +59,9 @@ export const TypeName = styled.p`
 `;
 
 export const TypeIcon = styled.img`
-  width: ${props => props.width || "2rem"};
-  height: ${props => props.height || "auto"};
-  margin-left: ${props => props.marginLeft || 0};
+  width: ${(props) => props.width || "2rem"};
+  height: ${(props) => props.height || "auto"};
+  margin-left: ${(props) => props.marginLeft || 0};
 `;
 
 // RIGHT CONTENT
@@ -164,6 +163,18 @@ export const CloseButton = styled.button`
   font-size: 2rem;
   font-weight: 800;
   background: none;
-  color: ${colors.modalCloseButton};
+  color: ${colors.modalCloseButtonColor};
   margin: 15px 20px;
+`;
+
+// COMPARE BUTTON
+export const CompareButton = styled.button`
+  margin-top: 2.5rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  background: ${colors.modalCompareButtonBackground};
+  color: ${colors.modalCompareButtonColor};
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 10px;
 `;
