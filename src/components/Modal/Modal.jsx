@@ -1,9 +1,25 @@
 import {
   ContainerModal,
+  ContainerNameId,
   PokemonName,
   PokemonId,
   ProgressBar,
+  Gradient,
+  CloseButton,
+  ContainerStats,
+  ContainerStatName,
+  StatName,
+  StatValue,
+  RightContent,
+  LeftContent,
+  TypeName,
+  TypeCard,
+  TypeIcon,
+  ContainerType,
+  ContainerPokemonImage,
+  PokemonImage,
 } from "./Modal.styled";
+import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { images } from "../Images/Images";
 import { colors } from "../../helpers/ColorPalette";
 ContainerModal.setAppElement("#root");
@@ -24,16 +40,6 @@ export default function Modal({ modalIsOpen, handleCloseModal, pokemonInfo }) {
     },
   };
 
-  const pokemonVerifyUrl = (name) => {
-    if (!name) return;
-    const nameJoin = name.replace("-", "");
-    if (verify[nameJoin]) {
-      return verify[nameJoin].urlName;
-    } else {
-      return name;
-    }
-  };
-
   const pokemonVerifyName = (name) => {
     if (!name) return;
     const nameJoin = name.replace("-", "");
@@ -42,7 +48,7 @@ export default function Modal({ modalIsOpen, handleCloseModal, pokemonInfo }) {
       return (
         <>
           {newName.charAt(0).toUpperCase() + newName.slice(1)}
-          <img src={img} alt={altText} />
+          <TypeIcon width="4rem" height="4rem" marginLeft="7px" src={img} alt={altText} />
         </>
       );
     } else {
@@ -63,88 +69,128 @@ export default function Modal({ modalIsOpen, handleCloseModal, pokemonInfo }) {
         },
       }}
     >
-      <button onClick={handleCloseModal}>Close</button>
+      <CloseButton onClick={handleCloseModal}>X</CloseButton>
 
-      <div className="left-content">
-        <img
-          src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
-            pokemonInfo.name
-          )}.gif`}
-          alt={`${pokemonInfo.name} gif`}
+      {pokemonInfo.pokemonTypes && (
+        <Gradient
+          background={
+            PokemonConfig[pokemonInfo.pokemonTypes[0].type.name].gradientColor
+          }
         />
-      </div>
-      <div className="right-content">
-        <div className="name-id">
+      )}
+
+      <LeftContent>
+        <ContainerPokemonImage>
+          <PokemonImage
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png`}
+            alt={`${pokemonInfo.name}`}
+          />
+        </ContainerPokemonImage>
+
+        <ContainerType>
+          {pokemonInfo.pokemonTypes && (
+            <>
+              {pokemonInfo.pokemonTypes.map((pokemonType) => (
+                <TypeCard
+                  key={PokemonConfig[pokemonType.type.name].typeColor}
+                  typeColor={PokemonConfig[pokemonType.type.name].gradientColor}
+                >
+                  <TypeName
+                    fontSize="1.8rem"
+                    color={colors.modalTypeNameColor}
+                    fontWeight="700"
+                  >
+                    {pokemonType.type.name}
+                  </TypeName>
+                  <TypeIcon
+                    src={PokemonConfig[pokemonType.type.name].img}
+                    alt={`${pokemonType.type.name} icon`}
+                  />
+                </TypeCard>
+              ))}
+            </>
+          )}
+        </ContainerType>
+      </LeftContent>
+
+      <RightContent>
+        <ContainerNameId>
           <PokemonName>{pokemonVerifyName(pokemonInfo.name)}</PokemonName>
           <PokemonId>#{pokemonInfo.id}</PokemonId>
-        </div>
-        <div className="stats">
+        </ContainerNameId>
+
+        <ContainerStats>
           {pokemonInfo.stats && (
             <>
-              <div>
-                <p className="stat-name">HP</p>
+              <ContainerStatName>
+                <StatName>HP</StatName>
                 <ProgressBar
                   max="100"
                   value={pokemonInfo.stats[0].base_stat}
                   barColor={colors.modalProgressBackground}
                   valueColor={colors.statsHp}
                 />
-                <p>{pokemonInfo.stats[0].base_stat}</p>
-              </div>
-              <div>
-                <p className="stat-name">ATK</p>
+                <StatValue>{pokemonInfo.stats[0].base_stat}</StatValue>
+              </ContainerStatName>
+
+              <ContainerStatName>
+                <StatName>ATK</StatName>
                 <ProgressBar
                   max="100"
                   value={pokemonInfo.stats[1].base_stat}
                   barColor={colors.modalProgressBackground}
                   valueColor={colors.statsAtk}
                 />
-                <p>{pokemonInfo.stats[1].base_stat}</p>
-              </div>
-              <div>
-                <p className="stat-name">DEF</p>
+                <StatValue>{pokemonInfo.stats[1].base_stat}</StatValue>
+              </ContainerStatName>
+
+              <ContainerStatName>
+                <StatName>DEF</StatName>
                 <ProgressBar
                   max="100"
                   value={pokemonInfo.stats[2].base_stat}
                   barColor={colors.modalProgressBackground}
                   valueColor={colors.statsDef}
                 />
-                <p>{pokemonInfo.stats[2].base_stat}</p>
-              </div>
-              <div>
-                <p className="stat-name">SP.ATK</p>
+                <StatValue>{pokemonInfo.stats[2].base_stat}</StatValue>
+              </ContainerStatName>
+
+              <ContainerStatName>
+                <StatName>SP.ATK</StatName>
                 <ProgressBar
                   max="100"
                   value={pokemonInfo.stats[3].base_stat}
                   barColor={colors.modalProgressBackground}
                   valueColor={colors.statsSpAtk}
                 />
-                <p>{pokemonInfo.stats[3].base_stat}</p>
-              </div>
-              <div>
-                <p className="stat-name">SP.DEF</p>
+                <StatValue>{pokemonInfo.stats[3].base_stat}</StatValue>
+              </ContainerStatName>
+
+              <ContainerStatName>
+                <StatName>SP.DEF</StatName>
                 <ProgressBar
                   max="100"
                   value={pokemonInfo.stats[4].base_stat}
                   barColor={colors.modalProgressBackground}
                   valueColor={colors.statsSpDef}
                 />
-                <p>{pokemonInfo.stats[4].base_stat}</p>
-              </div>
-              <div>
-                <p className="stat-name">SPEED</p>
+                <StatValue>{pokemonInfo.stats[4].base_stat}</StatValue>
+              </ContainerStatName>
+
+              <ContainerStatName>
+                <StatName>SPEED</StatName>
                 <ProgressBar
                   max="100"
                   value={pokemonInfo.stats[5].base_stat}
                   barColor={colors.modalProgressBackground}
                   valueColor={colors.statsSpeed}
                 />
-                <p>{pokemonInfo.stats[5].base_stat}</p>
-              </div>
+                <StatValue>{pokemonInfo.stats[5].base_stat}</StatValue>
+              </ContainerStatName>
             </>
           )}
-        </div>
-      </div>
+        </ContainerStats>
+      </RightContent>
     </ContainerModal>
   );
 }
