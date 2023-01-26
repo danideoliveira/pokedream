@@ -101,6 +101,8 @@ export default function PokemonList() {
           typeFilter={typeFilter}
           firstPokemon={firstPokemon}
           secondPokemon={secondPokemon}
+          setFirstPokemon={setFirstPokemon}
+          setSecondPokemon={setSecondPokemon}
         />
         {!loading && <PreLoader />}
         <Grid>

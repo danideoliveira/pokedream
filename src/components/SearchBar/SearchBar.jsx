@@ -5,11 +5,19 @@ import {
   Dropdown,
   PokemonCompareContainer,
   SelectedPokemon,
+  ButtonRemovePokemon,
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 
-export default function SearchBar({ pokemonFilter, typeFilter, firstPokemon, secondPokemon }) {
+export default function SearchBar({
+  pokemonFilter,
+  typeFilter,
+  firstPokemon,
+  secondPokemon,
+  setFirstPokemon,
+  setSecondPokemon,
+}) {
   const [menuValue, setMenuValue] = useState("Procurar por tipo...");
   const [activeDropdown, setActiveDropdown] = useState("");
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -83,7 +91,6 @@ export default function SearchBar({ pokemonFilter, typeFilter, firstPokemon, sec
         </ul>
       </Dropdown>
       <PokemonCompareContainer>
-        {console.log(firstPokemon)}
         <SelectedPokemon
           gradientColor={`${
             firstPokemon.name
@@ -92,6 +99,9 @@ export default function SearchBar({ pokemonFilter, typeFilter, firstPokemon, sec
               : "linear-gradient(180deg, #1b1b1b 0%, #080808 100%)"
           }`}
         >
+          <ButtonRemovePokemon onClick={() => setFirstPokemon([])}>
+            X
+          </ButtonRemovePokemon>
           {firstPokemon.length !== 0 ? (
             <img
               src={`https://play.pokemonshowdown.com/sprites/ani/${firstPokemon.name}.gif`}
@@ -110,6 +120,10 @@ export default function SearchBar({ pokemonFilter, typeFilter, firstPokemon, sec
               : "linear-gradient(180deg, #1b1b1b 0%, #080808 100%)"
           }`}
         >
+          <ButtonRemovePokemon onClick={() => setSecondPokemon([])}>
+            X
+          </ButtonRemovePokemon>
+
           {secondPokemon.length !== 0 ? (
             <img
               src={`https://play.pokemonshowdown.com/sprites/ani/${secondPokemon.name}.gif`}

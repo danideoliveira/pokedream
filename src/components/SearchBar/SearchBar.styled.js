@@ -141,7 +141,22 @@ export const SelectedPokemon = styled.div`
   ${setFlexbox("center", "center", "row")}
   width: 120px;
   height: 120px;
-  background: ${props => props.gradientColor};
+  background: ${(props) => props.gradientColor};
   border-radius: 50%;
   overflow: hidden;
+  position: relative;
+`;
+
+export const ButtonRemovePokemon = styled.button`
+  ${setFlexbox("center", "center", "row")}
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: red;
+  top: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
 `;
