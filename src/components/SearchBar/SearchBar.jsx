@@ -9,7 +9,7 @@ import {
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 
-export default function SearchBar({ pokemonFilter, typeFilter }) {
+export default function SearchBar({ pokemonFilter, typeFilter, firstPokemon, secondPokemon }) {
   const [menuValue, setMenuValue] = useState("Procurar por tipo...");
   const [activeDropdown, setActiveDropdown] = useState("");
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -83,18 +83,41 @@ export default function SearchBar({ pokemonFilter, typeFilter }) {
         </ul>
       </Dropdown>
       <PokemonCompareContainer>
-        <SelectedPokemon gradientColor="linear-gradient(180deg, #efa83d 0%, #ff5f2d 100%)">
-          <img
-            src="https://play.pokemonshowdown.com/sprites/ani/charizard.gif"
-            alt="first pokemon"
-          />
+        {console.log(firstPokemon)}
+        <SelectedPokemon
+          gradientColor={`${
+            firstPokemon.name
+              ? PokemonConfig[firstPokemon.pokemonTypes[0].type.name]
+                  .gradientColor
+              : "linear-gradient(180deg, #1b1b1b 0%, #080808 100%)"
+          }`}
+        >
+          {firstPokemon.length !== 0 ? (
+            <img
+              src={`https://play.pokemonshowdown.com/sprites/ani/${firstPokemon.name}.gif`}
+              alt="first pokemon"
+            />
+          ) : (
+            <span>1</span>
+          )}
         </SelectedPokemon>
         <span className="versus">VS</span>
-        <SelectedPokemon gradientColor="linear-gradient(180deg, #efa83d 0%, #ff5f2d 100%)">
-          <img
-            src="https://play.pokemonshowdown.com/sprites/ani/dragonite.gif"
-            alt="second pokemon"
-          />
+        <SelectedPokemon
+          gradientColor={`${
+            secondPokemon.name
+              ? PokemonConfig[secondPokemon.pokemonTypes[0].type.name]
+                  .gradientColor
+              : "linear-gradient(180deg, #1b1b1b 0%, #080808 100%)"
+          }`}
+        >
+          {secondPokemon.length !== 0 ? (
+            <img
+              src={`https://play.pokemonshowdown.com/sprites/ani/${secondPokemon.name}.gif`}
+              alt="first pokemon"
+            />
+          ) : (
+            <span>2</span>
+          )}
         </SelectedPokemon>
         <button className="compare-button">Comparar</button>
       </PokemonCompareContainer>

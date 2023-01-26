@@ -11,11 +11,13 @@ export default function PokemonList() {
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [pokemonInfo, setPokemonInfo] = useState({});
+  const [firstPokemon, setFirstPokemon] = useState([]);
+  const [secondPokemon, setSecondPokemon] = useState([]);
 
   async function getApi() {
     try {
       const pokemonData = [];
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 25; i <= 40; i++) {
         await axios
           .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then((response) => response.data)
@@ -83,10 +85,23 @@ export default function PokemonList() {
     setModalIsOpen(false);
   }
 
+  const sendToCompare = (pokemonInfo) => {
+    if (firstPokemon.length === 0) {
+      setFirstPokemon(pokemonInfo);
+    } else if (secondPokemon.length === 0) {
+      setSecondPokemon(pokemonInfo);
+    }
+  };
+
   return (
     <Container>
       <ContainerSecondary>
-        <SearchBar pokemonFilter={pokemonFilter} typeFilter={typeFilter} />
+        <SearchBar
+          pokemonFilter={pokemonFilter}
+          typeFilter={typeFilter}
+          firstPokemon={firstPokemon}
+          secondPokemon={secondPokemon}
+        />
         {!loading && <PreLoader />}
         <Grid>
           {pokemons.map((pokemon) => (
@@ -99,6 +114,7 @@ export default function PokemonList() {
               stats={pokemon.stats}
               pokemonTypes={pokemon.types}
               handleOpenModal={handleOpenModal}
+              isCompareFull={{ first: firstPokemon, second: secondPokemon }}
             />
           ))}
         </Grid>
@@ -106,6 +122,8 @@ export default function PokemonList() {
           modalIsOpen={modalIsOpen}
           handleCloseModal={handleCloseModal}
           pokemonInfo={pokemonInfo}
+          sendToCompare={sendToCompare}
+          isCompareFull={{ first: firstPokemon, second: secondPokemon }}
         />
       </ContainerSecondary>
     </Container>

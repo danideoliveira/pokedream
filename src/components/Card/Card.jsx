@@ -16,6 +16,7 @@ export default function Card({
   stats,
   pokemonTypes,
   handleOpenModal,
+  isCompareFull,
 }) {
   const verify = {
     nidoranm: {
@@ -108,7 +109,17 @@ export default function Card({
       </div>
       <div className="div-show-stats">
         <button
-          onClick={() => handleOpenModal({ name, id, weight, height, stats })}
+          onClick={() =>
+            handleOpenModal({
+              name,
+              id,
+              weight,
+              height,
+              stats,
+              pokemonTypes,
+              isCompareFull,
+            })
+          }
         >
           <img src={images.iconTopArrow} />
         </button>

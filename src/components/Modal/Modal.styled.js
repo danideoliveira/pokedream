@@ -177,4 +177,10 @@ export const CompareButton = styled.button`
   font-size: 2rem;
   font-weight: 600;
   border-radius: 10px;
+
+  &:disabled {
+    background: ${colors.modalCompareButtonDisabledBackground};
+    color: ${colors.modalCompareButtonDisabledColor};
+    cursor: default;
+  }
 `;

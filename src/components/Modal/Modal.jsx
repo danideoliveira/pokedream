@@ -25,7 +25,13 @@ import { images } from "../Images/Images";
 import { colors } from "../../helpers/ColorPalette";
 ContainerModal.setAppElement("#root");
 
-export default function Modal({ modalIsOpen, handleCloseModal, pokemonInfo }) {
+export default function Modal({
+  modalIsOpen,
+  handleCloseModal,
+  pokemonInfo,
+  sendToCompare,
+  isCompareFull,
+}) {
   const verify = {
     nidoranm: {
       newName: "nidoran",
@@ -49,12 +55,26 @@ export default function Modal({ modalIsOpen, handleCloseModal, pokemonInfo }) {
       return (
         <>
           {newName.charAt(0).toUpperCase() + newName.slice(1)}
-          <TypeIcon width="4rem" height="4rem" marginLeft="7px" src={img} alt={altText} />
+          <TypeIcon
+            width="4rem"
+            height="4rem"
+            marginLeft="7px"
+            src={img}
+            alt={altText}
+          />
         </>
       );
     } else {
       return name.charAt(0).toUpperCase() + name.slice(1);
     }
+  };
+
+  const verifyCompareFull = () => {
+    if (!pokemonInfo.isCompareFull) return;
+    return (
+      pokemonInfo.isCompareFull.first.length !== 0 &&
+      pokemonInfo.isCompareFull.second.length !== 0
+    );
   };
 
   return (
@@ -192,7 +212,15 @@ export default function Modal({ modalIsOpen, handleCloseModal, pokemonInfo }) {
           )}
         </ContainerStats>
 
-        <CompareButton>Comparar</CompareButton>
+        <CompareButton
+          disabled={pokemonInfo && verifyCompareFull()}
+          onClick={() => {
+            sendToCompare(pokemonInfo);
+            handleCloseModal();
+          }}
+        >
+          Comparar
+        </CompareButton>
       </RightContent>
     </ContainerModal>
   );
