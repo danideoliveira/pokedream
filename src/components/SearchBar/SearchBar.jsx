@@ -107,6 +107,7 @@ export default function SearchBar({
             <img
               src={`https://play.pokemonshowdown.com/sprites/ani/${firstPokemon.name}.gif`}
               alt="first pokemon"
+              style={{ transform: "rotateY(180deg)" }}
             />
           ) : (
             <span>1</span>
