@@ -104,6 +104,7 @@ export const colors = {
   statsSpeed: palette.green.dark,
   statsHigherValue: palette.green.mid,
   statsLowerValue: palette.red.light,
+  statsEqualValue: palette.white.dark,
 
   // MODAL
   modalBackground: palette.grey.dark,
