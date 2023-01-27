@@ -17,7 +17,7 @@ export const ContainerModal = styled(ReactModal)`
 `;
 
 // LEFT CONTENT
-export const LeftContent = styled.div`
+export const ContentContainer = styled.div`
   ${setFlexbox("center", "center", "column")}
   z-index: 2;
 `;
@@ -111,7 +111,8 @@ export const StatValue = styled.p`
   font-size: 1.8rem;
   font-weight: 600;
   width: 35px;
-  color: ${colors.modalStatsColor};
+  /* color: ${colors.modalStatsColor}; */
+  color: ${props => props.valueColor};
 `;
 
 // PROGRESS BAR

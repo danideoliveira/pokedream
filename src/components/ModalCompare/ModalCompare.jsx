@@ -1,6 +1,6 @@
 import {
   ContainerModal,
-  LeftContent,
+  ContentContainer,
   ContainerPokemonImage,
   ContainerType,
   PokemonImage,
@@ -20,7 +20,7 @@ import {
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { images } from "../Images/Images";
 import { colors } from "../../helpers/ColorPalette";
-import { useState } from "react";
+import { StatConfig } from "../StatConfig/StatConfig";
 ContainerModal.setAppElement("#root");
 
 export default function ModalCompare({
@@ -92,7 +92,7 @@ export default function ModalCompare({
         <>
           <CloseButton onClick={handleCloseModalCompare}>X</CloseButton>
 
-          <LeftContent>
+          <ContentContainer>
             <ContainerNameId>
               <PokemonName>{pokemonVerifyName(firstPokemon.name)}</PokemonName>
               <PokemonId>#{firstPokemon.id}</PokemonId>
@@ -138,77 +138,36 @@ export default function ModalCompare({
             <ContainerStats>
               {firstPokemon.stats && (
                 <>
-                  <ContainerStatName>
-                    <StatName>HP</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={firstPokemon.stats[0].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsHp}
-                    />
-                    <StatValue>{firstPokemon.stats[0].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>ATK</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={firstPokemon.stats[1].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsAtk}
-                    />
-                    <StatValue>{firstPokemon.stats[1].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>DEF</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={firstPokemon.stats[2].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsDef}
-                    />
-                    <StatValue>{firstPokemon.stats[2].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>SP.ATK</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={firstPokemon.stats[3].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsSpAtk}
-                    />
-                    <StatValue>{firstPokemon.stats[3].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>SP.DEF</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={firstPokemon.stats[4].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsSpDef}
-                    />
-                    <StatValue>{firstPokemon.stats[4].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>SPEED</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={firstPokemon.stats[5].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsSpeed}
-                    />
-                    <StatValue>{firstPokemon.stats[5].base_stat}</StatValue>
-                  </ContainerStatName>
+                  {firstPokemon.stats.map((stat, index) => (
+                    <ContainerStatName key={Number(index)}>
+                      <StatName>
+                        {StatConfig[stat.stat.name.replace("-", "")].name}
+                      </StatName>
+                      <ProgressBar
+                        max="100"
+                        value={stat.base_stat}
+                        barColor={colors.modalProgressBackground}
+                        valueColor={
+                          StatConfig[stat.stat.name.replace("-", "")].color
+                        }
+                      />
+                      <StatValue
+                        valueColor={
+                          stat.base_stat > secondPokemon.stats[index].base_stat
+                            ? colors.statsHigherValue
+                            : colors.statsLowerValue
+                        }
+                      >
+                        {stat.base_stat}
+                      </StatValue>
+                    </ContainerStatName>
+                  ))}
                 </>
               )}
             </ContainerStats>
-          </LeftContent>
+          </ContentContainer>
 
-          <LeftContent>
+          <ContentContainer>
             <ContainerNameId>
               <PokemonName>{pokemonVerifyName(secondPokemon.name)}</PokemonName>
               <PokemonId>#{secondPokemon.id}</PokemonId>
@@ -253,75 +212,34 @@ export default function ModalCompare({
             <ContainerStats>
               {secondPokemon.stats && (
                 <>
-                  <ContainerStatName>
-                    <StatName>HP</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={secondPokemon.stats[0].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsHp}
-                    />
-                    <StatValue>{secondPokemon.stats[0].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>ATK</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={secondPokemon.stats[1].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsAtk}
-                    />
-                    <StatValue>{secondPokemon.stats[1].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>DEF</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={secondPokemon.stats[2].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsDef}
-                    />
-                    <StatValue>{secondPokemon.stats[2].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>SP.ATK</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={secondPokemon.stats[3].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsSpAtk}
-                    />
-                    <StatValue>{secondPokemon.stats[3].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>SP.DEF</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={secondPokemon.stats[4].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsSpDef}
-                    />
-                    <StatValue>{secondPokemon.stats[4].base_stat}</StatValue>
-                  </ContainerStatName>
-
-                  <ContainerStatName>
-                    <StatName>SPEED</StatName>
-                    <ProgressBar
-                      max="100"
-                      value={secondPokemon.stats[5].base_stat}
-                      barColor={colors.modalProgressBackground}
-                      valueColor={colors.statsSpeed}
-                    />
-                    <StatValue>{secondPokemon.stats[5].base_stat}</StatValue>
-                  </ContainerStatName>
+                  {secondPokemon.stats.map((stat, index) => (
+                    <ContainerStatName key={Number(index)}>
+                      <StatName>
+                        {StatConfig[stat.stat.name.replace("-", "")].name}
+                      </StatName>
+                      <ProgressBar
+                        max="100"
+                        value={stat.base_stat}
+                        barColor={colors.modalProgressBackground}
+                        valueColor={
+                          StatConfig[stat.stat.name.replace("-", "")].color
+                        }
+                      />
+                      <StatValue
+                        valueColor={
+                          stat.base_stat > firstPokemon.stats[index].base_stat
+                            ? colors.statsHigherValue
+                            : colors.statsLowerValue
+                        }
+                      >
+                        {stat.base_stat}
+                      </StatValue>
+                    </ContainerStatName>
+                  ))}
                 </>
               )}
             </ContainerStats>
-          </LeftContent>
+          </ContentContainer>
         </>
       )}
     </ContainerModal>
