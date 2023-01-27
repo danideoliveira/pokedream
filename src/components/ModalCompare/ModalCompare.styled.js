@@ -8,7 +8,7 @@ export const ContainerModal = styled(ReactModal)`
   ${setFlexbox("space-around", "center", "row")}
   background: ${colors.modalBackground};
   width: 85%;
-  height: 50rem;
+  height: 55rem;
   margin: 0 auto;
   position: relative;
   padding: 25px;
@@ -24,10 +24,12 @@ export const ContentContainer = styled.div`
 
 // POKEMON IMAGE
 export const ContainerPokemonImage = styled.div`
-  ${setFlexbox("center", "flex-end", "row")}
+  ${setFlexbox("center", "center", "row")}
   position: relative;
-  margin: 2rem 0;
-  height: 80px;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background: ${props => props.gradientColor};
 `;
 
 export const PokemonImage = styled.img`
@@ -68,6 +70,7 @@ export const TypeIcon = styled.img`
 export const ContainerNameId = styled.div`
   ${setFlexbox("center", "center", "row")}
   z-index: 2;
+  margin: 1rem 0;
 `;
 
 export const PokemonName = styled.h2`
@@ -111,8 +114,7 @@ export const StatValue = styled.p`
   font-size: 1.8rem;
   font-weight: 600;
   width: 35px;
-  /* color: ${colors.modalStatsColor}; */
-  color: ${props => props.valueColor};
+  color: ${(props) => props.valueColor};
 `;
 
 // PROGRESS BAR

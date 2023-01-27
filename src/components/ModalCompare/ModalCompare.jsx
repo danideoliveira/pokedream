@@ -93,12 +93,12 @@ export default function ModalCompare({
           <CloseButton onClick={handleCloseModalCompare}>X</CloseButton>
 
           <ContentContainer>
-            <ContainerNameId>
-              <PokemonName>{pokemonVerifyName(firstPokemon.name)}</PokemonName>
-              <PokemonId>#{firstPokemon.id}</PokemonId>
-            </ContainerNameId>
-
-            <ContainerPokemonImage>
+            <ContainerPokemonImage
+              gradientColor={
+                PokemonConfig[firstPokemon.pokemonTypes[0].type.name]
+                  .gradientColor
+              }
+            >
               <PokemonImage
                 src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
                   firstPokemon.name
@@ -107,6 +107,11 @@ export default function ModalCompare({
                 style={{ transform: "rotateY(180deg)" }}
               />
             </ContainerPokemonImage>
+
+            <ContainerNameId>
+              <PokemonName>{pokemonVerifyName(firstPokemon.name)}</PokemonName>
+              <PokemonId>#{firstPokemon.id}</PokemonId>
+            </ContainerNameId>
 
             <ContainerType>
               {firstPokemon.pokemonTypes && (
@@ -152,11 +157,21 @@ export default function ModalCompare({
                         }
                       />
                       <StatValue
-                        valueColor={
-                          stat.base_stat > secondPokemon.stats[index].base_stat
-                            ? colors.statsHigherValue
-                            : colors.statsLowerValue
-                        }
+                        valueColor={() => {
+                          if (
+                            stat.base_stat >
+                            secondPokemon.stats[index].base_stat
+                          ) {
+                            return colors.statsHigherValue;
+                          } else if (
+                            stat.base_stat <
+                            secondPokemon.stats[index].base_stat
+                          ) {
+                            return colors.statsLowerValue;
+                          } else {
+                            return colors.statsEqualValue;
+                          }
+                        }}
                       >
                         {stat.base_stat}
                       </StatValue>
@@ -168,12 +183,12 @@ export default function ModalCompare({
           </ContentContainer>
 
           <ContentContainer>
-            <ContainerNameId>
-              <PokemonName>{pokemonVerifyName(secondPokemon.name)}</PokemonName>
-              <PokemonId>#{secondPokemon.id}</PokemonId>
-            </ContainerNameId>
-
-            <ContainerPokemonImage>
+            <ContainerPokemonImage
+              gradientColor={
+                PokemonConfig[secondPokemon.pokemonTypes[0].type.name]
+                  .gradientColor
+              }
+            >
               <PokemonImage
                 src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
                   secondPokemon.name
@@ -181,6 +196,11 @@ export default function ModalCompare({
                 alt={`${secondPokemon.name}`}
               />
             </ContainerPokemonImage>
+
+            <ContainerNameId>
+              <PokemonName>{pokemonVerifyName(secondPokemon.name)}</PokemonName>
+              <PokemonId>#{secondPokemon.id}</PokemonId>
+            </ContainerNameId>
 
             <ContainerType>
               {secondPokemon.pokemonTypes && (
@@ -226,11 +246,19 @@ export default function ModalCompare({
                         }
                       />
                       <StatValue
-                        valueColor={
-                          stat.base_stat > firstPokemon.stats[index].base_stat
-                            ? colors.statsHigherValue
-                            : colors.statsLowerValue
-                        }
+                        valueColor={() => {
+                          if (
+                            stat.base_stat > firstPokemon.stats[index].base_stat
+                          ) {
+                            return colors.statsHigherValue;
+                          } else if (
+                            stat.base_stat < firstPokemon.stats[index].base_stat
+                          ) {
+                            return colors.statsLowerValue;
+                          } else {
+                            return colors.statsEqualValue;
+                          }
+                        }}
                       >
                         {stat.base_stat}
                       </StatValue>
