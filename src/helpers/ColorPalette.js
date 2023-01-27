@@ -30,6 +30,10 @@ const palette = {
     light: "#FF6737",
   },
 
+  red: {
+    light: "#ff2424",
+  },
+
   purple: {
     light: "#899BFF",
   },
@@ -98,6 +102,8 @@ export const colors = {
   statsSpAtk: palette.orange.light,
   statsSpDef: palette.blue.light,
   statsSpeed: palette.green.dark,
+  statsHigherValue: palette.green.mid,
+  statsLowerValue: palette.red.light,
 
   // MODAL
   modalBackground: palette.grey.dark,
@@ -109,6 +115,8 @@ export const colors = {
   modalTypeNameColor: palette.white.mid,
   modalCompareButtonBackground: palette.green.light,
   modalCompareButtonColor: palette.grey.dark,
+  modalCompareButtonDisabledBackground: palette.grey.light,
+  modalCompareButtonDisabledColor: palette.grey.dark,
 
   // LOADER
   loaderColor: palette.green.light,
