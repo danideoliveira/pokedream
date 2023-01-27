@@ -17,6 +17,7 @@ export default function SearchBar({
   secondPokemon,
   setFirstPokemon,
   setSecondPokemon,
+  handleOpenModalCompare,
 }) {
   const [menuValue, setMenuValue] = useState("Procurar por tipo...");
   const [activeDropdown, setActiveDropdown] = useState("");
@@ -133,7 +134,15 @@ export default function SearchBar({
             <span>2</span>
           )}
         </SelectedPokemon>
-        <button className="compare-button">Comparar</button>
+        <button
+          className="compare-button"
+          onClick={() => {
+            if (firstPokemon.length === 0 || secondPokemon.length === 0) return;
+            handleOpenModalCompare({ firstPokemon, secondPokemon });
+          }}
+        >
+          Comparar
+        </button>
       </PokemonCompareContainer>
     </SearchBarContainer>
   );

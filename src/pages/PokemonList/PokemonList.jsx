@@ -5,11 +5,13 @@ import axios from "axios";
 import PreLoader from "../../components/PreLoader/PreLoader";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Modal from "../../components/Modal/Modal";
+import ModalCompare from "../../components/ModalCompare/ModalCompare";
 
 export default function PokemonList() {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalCompareIsOpen, setModalCompareIsOpen] = useState(false);
   const [pokemonInfo, setPokemonInfo] = useState({});
   const [firstPokemon, setFirstPokemon] = useState([]);
   const [secondPokemon, setSecondPokemon] = useState([]);
@@ -78,11 +80,20 @@ export default function PokemonList() {
 
   function handleOpenModal(info) {
     setModalIsOpen(true);
-    setPokemonInfo(info);
+    info && setPokemonInfo(info);
   }
 
   function handleCloseModal() {
     setModalIsOpen(false);
+  }
+
+  function handleOpenModalCompare(info) {
+    setModalCompareIsOpen(true);
+    info && setPokemonInfo(info);
+  }
+
+  function handleCloseModalCompare() {
+    setModalCompareIsOpen(false);
   }
 
   const sendToCompare = (pokemonInfo) => {
@@ -103,6 +114,7 @@ export default function PokemonList() {
           secondPokemon={secondPokemon}
           setFirstPokemon={setFirstPokemon}
           setSecondPokemon={setSecondPokemon}
+          handleOpenModalCompare={handleOpenModalCompare}
         />
         {!loading && <PreLoader />}
         <Grid>
@@ -126,6 +138,11 @@ export default function PokemonList() {
           pokemonInfo={pokemonInfo}
           sendToCompare={sendToCompare}
           isCompareFull={{ first: firstPokemon, second: secondPokemon }}
+        />
+        <ModalCompare
+          modalCompareIsOpen={modalCompareIsOpen}
+          handleCloseModalCompare={handleCloseModalCompare}
+          pokemonInfo={pokemonInfo}
         />
       </ContainerSecondary>
     </Container>
