@@ -30,6 +30,7 @@ export const ContainerPokemonImage = styled.div`
   width: 120px;
   border-radius: 50%;
   background: ${props => props.gradientColor};
+  overflow: hidden;
 `;
 
 export const PokemonImage = styled.img`
