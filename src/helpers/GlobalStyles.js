@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     text-decoration: none;
     font-family: "Nunito", sans-serif, Arial, Helvetica;
-    /* outline: 1px solid rebeccapurple; */
   }
 
   body {
