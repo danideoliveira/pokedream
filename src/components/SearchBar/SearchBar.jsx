@@ -100,7 +100,12 @@ export default function SearchBar({
               : "linear-gradient(180deg, #1b1b1b 0%, #080808 100%)"
           }`}
         >
-          <ButtonRemovePokemon onClick={() => setFirstPokemon([])}>
+          <ButtonRemovePokemon
+            onClick={() => setFirstPokemon([])}
+            style={{
+              visibility: firstPokemon.length === 0 && "hidden",
+            }}
+          >
             X
           </ButtonRemovePokemon>
           {firstPokemon.length !== 0 ? (
@@ -122,7 +127,12 @@ export default function SearchBar({
               : "linear-gradient(180deg, #1b1b1b 0%, #080808 100%)"
           }`}
         >
-          <ButtonRemovePokemon onClick={() => setSecondPokemon([])}>
+          <ButtonRemovePokemon
+            onClick={() => setSecondPokemon([])}
+            style={{
+              visibility: secondPokemon.length === 0 && "hidden",
+            }}
+          >
             X
           </ButtonRemovePokemon>
 

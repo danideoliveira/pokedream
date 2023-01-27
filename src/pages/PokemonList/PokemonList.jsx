@@ -19,7 +19,7 @@ export default function PokemonList() {
   async function getApi() {
     try {
       const pokemonData = [];
-      for (let i = 25; i <= 40; i++) {
+      for (let i = 1; i <= 9; i++) {
         await axios
           .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then((response) => response.data)

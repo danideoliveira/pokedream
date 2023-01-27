@@ -145,18 +145,27 @@ export const SelectedPokemon = styled.div`
   border-radius: 50%;
   overflow: hidden;
   position: relative;
+
+  &:hover {
+    button {
+      visibility: visible;
+    }
+  }
 `;
 
 export const ButtonRemovePokemon = styled.button`
   ${setFlexbox("center", "center", "row")}
+  visibility: hidden;
   position: absolute;
-  width: 20px;
-  height: 20px;
-  font-size: 1.2rem;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
   font-weight: 600;
   color: red;
   top: 0;
   border-radius: 50%;
   cursor: pointer;
   text-align: center;
+  z-index: 999;
+  background: #000000a6;
 `;
