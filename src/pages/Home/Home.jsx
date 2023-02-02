@@ -9,6 +9,7 @@ import {
   Description,
   TypeBackground,
   LineDivider,
+  Button,
 } from "./Home.styled";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -73,6 +74,7 @@ export default function Home() {
                 nam id laboriosam harum, sunt minus quo excepturi est? Modi,
                 cupiditate necessitatibus?
               </Description>
+              <Button>Gotta Catch'em all!</Button>
             </BoxTitle>
             <TypeBackground
               src={PokemonConfig[currentPokemon.types[0].type.name].img}

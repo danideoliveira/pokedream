@@ -55,6 +55,25 @@ export const Description = styled.p`
   color: ${colors.homeDescriptionColor};
 `;
 
+export const Button = styled.a`
+  ${setFlexbox("center", "center", "row")}
+  width: 200px;
+  height: 4rem;
+  margin-top: 2rem;
+  border-radius: 5px;
+  background: ${colors.homeButtonBackground};
+  color: ${colors.homeButtonColor};
+  font-size: 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: ${colors.homeButtonBackgroundHover};
+    color: ${colors.homeButtonColorHover};
+  }
+`;
+
 export const TypeBackground = styled.img`
   position: absolute;
   opacity: 1.5%;
