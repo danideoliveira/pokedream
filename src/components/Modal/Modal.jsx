@@ -87,6 +87,7 @@ export default function Modal({
           justifyContent: "center",
           alignItems: "center",
           background: "rgba(0, 0, 0, 80%)",
+          zIndex: 999,
         },
       }}
     >

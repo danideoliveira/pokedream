@@ -85,6 +85,7 @@ export default function ModalCompare({
           justifyContent: "center",
           alignItems: "center",
           background: "rgba(0, 0, 0, 80%)",
+          zIndex: 999
         },
       }}
     >
