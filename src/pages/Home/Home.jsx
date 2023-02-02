@@ -7,6 +7,7 @@ import {
   Gradient,
   BoxTitle,
   Description,
+  TypeBackground,
 } from "./Home.styled";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -71,6 +72,7 @@ export default function Home() {
                 cupiditate necessitatibus?
               </Description>
             </BoxTitle>
+            <TypeBackground src={PokemonConfig[currentPokemon.types[0].type.name].img} alt="type icon"/>
           </RightContent>
         </Container>
       ))}

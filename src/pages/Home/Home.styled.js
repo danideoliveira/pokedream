@@ -19,9 +19,11 @@ export const LeftContent = styled.div`
 
 export const RightContent = styled.div`
   ${setFlexbox("center", "center", "column")}
+  position: relative;
   width: 50%;
   height: 100%;
   z-index: 1;
+  overflow: hidden;
 `;
 
 export const BoxTitle = styled.div`
@@ -44,6 +46,14 @@ export const Description = styled.p`
   font-weight: 500;
   text-align: justify;
   color: ${colors.homeDescriptionColor};
+`;
+
+export const TypeBackground = styled.img`
+  position: absolute;
+  opacity: 1.5%;
+  width: 70%;
+  bottom: 0;
+  right: -20%;
 `;
 
 export const PokemonImage = styled.img`
