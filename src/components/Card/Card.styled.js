@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { setFlexbox } from "../../helpers/Mixins";
 import { colors } from "../../helpers/ColorPalette";
 
+// CONTAINER
 export const CardContainer = styled.div`
   ${setFlexbox("center", "center", "row")};
   width: 380px;
@@ -18,6 +19,7 @@ export const CardContainer = styled.div`
   }
 `;
 
+// DIVIDERS
 export const LeftContent = styled.div`
   ${setFlexbox("center", "center", "row")};
   width: 35%;
@@ -30,6 +32,7 @@ export const RightContent = styled.div`
   height: 100%;
 `;
 
+// POKEMON
 export const BoxPokemonImage = styled.div`
   ${setFlexbox("center", "center", "column")};
   height: 100%;
@@ -39,10 +42,22 @@ export const BoxPokemonImage = styled.div`
 
 export const PokemonImage = styled.img``;
 
+// POKEMON NAME
 export const BoxPokemonName = styled.div`
   ${setFlexbox("center", "center", "column")};
   gap: 2px;
   margin-bottom: 2rem;
+`;
+
+// POKEMON TYPE
+export const BoxPokemonType = styled.div`
+  ${setFlexbox("center", "center", "row")};
+  gap: 10px;
+  height: 2.5rem;
+
+  img {
+    width: 2rem;
+  }
 `;
 
 export const CardPokemonType = styled.div`
@@ -55,16 +70,13 @@ export const CardPokemonType = styled.div`
   border-radius: 5px;
 `;
 
-export const BoxPokemonType = styled.div`
-  ${setFlexbox("center", "center", "row")};
-  gap: 10px;
-  height: 2.5rem;
-
-  img {
-    width: 2rem;
-  }
+export const PokemonType = styled.img`
+  width: 20px;
 `;
 
+export const Icon = styled.img``;
+
+// TEXTOS
 export const Text = styled.p`
   ${setFlexbox("center", "center", "row")};
   font-size: ${(props) => props.fontSize};
@@ -77,9 +89,3 @@ export const Text = styled.p`
     margin-left: 5px;
   }
 `;
-
-export const PokemonType = styled.img`
-  width: 20px;
-`;
-
-export const Icon = styled.img``;
