@@ -47,7 +47,13 @@ export const colors = {
   // HOME
   homeBackground: palette.grey.dark,
   homeButton: palette.grey.mid,
-  homeText: palette.white.mid,
+  homeTitleColor: palette.white.mid,
+  homeDescriptionColor: palette.white.dark,
+  homeLineDivider: palette.grey.midSecondary,
+  homeButtonBackground: palette.white.dark,
+  homeButtonBackgroundHover: palette.grey.mid,
+  homeButtonColor: palette.grey.dark,
+  homeButtonColorHover: palette.white.mid,
 
   // POKEMON LIST
   listBackground: palette.grey.mid,
