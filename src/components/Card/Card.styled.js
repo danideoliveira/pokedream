@@ -8,7 +8,6 @@ export const CardContainer = styled.div`
   height: 150px;
   grid-row-gap: 10px;
   background-color: ${colors.cardBackground};
-  /* padding: 10px; */
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
@@ -16,65 +15,6 @@ export const CardContainer = styled.div`
 
   &:hover {
     background: ${colors.cardBackgroundHover};
-  }
-
-  .div-pokemon-img {
-    ${setFlexbox("center", "center", "column")};
-    height: 70%;
-    width: 70%;
-    background-color: white;
-    clip-path: circle();
-  }
-
-  .div-pokemon-name {
-    ${setFlexbox("center", "center", "column")};
-    /* height: 20%; */
-    gap: 2px;
-    margin-bottom: 2rem;
-  }
-
-  .div-pokemon-type {
-    ${setFlexbox("center", "center", "row")};
-    /* height: 10%; */
-    gap: 10px;
-    height: 2.5rem;
-
-    img {
-      width: 2rem;
-    }
-  }
-
-  .div-pokemon-base {
-    ${setFlexbox("space-evenly", "center", "row")};
-    width: 70%;
-
-    .pokemon-weight,
-    .pokemon-height {
-      ${setFlexbox("center", "center", "column")};
-      width: 100%;
-
-      img {
-        width: 2rem;
-        margin: 10px 5px;
-      }
-    }
-  }
-
-  .div-show-stats {
-    width: 150%;
-    height: 5rem;
-    cursor: pointer;
-
-    button {
-      ${setFlexbox("center", "center", "row")};
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${colors.cardButtonHover};
-      }
-    }
   }
 `;
 
@@ -90,15 +30,22 @@ export const RightContent = styled.div`
   height: 100%;
 `;
 
-export const PokemonImageContainer = styled.div`
+export const BoxPokemonImage = styled.div`
   ${setFlexbox("center", "center", "column")};
   height: 100%;
   width: 100%;
   background: ${(props) => props.background};
-  /* clip-path: circle(); */
 `;
 
-export const PokemonTypeContainer = styled.div`
+export const PokemonImage = styled.img``;
+
+export const BoxPokemonName = styled.div`
+  ${setFlexbox("center", "center", "column")};
+  gap: 2px;
+  margin-bottom: 2rem;
+`;
+
+export const CardPokemonType = styled.div`
   ${setFlexbox("center", "center", "row")};
   width: 100%;
   height: 100%;
@@ -106,6 +53,16 @@ export const PokemonTypeContainer = styled.div`
   background: ${(props) => props.typeColor};
   padding: 15px;
   border-radius: 5px;
+`;
+
+export const BoxPokemonType = styled.div`
+  ${setFlexbox("center", "center", "row")};
+  gap: 10px;
+  height: 2.5rem;
+
+  img {
+    width: 2rem;
+  }
 `;
 
 export const Text = styled.p`

@@ -1,10 +1,14 @@
 import {
+  BoxPokemonName,
+  BoxPokemonType,
   CardContainer,
   LeftContent,
-  PokemonImageContainer,
-  PokemonTypeContainer,
+  PokemonImage,
+  BoxPokemonImage,
+  CardPokemonType,
   RightContent,
   Text,
+  Icon,
 } from "./Card.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
@@ -75,42 +79,42 @@ export default function Card({
       }
     >
       <LeftContent>
-        <PokemonImageContainer
+        <BoxPokemonImage
           background={PokemonConfig[pokemonTypes[0].type.name].gradientColor}
         >
-          <img
+          <PokemonImage
             src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
               name
             )}.gif`}
             alt={`${name} gif`}
           />
-        </PokemonImageContainer>
+        </BoxPokemonImage>
       </LeftContent>
       <RightContent>
-        <div className="div-pokemon-name">
+        <BoxPokemonName>
           <Text fontSize="2.2rem" color={colors.cardText} fontWeight="700">
             {pokemonVerifyName(name)}
           </Text>
           <Text fontSize="2rem" color={colors.cardId} fontWeight="700">
             #{id}
           </Text>
-        </div>
-        <div className="div-pokemon-type">
+        </BoxPokemonName>
+        <BoxPokemonType>
           {pokemonTypes.map((pokemonType) => (
-            <PokemonTypeContainer
+            <CardPokemonType
               key={PokemonConfig[pokemonType.type.name].typeColor}
               typeColor={PokemonConfig[pokemonType.type.name].gradientColor}
             >
               <Text fontSize="1.8rem" color={colors.cardText} fontWeight="700">
                 {pokemonType.type.name}
               </Text>
-              <img
+              <Icon
                 src={PokemonConfig[pokemonType.type.name].img}
                 alt={`${pokemonType.type.name} icon`}
               />
-            </PokemonTypeContainer>
+            </CardPokemonType>
           ))}
-        </div>
+        </BoxPokemonType>
         
       </RightContent>
     </CardContainer>
