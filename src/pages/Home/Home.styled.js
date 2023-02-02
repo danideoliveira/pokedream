@@ -17,6 +17,13 @@ export const LeftContent = styled.div`
   z-index: 1;
 `;
 
+export const LineDivider = styled.div`
+  width: 2px;
+  height: 50%;
+  background-color: ${colors.homeLineDivider};
+  border-radius: 50%;
+`;
+
 export const RightContent = styled.div`
   ${setFlexbox("center", "center", "column")}
   position: relative;
@@ -57,7 +64,7 @@ export const TypeBackground = styled.img`
 `;
 
 export const PokemonImage = styled.img`
-  width: 35rem;
+  width: 80%;
   z-index: 1;
 `;
 
