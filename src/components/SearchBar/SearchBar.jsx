@@ -13,16 +13,27 @@ import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 export default function SearchBar({
   pokemonFilter,
   typeFilter,
+  genFilter,
+  setListSize,
   firstPokemon,
   secondPokemon,
   setFirstPokemon,
   setSecondPokemon,
   handleOpenModalCompare,
 }) {
-  const [menuValue, setMenuValue] = useState("Procurar por tipo...");
-  const [activeDropdown, setActiveDropdown] = useState("");
+  const [menuValue, setMenuValue] = useState("Busca por tipo...");
+  const [genValue, setGenValue] = useState("Busca por geração...");
+  const [activeTypeDropdown, setActiveTypeDropdown] = useState("");
+  const [activeGenDropdown, setActiveGenDropdown] = useState("");
   const [toggleMenu, setToggleMenu] = useState(true);
+  const [toggleGenSearch, setToggleGenSearch] = useState(true);
   const [pokemonTypes, setPokemonTypes] = useState([]);
+
+  const generations = [
+    { name: "Todas", size: [140, 151] },
+    { name: "Gen 1", size: [1, 9] },
+    { name: "Gen 2", size: [152, 160] },
+  ];
 
   useEffect(() => {
     const pokemonTypesArr = [];
@@ -33,8 +44,16 @@ export default function SearchBar({
   }, []);
 
   useEffect(() => {
-    !toggleMenu ? setActiveDropdown("menu-open") : setActiveDropdown("");
+    !toggleMenu
+      ? setActiveTypeDropdown("menu-open")
+      : setActiveTypeDropdown("");
   }, [toggleMenu]);
+
+  useEffect(() => {
+    !toggleGenSearch
+      ? setActiveGenDropdown("menu-open")
+      : setActiveGenDropdown("");
+  }, [toggleGenSearch]);
 
   return (
     <SearchBarContainer>
@@ -66,7 +85,7 @@ export default function SearchBar({
           <img src={images.iconDownArrow} alt="down arrow" />
         </div>
 
-        <ul className={`menu ${activeDropdown}`}>
+        <ul className={`menu ${activeTypeDropdown}`}>
           <li
             onClick={async (e) => {
               setMenuValue(e.target.textContent);
@@ -91,6 +110,41 @@ export default function SearchBar({
           ))}
         </ul>
       </Dropdown>
+
+      <Dropdown
+        onClick={() =>
+          toggleGenSearch ? setToggleGenSearch(false) : setToggleGenSearch(true)
+        }
+      >
+        <div className="select">
+          <span
+            className="selected"
+            onChange={async (e) => {
+              await typeFilter(e.target.textContent.toLowerCase());
+            }}
+          >
+            {genValue}
+          </span>
+          <img src={images.iconDownArrow} alt="down arrow" />
+        </div>
+
+        <ul className={`menu ${activeGenDropdown}`}>
+          {generations.map((gen, index) => (
+            <li
+              key={gen.name}
+              onClick={async (e) => {
+                setGenValue(e.target.textContent);
+                await genFilter(generations[index].size);
+                setListSize(generations[index].size);
+                setMenuValue("Busca por tipo...");
+              }}
+            >
+              {gen.name}
+            </li>
+          ))}
+        </ul>
+      </Dropdown>
+
       <PokemonCompareContainer>
         <SelectedPokemon
           gradientColor={`${

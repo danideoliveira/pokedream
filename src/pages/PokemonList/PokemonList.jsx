@@ -9,6 +9,7 @@ import ModalCompare from "../../components/ModalCompare/ModalCompare";
 
 export default function PokemonList() {
   const [pokemons, setPokemons] = useState([]);
+  const [listSize, setListSize] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalCompareIsOpen, setModalCompareIsOpen] = useState(false);
@@ -16,10 +17,10 @@ export default function PokemonList() {
   const [firstPokemon, setFirstPokemon] = useState([]);
   const [secondPokemon, setSecondPokemon] = useState([]);
 
-  async function getApi() {
+  async function getApi(min = 140, max = 151) {
     try {
       const pokemonData = [];
-      for (let i = 1; i <= 9; i++) {
+      for (let i = min; i <= max; i++) {
         await axios
           .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then((response) => response.data)
@@ -40,10 +41,10 @@ export default function PokemonList() {
   }, []);
 
   const pokemonFilter = async (filterValue) => {
-    const allPokemons = await getApi();
+    const allPokemons = await getApi(listSize[0], listSize[1]);
     const filteredPokemons = [];
     if (!filterValue) {
-      await getApi();
+      await getApi(listSize[0], listSize[1]);
       return;
     }
 
@@ -60,10 +61,10 @@ export default function PokemonList() {
   };
 
   const typeFilter = async (pokemonType) => {
-    const allPokemons = await getApi();
+    const allPokemons = await getApi(listSize[0], listSize[1]);
     const filteredPokemons = [];
     if (!pokemonType || pokemonType.includes("todos")) {
-      await getApi();
+      await getApi(listSize[0], listSize[1]);
       return;
     }
 
@@ -76,6 +77,15 @@ export default function PokemonList() {
     });
 
     setPokemons(filteredPokemons);
+  };
+
+  const genFilter = async (genSize) => {
+    const [min, max] = genSize;
+    if (!min || genSize.includes("todas")) {
+      await getApi(140, 151);
+      return;
+    }
+    await getApi(min, max);
   };
 
   function handleOpenModal(info) {
@@ -110,6 +120,8 @@ export default function PokemonList() {
         <SearchBar
           pokemonFilter={pokemonFilter}
           typeFilter={typeFilter}
+          genFilter={genFilter}
+          setListSize={setListSize}
           firstPokemon={firstPokemon}
           secondPokemon={secondPokemon}
           setFirstPokemon={setFirstPokemon}
