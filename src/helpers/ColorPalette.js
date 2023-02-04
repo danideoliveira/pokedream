@@ -13,6 +13,7 @@ const palette = {
   },
 
   black: {
+    mid: "#0e0e0c",
     dark: "#000000",
   },
 
@@ -83,19 +84,17 @@ export const colors = {
   listItemBackgroundHover: palette.grey.midSecondary,
   listItemColorHover: palette.grey.dark,
 
-  optionBackground: palette.grey.dark,
-  optionBackgroundHover: palette.grey.mid,
-  optionColor: palette.white.light,
-  optionColorHover: palette.grey.dark,
-
   // POKEMON COMPARE
   versusColor: palette.grey.midSecondary,
   compareButtonColor: palette.grey.light,
   compareButtonBackground: palette.green.light,
   compareButtonBackgroundHover: palette.green.dark,
+  compareButtonDisabledBackground: palette.grey.light,
+  compareButtonDisabledColor: palette.grey.dark,
 
   // CARDS
   cardBackground: palette.grey.dark,
+  cardBackgroundHover: palette.black.mid,
   cardText: palette.white.mid,
   cardId: palette.white.dark,
   cardButton: palette.grey.mid,
