@@ -7,6 +7,11 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   background: ${colors.homeBackground};
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    height: 80rem;
+    ${setFlexbox("center", "center", "column")}
+  }
 `;
 
 export const LeftContent = styled.div`
@@ -15,6 +20,16 @@ export const LeftContent = styled.div`
   width: 50%;
   height: 100%;
   z-index: 1;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    width: 100%;
+    height: 50%;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 100%;
+    height: 40%;
+  }
 `;
 
 export const LineDivider = styled.div`
@@ -22,6 +37,10 @@ export const LineDivider = styled.div`
   height: 50%;
   background-color: ${colors.homeLineDivider};
   border-radius: 50%;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    display: none;
+  }
 `;
 
 export const RightContent = styled.div`
@@ -31,12 +50,27 @@ export const RightContent = styled.div`
   height: 100%;
   z-index: 1;
   overflow: hidden;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    width: 100%;
+    height: 50%;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 100%;
+    height: 60%;
+  }
 `;
 
 export const BoxTitle = styled.div`
   ${setFlexbox("center", "flex-start", "column")}
   width: 70%;
   height: auto;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    ${setFlexbox("center", "center", "column")}
+    width: 70%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -46,6 +80,15 @@ export const Title = styled.h1`
   line-height: 5rem;
   margin-bottom: 15px;
   width: 50%;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    ${setFlexbox("center", "center", "column")}
+  }
 `;
 
 export const Description = styled.p`
@@ -80,11 +123,23 @@ export const TypeBackground = styled.img`
   width: 70%;
   bottom: 0;
   right: -20%;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    width: 50%;
+  }
 `;
 
 export const PokemonImage = styled.img`
   width: 80%;
   z-index: 1;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    width: 50%;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 80%;
+  }
 `;
 
 export const Gradient = styled.div`
