@@ -3,9 +3,20 @@ import {
   SearchBarContainer,
   InputSearch,
   Dropdown,
-  PokemonCompareContainer,
+  PokemonCompare,
   SelectedPokemon,
   ButtonRemovePokemon,
+  InputNameId,
+  BoxIconSearch,
+  BoxSelectedItem,
+  IconDownArrow,
+  IconSearch,
+  SelectedItem,
+  List,
+  Item,
+  CompareButton,
+  Versus,
+  PokemonCompareImage,
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
@@ -58,14 +69,17 @@ export default function SearchBar({
   return (
     <SearchBarContainer>
       <InputSearch>
-        <input
+        <InputNameId
           type="text"
           placeholder="Nome ou id do pokemon"
-          onChange={async (e) => await pokemonFilter(e.target.value)}
+          onChange={async (e) => {
+            await pokemonFilter(e.target.value);
+            setMenuValue("Busca por tipo...");
+          }}
         />
-        <button>
-          <img src={images.iconSearch} alt="search icon" />
-        </button>
+        <BoxIconSearch>
+          <IconSearch src={images.iconSearch} alt="search icon" />
+        </BoxIconSearch>
       </InputSearch>
 
       <Dropdown
@@ -73,32 +87,30 @@ export default function SearchBar({
           toggleMenu ? setToggleMenu(false) : setToggleMenu(true)
         }
       >
-        <div className="select">
-          <span
-            className="selected"
+        <BoxSelectedItem>
+          <SelectedItem
             onChange={async (e) => {
               await typeFilter(e.target.textContent.toLowerCase());
             }}
           >
             {menuValue}
-          </span>
-          <img src={images.iconDownArrow} alt="down arrow" />
-        </div>
+          </SelectedItem>
+          <IconDownArrow src={images.iconDownArrow} alt="down arrow" />
+        </BoxSelectedItem>
 
-        <ul className={`menu ${activeTypeDropdown}`}>
-          <li
+        <List className={`menu ${activeTypeDropdown}`}>
+          <Item
             onClick={async (e) => {
               setMenuValue(e.target.textContent);
               await typeFilter(e.target.textContent.toLowerCase());
             }}
             value=""
-            className="active"
           >
             Todos
-          </li>
+          </Item>
 
           {pokemonTypes.map((type) => (
-            <li
+            <Item
               key={type}
               onClick={async (e) => {
                 setMenuValue(e.target.textContent);
@@ -106,9 +118,9 @@ export default function SearchBar({
               }}
             >
               {type.charAt(0).toUpperCase() + type.slice(1)}
-            </li>
+            </Item>
           ))}
-        </ul>
+        </List>
       </Dropdown>
 
       <Dropdown
@@ -116,21 +128,20 @@ export default function SearchBar({
           toggleGenSearch ? setToggleGenSearch(false) : setToggleGenSearch(true)
         }
       >
-        <div className="select">
-          <span
-            className="selected"
+        <BoxSelectedItem>
+          <SelectedItem
             onChange={async (e) => {
               await typeFilter(e.target.textContent.toLowerCase());
             }}
           >
             {genValue}
-          </span>
-          <img src={images.iconDownArrow} alt="down arrow" />
-        </div>
+          </SelectedItem>
+          <IconDownArrow src={images.iconDownArrow} alt="down arrow" />
+        </BoxSelectedItem>
 
-        <ul className={`menu ${activeGenDropdown}`}>
+        <List className={`menu ${activeGenDropdown}`}>
           {generations.map((gen, index) => (
-            <li
+            <Item
               key={gen.name}
               onClick={async (e) => {
                 setGenValue(e.target.textContent);
@@ -140,12 +151,12 @@ export default function SearchBar({
               }}
             >
               {gen.name}
-            </li>
+            </Item>
           ))}
-        </ul>
+        </List>
       </Dropdown>
 
-      <PokemonCompareContainer>
+      <PokemonCompare>
         <SelectedPokemon
           gradientColor={`${
             firstPokemon.name
@@ -163,16 +174,16 @@ export default function SearchBar({
             X
           </ButtonRemovePokemon>
           {firstPokemon.length !== 0 ? (
-            <img
+            <PokemonCompareImage
               src={`https://play.pokemonshowdown.com/sprites/ani/${firstPokemon.name}.gif`}
               alt="first pokemon"
               style={{ transform: "rotateY(180deg)" }}
             />
           ) : (
-            <span>1</span>
+            <></>
           )}
         </SelectedPokemon>
-        <span className="versus">VS</span>
+        <Versus>VS</Versus>
         <SelectedPokemon
           gradientColor={`${
             secondPokemon.name
@@ -191,24 +202,23 @@ export default function SearchBar({
           </ButtonRemovePokemon>
 
           {secondPokemon.length !== 0 ? (
-            <img
+            <PokemonCompareImage
               src={`https://play.pokemonshowdown.com/sprites/ani/${secondPokemon.name}.gif`}
               alt="first pokemon"
             />
           ) : (
-            <span>2</span>
+            <></>
           )}
         </SelectedPokemon>
-        <button
-          className="compare-button"
+        <CompareButton
           onClick={() => {
             if (firstPokemon.length === 0 || secondPokemon.length === 0) return;
             handleOpenModalCompare({ firstPokemon, secondPokemon });
           }}
         >
           Comparar
-        </button>
-      </PokemonCompareContainer>
+        </CompareButton>
+      </PokemonCompare>
     </SearchBarContainer>
   );
 }
