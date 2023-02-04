@@ -8,10 +8,11 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     text-decoration: none;
     font-family: "Nunito", sans-serif, Arial, Helvetica;
+    /* outline: 1px solid rebeccapurple; */
   }
 
   body {
-    background-color: #3c3c3c;
+    background-color: #141414;
   }
 
   html {
