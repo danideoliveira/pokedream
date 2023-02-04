@@ -14,6 +14,11 @@ export const ContainerModal = styled(ReactModal)`
   padding: 25px;
   border-radius: 5px;
   z-index: 2;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
 `;
 
 // LEFT CONTENT

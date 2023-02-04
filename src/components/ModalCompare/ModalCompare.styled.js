@@ -14,6 +14,11 @@ export const ContainerModal = styled(ReactModal)`
   padding: 25px;
   border-radius: 5px;
   z-index: 2;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
 `;
 
 // LEFT CONTENT
@@ -29,7 +34,7 @@ export const ContainerPokemonImage = styled.div`
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  background: ${props => props.gradientColor};
+  background: ${(props) => props.gradientColor};
   overflow: hidden;
 `;
 
