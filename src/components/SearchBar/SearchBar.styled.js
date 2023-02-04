@@ -144,6 +144,12 @@ export const CompareButton = styled.button`
   &:hover {
     background: ${colors.compareButtonBackgroundHover};
   }
+
+  &:disabled {
+    background: ${colors.compareButtonDisabledBackground};
+    color: ${colors.compareButtonDisabledColor};
+    cursor: default;
+  }
 `;
 
 export const ButtonRemovePokemon = styled.button`

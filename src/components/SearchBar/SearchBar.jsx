@@ -215,6 +215,7 @@ export default function SearchBar({
             if (firstPokemon.length === 0 || secondPokemon.length === 0) return;
             handleOpenModalCompare({ firstPokemon, secondPokemon });
           }}
+          disabled={!(secondPokemon.name && firstPokemon.name)}
         >
           Comparar
         </CompareButton>
