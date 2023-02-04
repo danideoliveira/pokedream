@@ -13,6 +13,7 @@ const palette = {
   },
 
   black: {
+    light: "#141414",
     mid: "#0e0e0c",
     dark: "#000000",
   },
@@ -46,7 +47,7 @@ const palette = {
 
 export const colors = {
   // HOME
-  homeBackground: palette.grey.dark,
+  homeBackground: palette.black.light,
   homeButton: palette.grey.mid,
   homeTitleColor: palette.white.mid,
   homeDescriptionColor: palette.white.dark,
