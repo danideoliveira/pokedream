@@ -25,6 +25,7 @@ import iconMale from "../../assets/img/iconMale.svg";
 import iconFemale from "../../assets/img/iconFemale.svg";
 import iconSearch from "../../assets/img/iconSearch.svg";
 import iconDownArrow from "../../assets/img/iconDownArrow.svg";
+import iconPokeball from "../../assets/img/iconPokeball.png";
 
 export const images = {
   bug,
@@ -39,6 +40,7 @@ export const images = {
   iconFemale,
   iconSearch,
   iconDownArrow,
+  iconPokeball,
   water,
   ghost,
   normal,

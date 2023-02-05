@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../helpers/ColorPalette";
 import { setFlexbox } from "../../helpers/Mixins";
+import { images } from "../Images/Images";
 
 // SEARCH BAR CONTAINER
 export const SearchBarContainer = styled.div`
@@ -9,7 +10,40 @@ export const SearchBarContainer = styled.div`
   height: auto;
   margin-bottom: 50px;
   background-color: ${colors.searchBarBackground};
-  padding: 2rem 0;
+  padding: 5rem 0;
+
+  @media (min-width: 320px) and (max-width: 1070px) {
+    ${setFlexbox("center", "center", "column")}
+  }
+`;
+
+// BOXES
+export const BoxAllSearch = styled.div`
+  ${setFlexbox("center", "center", "row")}
+  margin-right: 3rem;
+
+  @media (min-width: 320px) and (max-width: 1070px) {
+    margin-right: 0;
+  }
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    ${setFlexbox("center", "center", "column")}
+    width: 80%;
+    margin-right: 0;
+  }
+`;
+
+export const BoxCompare = styled.div`
+  ${setFlexbox("center", "center", "row")}
+
+  @media (min-width: 616px) and (max-width: 1070px) {
+    width: 50%;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    width: 50%;
+  }
 `;
 
 // INPUT SEARCH - NAME ID
@@ -17,6 +51,13 @@ export const InputSearch = styled.div`
   ${setFlexbox("center", "center", "row")}
   width: auto;
   height: auto;
+  margin-right: 2rem;
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 2rem;
+  }
 `;
 
 export const InputNameId = styled.input`
@@ -26,12 +67,16 @@ export const InputNameId = styled.input`
   background: ${colors.searchInputBackground};
   text-indent: 1rem;
   font-weight: 600;
-  padding-right: 2rem;
   border-radius: 5px 0 0 5px;
 
   &:focus {
     border: none;
     outline: none;
+  }
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    width: 100%;
+    margin-right: 0;
   }
 `;
 
@@ -51,12 +96,19 @@ export const Dropdown = styled.div`
   width: 15%;
   min-width: 16rem;
   position: relative;
-  margin: 2rem;
+  /* margin: 2rem; */
   border-radius: 5px;
+  margin-right: 2rem;
 
   .menu-open {
     display: block;
     opacity: 1;
+  }
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 2rem;
   }
 `;
 
@@ -118,8 +170,19 @@ export const IconDownArrow = styled.img`
 // POKEMON COMPARE
 export const PokemonCompare = styled.div`
   ${setFlexbox("space-evenly", "center", "row")}
-  width: 50%;
+  width: 100%;
   height: 100%;
+
+  @media (min-width: 320px) and (max-width: 780px) {
+    width: 60%;
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    ${setFlexbox("center", "center", "column")}
+    width: 100%;
+    margin-right: 0;
+  }
 `;
 
 export const PokemonCompareImage = styled.img``;
@@ -128,6 +191,19 @@ export const Versus = styled.span`
   font-size: 1.4rem;
   font-weight: 600;
   color: ${colors.versusColor};
+  margin: 0 2rem;
+
+  @media (min-width: 320px) and (max-width: 1070px) {
+  }
+`;
+
+export const BoxCompareButton = styled.div`
+  ${setFlexbox("center", "center", "row")}
+  width: 80%;
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    margin-top: 3rem;
+  }
 `;
 
 export const CompareButton = styled.button`
@@ -140,6 +216,7 @@ export const CompareButton = styled.button`
   color: ${colors.compareButtonColor};
   background: ${colors.compareButtonBackground};
   cursor: pointer;
+  margin-left: 2rem;
 
   &:hover {
     background: ${colors.compareButtonBackgroundHover};
@@ -149,6 +226,15 @@ export const CompareButton = styled.button`
     background: ${colors.compareButtonDisabledBackground};
     color: ${colors.compareButtonDisabledColor};
     cursor: default;
+  }
+
+  @media (min-width: 320px) and (max-width: 1070px) {
+    height: 50px;
+  }
+
+  @media (min-width: 320px) and (max-width: 615px) {
+    width: 70%;
+    margin-left: 0;
   }
 `;
 
@@ -169,14 +255,24 @@ export const ButtonRemovePokemon = styled.button`
   background: #000000a6;
 `;
 
+export const BoxSelectedPokemon = styled.div`
+  ${setFlexbox("center", "center", "row")}
+`;
+
 export const SelectedPokemon = styled.div`
   ${setFlexbox("center", "center", "row")}
   width: 120px;
   height: 120px;
   background: ${(props) => props.gradientColor};
+  background-image: ${(props) =>
+    props.gradientColor === "none" && `url(${images.iconPokeball})`};
+  background-repeat: round;
+  filter: contrast(0.9);
   border-radius: 50%;
   overflow: hidden;
   position: relative;
+  box-shadow: ${(props) =>
+    props.gradientColor === "none" && "inset 0px 0px 12px 1px black"};
 
   &:hover {
     ${ButtonRemovePokemon} {
