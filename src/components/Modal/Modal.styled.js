@@ -19,12 +19,23 @@ export const ContainerModal = styled(ReactModal)`
     border: none;
     outline: none;
   }
+
+  @media (min-width: 320px) and (max-width: 870px) {
+    ${setFlexbox("flex-start", "center", "column")};
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 90%;
+  }
 `;
 
 // LEFT CONTENT
 export const LeftContent = styled.div`
   ${setFlexbox("center", "center", "column")}
   z-index: 2;
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    margin-bottom: 5rem;
+  }
 `;
 
 // POKEMON IMAGE
@@ -37,6 +48,11 @@ export const ContainerPokemonImage = styled.div`
 export const PokemonImage = styled.img`
   width: 35rem;
   z-index: 999;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 20rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 // TYPES
@@ -70,7 +86,11 @@ export const TypeIcon = styled.img`
 `;
 
 // RIGHT CONTENT
-export const RightContent = styled.div``;
+export const RightContent = styled.div`
+  @media (min-width: 320px) and (max-width: 870px) {
+    height: 0;
+  }
+`;
 
 // PROGRESS BAR
 export const ProgressBar = styled.progress`
@@ -95,6 +115,10 @@ export const ProgressBar = styled.progress`
     background-color: ${(props) => props.valueColor};
     border-radius: 10px;
   }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 12rem;
+  }
 `;
 
 // NAME AND ID
@@ -102,6 +126,13 @@ export const ContainerNameId = styled.div`
   ${setFlexbox("center", "center", "row")}
   z-index: 2;
   margin-bottom: 25px;
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    ${setFlexbox("center", "center", "column")};
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+  }
 `;
 
 export const PokemonName = styled.h2`
@@ -109,12 +140,21 @@ export const PokemonName = styled.h2`
   color: ${colors.modalPokemonNameColor};
   margin-right: 15px;
   z-index: 2;
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    font-size: 4rem;
+    margin-right: 0;
+  }
 `;
 
 export const PokemonId = styled.h2`
   font-size: 4.8rem;
   color: ${colors.modalPokemonIdColor};
   z-index: 2;
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    font-size: 4rem;
+  }
 `;
 
 // STATS
@@ -137,6 +177,10 @@ export const StatName = styled.p`
   font-weight: 600;
   width: 70px;
   color: ${colors.modalStatsColor};
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    ${setFlexbox("flex-start", "center", "row")}
+  }
 `;
 
 export const StatValue = styled.p`
@@ -145,6 +189,10 @@ export const StatValue = styled.p`
   font-weight: 600;
   width: 35px;
   color: ${colors.modalStatsColor};
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    ${setFlexbox("center", "center", "row")}
+  }
 `;
 
 // GRADIENT
@@ -156,6 +204,11 @@ export const Gradient = styled.div`
   z-index: 0;
   clip-path: polygon(0% 40%, 0% 0%, 0% 0%, 20% 0%);
   border-radius: 5px;
+
+  @media (min-width: 320px) and (max-width: 1200px) {
+    clip-path: polygon(0% 20%, 0% 0%, 0% 0%, 20% 0%);
+    top: 0;
+  }
 `;
 
 // CLOSE BUTTON
@@ -173,6 +226,11 @@ export const CloseButton = styled.button`
 `;
 
 // COMPARE BUTTON
+export const BoxCompareButton = styled.div`
+  ${setFlexbox("center", "center", "row")}
+  width: 100%;
+`;
+
 export const CompareButton = styled.button`
   margin-top: 2.5rem;
   padding: 0.5rem 1.5rem;
@@ -187,5 +245,15 @@ export const CompareButton = styled.button`
     background: ${colors.modalCompareButtonDisabledBackground};
     color: ${colors.modalCompareButtonDisabledColor};
     cursor: default;
+  }
+
+  @media (min-width: 481px) and (max-width: 1200px) {
+    margin: 3rem 0;
+    width: 100%;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    margin: 3rem 0;
+    width: 70%;
   }
 `;

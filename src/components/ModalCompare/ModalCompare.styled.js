@@ -19,23 +19,49 @@ export const ContainerModal = styled(ReactModal)`
     border: none;
     outline: none;
   }
+
+  @media (min-width: 721px) and (max-width: 1000px) {
+    ${setFlexbox("space-around", "flex-start", "row")}
+    height: auto;
+    max-height: 90%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  @media (min-width: 320px) and (max-width: 720px) {
+    ${setFlexbox("flex-start", "center", "column")}
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 `;
 
 // LEFT CONTENT
 export const ContentContainer = styled.div`
   ${setFlexbox("center", "center", "column")}
   z-index: 2;
+
+  @media (min-width: 320px) and (max-width: 850px) {
+    margin-top: 3rem;
+  }
 `;
 
 // POKEMON IMAGE
 export const ContainerPokemonImage = styled.div`
   ${setFlexbox("center", "center", "row")}
   position: relative;
+  width: 100%;
   height: 120px;
-  width: 120px;
-  border-radius: 50%;
+  border-radius: 10px;
   background: ${(props) => props.gradientColor};
   overflow: hidden;
+
+  @media (min-width: 721px) and (max-width: 850px) {
+    width: 60%;
+  }
+
+  @media (min-width: 320px) and (max-width: 720px) {
+    width: 80%;
+  }
 `;
 
 export const PokemonImage = styled.img`
@@ -77,6 +103,10 @@ export const ContainerNameId = styled.div`
   ${setFlexbox("center", "center", "row")}
   z-index: 2;
   margin: 1rem 0;
+
+  @media (min-width: 401px) and (max-width: 850px) {
+    ${setFlexbox("center", "center", "column")}
+  }
 `;
 
 export const PokemonName = styled.h2`
@@ -84,6 +114,10 @@ export const PokemonName = styled.h2`
   color: ${colors.modalPokemonNameColor};
   margin-right: 10px;
   z-index: 2;
+
+  @media (min-width: 401px) and (max-width: 850px) {
+    margin-right: 0;
+  }
 `;
 
 export const PokemonId = styled.h2`
@@ -98,6 +132,10 @@ export const ContainerStats = styled.div`
   width: 100%;
   z-index: 999;
   margin-top: 2rem;
+
+  @media (min-width: 320px) and (max-width: 400px) {
+    width: 80%;
+  }
 `;
 
 export const ContainerStatName = styled.div`
@@ -145,6 +183,10 @@ export const ProgressBar = styled.progress`
   &::-webkit-progress-value {
     background-color: ${(props) => props.valueColor};
     border-radius: 10px;
+  }
+
+  @media (min-width: 401px) and (max-width: 850px) {
+    width: 10rem;
   }
 `;
 
