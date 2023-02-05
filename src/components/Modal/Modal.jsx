@@ -18,6 +18,7 @@ import {
   ContainerType,
   ContainerPokemonImage,
   PokemonImage,
+  BoxCompareButton,
   CompareButton,
 } from "./Modal.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
@@ -213,15 +214,17 @@ export default function Modal({
           )}
         </ContainerStats>
 
-        <CompareButton
-          disabled={pokemonInfo && verifyCompareFull()}
-          onClick={() => {
-            sendToCompare(pokemonInfo);
-            handleCloseModal();
-          }}
-        >
-          Comparar
-        </CompareButton>
+        <BoxCompareButton>
+          <CompareButton
+            disabled={pokemonInfo && verifyCompareFull()}
+            onClick={() => {
+              sendToCompare(pokemonInfo);
+              handleCloseModal();
+            }}
+          >
+            Comparar
+          </CompareButton>
+        </BoxCompareButton>
       </RightContent>
     </ContainerModal>
   );
