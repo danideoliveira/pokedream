@@ -6,6 +6,8 @@ import PreLoader from "../../components/PreLoader/PreLoader";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Modal from "../../components/Modal/Modal";
 import ModalCompare from "../../components/ModalCompare/ModalCompare";
+import PaginationSelector from "../../components/PaginationSelector/PaginationSelector";
+import PaginationComponent from "../../components/Pagination/Pagination";
 
 export default function PokemonList() {
   const [pokemons, setPokemons] = useState([]);
@@ -17,7 +19,15 @@ export default function PokemonList() {
   const [firstPokemon, setFirstPokemon] = useState([]);
   const [secondPokemon, setSecondPokemon] = useState([]);
 
-  async function getApi(min = 140, max = 151) {
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const pages = Math.ceil(pokemons.length / itemsPerPage);
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = pokemons.slice(startIndex, endIndex);
+
+  async function getApi(min = 1, max = 151) {
     try {
       const pokemonData = [];
       for (let i = min; i <= max; i++) {
@@ -39,6 +49,10 @@ export default function PokemonList() {
   useEffect(() => {
     getApi();
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [itemsPerPage]);
 
   const pokemonFilter = async (filterValue) => {
     const allPokemons = await getApi(listSize[0], listSize[1]);
@@ -129,8 +143,13 @@ export default function PokemonList() {
           handleOpenModalCompare={handleOpenModalCompare}
         />
         {!loading && <PreLoader />}
+
+        
+        <PaginationSelector setItemsPerPage={setItemsPerPage} itemsPerPage={itemsPerPage}/>
+        <PaginationComponent setCurrentPage={setCurrentPage} currentPage={currentPage} pages={pages}/>
+
         <Grid>
-          {pokemons.map((pokemon) => (
+          {currentItems.map((pokemon) => (
             <Card
               key={pokemon.name}
               name={pokemon.name}

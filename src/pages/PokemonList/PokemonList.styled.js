@@ -21,4 +21,13 @@ export const Grid = styled.div`
   height: 100%;
   margin: 0 auto;
   place-items: center;
+  margin-bottom: 5rem;
+
+  @media (min-width: 851px) and (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 320px) and (max-width: 850px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
