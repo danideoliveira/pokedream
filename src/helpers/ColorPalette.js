@@ -25,7 +25,8 @@ const palette = {
   },
 
   yellow: {
-    light: "#EFA83D",
+    light: "#FFC800",
+    mid: "#EFA83D",
   },
 
   orange: {
@@ -93,6 +94,21 @@ export const colors = {
   compareButtonDisabledBackground: palette.grey.light,
   compareButtonDisabledColor: palette.grey.dark,
 
+  // POKEMON PER PAGE
+  perPageBackground: palette.yellow.light,
+  perPageColor: palette.black.mid,
+  perPageOptionBackground: palette.white.dark,
+
+  // PAGINATION
+  paginationOptionColor: palette.black.mid,
+  paginationOptionColorHover: palette.white.mid,
+  paginationOptionBackground: palette.white.dark,
+  paginationOptionBackgroundHover: palette.black.mid,
+  paginationOptionSelected: palette.yellow.light,
+  paginationButtonColor: palette.white.dark,
+  paginationButtonBorder: palette.grey.light,
+  paginationButtonBackground: palette.black.dark,
+
   // CARDS
   cardBackground: palette.grey.dark,
   cardBackgroundHover: palette.black.mid,
@@ -103,7 +119,7 @@ export const colors = {
 
   // STATS
   statsHp: palette.green.mid,
-  statsAtk: palette.yellow.light,
+  statsAtk: palette.yellow.mid,
   statsDef: palette.purple.light,
   statsSpAtk: palette.orange.light,
   statsSpDef: palette.blue.light,
