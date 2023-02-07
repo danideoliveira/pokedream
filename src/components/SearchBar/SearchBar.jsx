@@ -88,9 +88,14 @@ export default function SearchBar({
         </InputSearch>
 
         <Dropdown
-          onClick={() =>
-            toggleMenu ? setToggleMenu(false) : setToggleMenu(true)
-          }
+          onClick={(e) => {
+            if (toggleMenu) {
+              setToggleGenSearch(true);
+              setToggleMenu(false);
+            } else {
+              setToggleMenu(true);
+            }
+          }}
         >
           <BoxSelectedItem>
             <SelectedItem
@@ -129,11 +134,14 @@ export default function SearchBar({
         </Dropdown>
 
         <Dropdown
-          onClick={() =>
-            toggleGenSearch
-              ? setToggleGenSearch(false)
-              : setToggleGenSearch(true)
-          }
+          onClick={() => {
+            if (toggleGenSearch) {
+              setToggleGenSearch(false);
+              setToggleMenu(true);
+            } else {
+              setToggleGenSearch(true);
+            }
+          }}
           style={{ marginRight: 0 }}
         >
           <BoxSelectedItem>

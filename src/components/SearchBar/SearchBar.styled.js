@@ -12,7 +12,7 @@ export const SearchBarContainer = styled.div`
   background-color: ${colors.searchBarBackground};
   padding: 5rem 0;
 
-  @media (min-width: 320px) and (max-width: 1070px) {
+  @media (min-width: 320px) and (max-width: 1100px) {
     ${setFlexbox("center", "center", "column")}
   }
 `;
@@ -26,7 +26,7 @@ export const BoxAllSearch = styled.div`
     margin-right: 0;
   }
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     ${setFlexbox("center", "center", "column")}
     width: 80%;
     margin-right: 0;
@@ -36,12 +36,12 @@ export const BoxAllSearch = styled.div`
 export const BoxCompare = styled.div`
   ${setFlexbox("center", "center", "row")}
 
-  @media (min-width: 616px) and (max-width: 1070px) {
+  @media (min-width: 616px) and (max-width: 1100px) {
     width: 50%;
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     width: 50%;
   }
 `;
@@ -53,7 +53,7 @@ export const InputSearch = styled.div`
   height: auto;
   margin-right: 2rem;
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     width: 100%;
     margin-right: 0;
     margin-top: 2rem;
@@ -61,7 +61,7 @@ export const InputSearch = styled.div`
 `;
 
 export const InputNameId = styled.input`
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   height: 4rem;
   color: ${colors.searchInputColor};
   background: ${colors.searchInputBackground};
@@ -74,7 +74,7 @@ export const InputNameId = styled.input`
     outline: none;
   }
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     width: 100%;
     margin-right: 0;
   }
@@ -105,7 +105,7 @@ export const Dropdown = styled.div`
     opacity: 1;
   }
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     width: 100%;
     margin-right: 0;
     margin-top: 2rem;
@@ -127,13 +127,16 @@ export const List = styled.ul`
   display: none;
   transition: 0.2s;
   z-index: 1;
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
 `;
 
 export const Item = styled.li`
   padding: 0.7rem 0.5rem;
   cursor: pointer;
   color: ${colors.listItemColor};
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   font-weight: 600;
 
   &:hover {
@@ -161,7 +164,10 @@ export const BoxSelectedItem = styled.div`
   }
 `;
 
-export const SelectedItem = styled.span``;
+export const SelectedItem = styled.span`
+  font-size: 1.7rem;
+  line-height: 18px;
+`;
 
 export const IconDownArrow = styled.img`
   margin-left: 1rem;
@@ -178,7 +184,7 @@ export const PokemonCompare = styled.div`
     margin-top: 3rem;
   }
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     ${setFlexbox("center", "center", "column")}
     width: 100%;
     margin-right: 0;
@@ -192,16 +198,13 @@ export const Versus = styled.span`
   font-weight: 600;
   color: ${colors.versusColor};
   margin: 0 2rem;
-
-  @media (min-width: 320px) and (max-width: 1070px) {
-  }
 `;
 
 export const BoxCompareButton = styled.div`
   ${setFlexbox("center", "center", "row")}
   width: 80%;
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     margin-top: 3rem;
   }
 `;
@@ -209,7 +212,7 @@ export const BoxCompareButton = styled.div`
 export const CompareButton = styled.button`
   ${setFlexbox("center", "center", "row")}
   height: 30px;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 700;
   padding: 0.7rem;
   border-radius: 5px;
@@ -228,11 +231,11 @@ export const CompareButton = styled.button`
     cursor: default;
   }
 
-  @media (min-width: 320px) and (max-width: 1070px) {
+  @media (min-width: 320px) and (max-width: 1100px) {
     height: 50px;
   }
 
-  @media (min-width: 320px) and (max-width: 615px) {
+  @media (min-width: 320px) and (max-width: 670px) {
     width: 70%;
     margin-left: 0;
   }
