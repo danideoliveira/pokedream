@@ -43,6 +43,14 @@ export default function ModalCompare({
       img: images.iconFemale,
       altText: "icon female",
     },
+    hooh: {
+      newName: "ho-oh",
+      urlName: "hooh",
+    },
+    mrmime: {
+      newName: "mr mime",
+      urlName: "mrmime",
+    },
   };
 
   const pokemonVerifyUrl = (name) => {
@@ -62,13 +70,15 @@ export default function ModalCompare({
       return (
         <>
           {newName.charAt(0).toUpperCase() + newName.slice(1)}
-          <TypeIcon
-            width="4rem"
-            height="4rem"
-            marginLeft="7px"
-            src={img}
-            alt={altText}
-          />
+          {verify[nameJoin].newName === "nidoran" && (
+            <TypeIcon
+              width="4rem"
+              height="4rem"
+              marginLeft="7px"
+              src={img}
+              alt={altText}
+            />
+          )}
         </>
       );
     } else {
@@ -85,7 +95,7 @@ export default function ModalCompare({
           justifyContent: "center",
           alignItems: "center",
           background: "rgba(0, 0, 0, 80%)",
-          zIndex: 999
+          zIndex: 999,
         },
       }}
     >
@@ -121,7 +131,7 @@ export default function ModalCompare({
                     <TypeCard
                       key={PokemonConfig[pokemonType.type.name].typeColor}
                       typeColor={
-                        PokemonConfig[pokemonType.type.name].gradientColor
+                        PokemonConfig[pokemonType.type.name].typeColor
                       }
                     >
                       <TypeName
@@ -210,7 +220,7 @@ export default function ModalCompare({
                     <TypeCard
                       key={PokemonConfig[pokemonType.type.name].typeColor}
                       typeColor={
-                        PokemonConfig[pokemonType.type.name].gradientColor
+                        PokemonConfig[pokemonType.type.name].typeColor
                       }
                     >
                       <TypeName

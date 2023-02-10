@@ -105,7 +105,7 @@ export default function Modal({
       <LeftContent>
         <ContainerPokemonImage>
           <PokemonImage
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png`}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonInfo.id}.png`}
             alt={`${pokemonInfo.name}`}
           />
         </ContainerPokemonImage>
@@ -116,7 +116,7 @@ export default function Modal({
               {pokemonInfo.pokemonTypes.map((pokemonType) => (
                 <TypeCard
                   key={PokemonConfig[pokemonType.type.name].typeColor}
-                  typeColor={PokemonConfig[pokemonType.type.name].gradientColor}
+                  typeColor={PokemonConfig[pokemonType.type.name].typeColor}
                 >
                   <TypeName
                     fontSize="1.8rem"

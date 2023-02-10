@@ -37,6 +37,14 @@ export default function Card({
       img: images.iconFemale,
       altText: "icon female",
     },
+    hooh: {
+      newName: "ho-oh",
+      urlName: "hooh",
+    },
+    mrmime: {
+      newName: "mr mime",
+      urlName: "mrmime",
+    },
   };
 
   const pokemonVerifyUrl = (name) => {
@@ -55,7 +63,9 @@ export default function Card({
       return (
         <>
           {newName.charAt(0).toUpperCase() + newName.slice(1)}
-          <img src={img} alt={altText} />
+          {verify[nameJoin].newName === "nidoran" && (
+            <img src={img} alt={altText} />
+          )}
         </>
       );
     } else {
@@ -103,7 +113,7 @@ export default function Card({
           {pokemonTypes.map((pokemonType) => (
             <CardPokemonType
               key={PokemonConfig[pokemonType.type.name].typeColor}
-              typeColor={PokemonConfig[pokemonType.type.name].gradientColor}
+              typeColor={PokemonConfig[pokemonType.type.name].typeColor}
             >
               <Text fontSize="1.8rem" color={colors.cardText} fontWeight="700">
                 {pokemonType.type.name}
@@ -115,7 +125,6 @@ export default function Card({
             </CardPokemonType>
           ))}
         </BoxPokemonType>
-        
       </RightContent>
     </CardContainer>
   );
