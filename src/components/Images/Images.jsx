@@ -8,6 +8,7 @@ import water from "../../assets/img/water.svg";
 import ghost from "../../assets/img/ghost.svg";
 import normal from "../../assets/img/normal.svg";
 import steel from "../../assets/img/steel.svg";
+import dark from "../../assets/img/dark.svg";
 import dragon from "../../assets/img/dragon.svg";
 import psychic from "../../assets/img/psychic.svg";
 import ground from "../../assets/img/ground.svg";
@@ -33,6 +34,7 @@ export const images = {
   fire,
   poison,
   flying,
+  dark,
   iconWeight,
   iconHeight,
   iconTopArrow,
