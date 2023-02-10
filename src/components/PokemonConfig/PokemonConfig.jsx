@@ -9,14 +9,14 @@ export const PokemonConfig = {
   },
   grass: {
     name: "grass",
-    typeColor: "#5fbd58",
-    gradientColor: "linear-gradient(180deg, #50FF81 0%, #00864E 100%)",
+    typeColor: "#219118",
+    gradientColor: "linear-gradient(180deg, #2eff6a 0%, #00864E 100%)",
     img: images.grass,
   },
   fire: {
     name: "fire",
-    typeColor: "#FF5F2D",
-    gradientColor: "linear-gradient(180deg, #EFA83D 0%, #FF5F2D 100%);",
+    typeColor: "#ec5223",
+    gradientColor: "linear-gradient(180deg, #ff8f2d 0%, #FF5F2D 100%);",
     img: images.fire,
   },
   water: {
@@ -27,9 +27,15 @@ export const PokemonConfig = {
   },
   poison: {
     name: "poison",
-    typeColor: "#b763cf",
+    typeColor: "#9249a7",
     gradientColor: "linear-gradient(180deg, #FF5AEF 0%, #C213FF 100%)",
     img: images.poison,
+  },
+  dark: {
+    name: "dark",
+    typeColor: "#423954",
+    gradientColor: "linear-gradient(180deg,#423954 0%,#0d0914 100%)",
+    img: images.dark,
   },
   fairy: {
     name: "fairy",
@@ -45,19 +51,19 @@ export const PokemonConfig = {
   },
   dragon: {
     name: "dragon",
-    typeColor: "#CB5CFF",
+    typeColor: "#6244e4",
     gradientColor: "linear-gradient(180deg, #42A4FF 0%, #CB5CFF 100%)",
     img: images.dragon,
   },
   electric: {
     name: "electric",
-    typeColor: "#FFDA58",
-    gradientColor: "linear-gradient(180deg, #FFDA58 0%, #CA9D00 100%)",
+    typeColor: "#f59e00",
+    gradientColor: "linear-gradient(180deg, #ffd12a 0%, #f59e00 100%)",
     img: images.electric,
   },
   ice: {
     name: "ice",
-    typeColor: "#63B4FF",
+    typeColor: "#2f98c2",
     gradientColor: "linear-gradient(180deg, #B0ECFF 0%, #63B4FF 100%)",
     img: images.ice,
   },
@@ -76,7 +82,7 @@ export const PokemonConfig = {
   rock: {
     name: "rock",
     typeColor: "#703C26",
-    gradientColor: "linear-gradient(180deg, #FFAC4B 0%, #703C26 98.44%)",
+    gradientColor: "linear-gradient(180deg, #FFAC4B 0%, #703C26 100%)",
     img: images.rock,
   },
   fighting: {
@@ -88,7 +94,7 @@ export const PokemonConfig = {
   psychic: {
     name: "psychic",
     typeColor: "#FF239A",
-    gradientColor: "linear-gradient(180deg, #FFA9F1 0%, #FF239A 98.44%)",
+    gradientColor: "linear-gradient(180deg, #FFA9F1 0%, #FF239A 100%)",
     img: images.psychic,
   },
   steel: {
@@ -100,7 +106,7 @@ export const PokemonConfig = {
   normal: {
     name: "normal",
     typeColor: "#6B5B33",
-    gradientColor: "linear-gradient(180deg, #FFF1BF 0%, #6B5B33 98.44%)",
+    gradientColor: "linear-gradient(180deg, #FFF1BF 0%, #6B5B33 100%)",
     img: images.normal,
   },
 };
