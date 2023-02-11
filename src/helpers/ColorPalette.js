@@ -144,4 +144,10 @@ export const colors = {
 
   // LOADER
   loaderColor: palette.yellow.light,
+
+  // SCROLLBARS
+  scrollbarDropdownBackground: palette.grey.dark,
+  scrollbarDropdownColor: palette.grey.light,
+  scrollbarModalBackground: palette.grey.dark,
+  scrollbarModalColor: palette.grey.light,
 };

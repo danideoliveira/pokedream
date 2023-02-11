@@ -15,6 +15,18 @@ export const ContainerModal = styled(ReactModal)`
   border-radius: 5px;
   z-index: 2;
 
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${colors.scrollbarModalColor};
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${colors.scrollbarModalBackground};
+  }
+
   &:focus {
     border: none;
     outline: none;
