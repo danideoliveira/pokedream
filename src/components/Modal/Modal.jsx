@@ -3,7 +3,9 @@ import {
   ContainerNameId,
   PokemonName,
   PokemonId,
+  BoxProgressBar,
   ProgressBar,
+  ProgressRevealer,
   Gradient,
   CloseButton,
   ContainerStats,
@@ -22,6 +24,7 @@ import {
   CompareButton,
 } from "./Modal.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
+import { StatConfig } from "../StatConfig/StatConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
 ContainerModal.setAppElement("#root");
@@ -132,71 +135,43 @@ export default function Modal({
         <ContainerStats>
           {pokemonInfo.stats && (
             <>
-              <ContainerStatName>
-                <StatName>HP</StatName>
-                <ProgressBar
-                  max="100"
-                  value={pokemonInfo.stats[0].base_stat}
-                  barColor={colors.modalProgressBackground}
-                  valueColor={colors.statsHp}
-                />
-                <StatValue>{pokemonInfo.stats[0].base_stat}</StatValue>
-              </ContainerStatName>
+              {pokemonInfo.stats.map((stat, index) => (
+                <ContainerStatName key={Number(index)}>
+                  <StatName>
+                    {StatConfig[stat.stat.name.replace("-", "")].name}
+                  </StatName>
+                  <BoxProgressBar>
+                    <ProgressRevealer>
+                      <ProgressBar
+                        max="100"
+                        value={stat.base_stat}
+                        barColor={colors.modalProgressBackground}
+                        valueColor={
+                          StatConfig[stat.stat.name.replace("-", "")].color
+                        }
+                      />
+                    </ProgressRevealer>
+                  </BoxProgressBar>
 
-              <ContainerStatName>
-                <StatName>ATK</StatName>
-                <ProgressBar
-                  max="100"
-                  value={pokemonInfo.stats[1].base_stat}
-                  barColor={colors.modalProgressBackground}
-                  valueColor={colors.statsAtk}
-                />
-                <StatValue>{pokemonInfo.stats[1].base_stat}</StatValue>
-              </ContainerStatName>
-
-              <ContainerStatName>
-                <StatName>DEF</StatName>
-                <ProgressBar
-                  max="100"
-                  value={pokemonInfo.stats[2].base_stat}
-                  barColor={colors.modalProgressBackground}
-                  valueColor={colors.statsDef}
-                />
-                <StatValue>{pokemonInfo.stats[2].base_stat}</StatValue>
-              </ContainerStatName>
-
-              <ContainerStatName>
-                <StatName>SP.ATK</StatName>
-                <ProgressBar
-                  max="100"
-                  value={pokemonInfo.stats[3].base_stat}
-                  barColor={colors.modalProgressBackground}
-                  valueColor={colors.statsSpAtk}
-                />
-                <StatValue>{pokemonInfo.stats[3].base_stat}</StatValue>
-              </ContainerStatName>
-
-              <ContainerStatName>
-                <StatName>SP.DEF</StatName>
-                <ProgressBar
-                  max="100"
-                  value={pokemonInfo.stats[4].base_stat}
-                  barColor={colors.modalProgressBackground}
-                  valueColor={colors.statsSpDef}
-                />
-                <StatValue>{pokemonInfo.stats[4].base_stat}</StatValue>
-              </ContainerStatName>
-
-              <ContainerStatName>
-                <StatName>SPEED</StatName>
-                <ProgressBar
-                  max="100"
-                  value={pokemonInfo.stats[5].base_stat}
-                  barColor={colors.modalProgressBackground}
-                  valueColor={colors.statsSpeed}
-                />
-                <StatValue>{pokemonInfo.stats[5].base_stat}</StatValue>
-              </ContainerStatName>
+                  <StatValue
+                    valueColor={() => {
+                      if (
+                        stat.base_stat > secondPokemon.stats[index].base_stat
+                      ) {
+                        return colors.statsHigherValue;
+                      } else if (
+                        stat.base_stat < secondPokemon.stats[index].base_stat
+                      ) {
+                        return colors.statsLowerValue;
+                      } else {
+                        return colors.statsEqualValue;
+                      }
+                    }}
+                  >
+                    {stat.base_stat}
+                  </StatValue>
+                </ContainerStatName>
+              ))}
             </>
           )}
         </ContainerStats>
