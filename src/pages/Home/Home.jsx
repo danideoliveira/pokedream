@@ -19,7 +19,7 @@ export default function Home() {
   const [pokemonId, setPokemonId] = useState();
   const [pokemon, setPokemon] = useState([]);
 
-  function getRandomId(max = 32, min = 30) {
+  function getRandomId(max = 1, min = 252) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
@@ -56,7 +56,7 @@ export default function Home() {
               }
             />
             <PokemonImage
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonId}.png`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
               alt={`pokemon`}
             />
           </LeftContent>
@@ -66,15 +66,19 @@ export default function Home() {
               <Title>
                 {currentPokemon.types[0].type.name.charAt(0).toUpperCase() +
                   currentPokemon.types[0].type.name.slice(1)}{" "}
-                pokemons
+                Pokemon
               </Title>
               <Description>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio,
-                velit rem consectetur magni facilis fuga odio nemo aspernatur
-                nam id laboriosam harum, sunt minus quo excepturi est? Modi,
-                cupiditate necessitatibus?
+                {PokemonConfig[currentPokemon.types[0].type.name].description}
               </Description>
-              <Button>Gotta Catch'em all!</Button>
+              <Button
+                background={
+                  PokemonConfig[currentPokemon.types[0].type.name].typeColor
+                }
+                href="#pokemon-list"
+              >
+                Gotta Catch'em all!
+              </Button>
             </BoxTitle>
             <TypeBackground
               src={PokemonConfig[currentPokemon.types[0].type.name].img}

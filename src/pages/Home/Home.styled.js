@@ -9,7 +9,7 @@ export const Container = styled.div`
   background: ${colors.homeBackground};
 
   @media (min-width: 320px) and (max-width: 780px) {
-    height: 80rem;
+    height: 90rem;
     ${setFlexbox("center", "center", "column")}
   }
 `;
@@ -112,7 +112,7 @@ export const Button = styled.a`
   transition: 0.3s;
 
   &:hover {
-    background: ${colors.homeButtonBackgroundHover};
+    background: ${(props) => props.background};
     color: ${colors.homeButtonColorHover};
   }
 `;
@@ -130,7 +130,7 @@ export const TypeBackground = styled.img`
 `;
 
 export const PokemonImage = styled.img`
-  width: 80%;
+  width: 70%;
   z-index: 1;
 
   @media (min-width: 320px) and (max-width: 780px) {
