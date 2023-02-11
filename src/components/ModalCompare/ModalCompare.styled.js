@@ -1,7 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors } from "../../helpers/ColorPalette";
 import { setFlexbox } from "../../helpers/Mixins";
 import ReactModal from "react-modal";
+
+//ANIMATION
+export const AnimationProgressValue = keyframes`
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+`;
 
 // CONTAINER MODAL
 export const ContainerModal = styled(ReactModal)`
@@ -144,10 +154,6 @@ export const ContainerStats = styled.div`
   width: 100%;
   z-index: 999;
   margin-top: 2rem;
-
-  @media (min-width: 320px) and (max-width: 400px) {
-    width: 80%;
-  }
 `;
 
 export const ContainerStatName = styled.div`
@@ -174,13 +180,28 @@ export const StatValue = styled.p`
 `;
 
 // PROGRESS BAR
+export const BoxProgressBar = styled.div`
+  ${setFlexbox("flex-start", "center", "row")};
+  margin: 0 1.5rem;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 12rem;
+  }
+`;
+
+export const ProgressRevealer = styled.div`
+  ${setFlexbox("flex-start", "center", "row")};
+  width: 20rem;
+`;
+
 export const ProgressBar = styled.progress`
-  width: 15rem;
+  width: 100%;
   height: 7px;
   --webkit-appearance: none;
   border-radius: 10px;
-  margin: 0 15px;
   z-index: 2;
+  animation: ${AnimationProgressValue};
+  animation-duration: 1s;
 
   &::-webkit-progress-bar {
     background-color: ${(props) => props.barColor};

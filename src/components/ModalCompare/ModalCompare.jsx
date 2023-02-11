@@ -15,10 +15,11 @@ import {
   ContainerStats,
   StatName,
   StatValue,
+  ProgressRevealer,
+  BoxProgressBar,
   ProgressBar,
 } from "./ModalCompare.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
-import { images } from "../Images/Images";
 import { colors } from "../../helpers/ColorPalette";
 import { StatConfig } from "../StatConfig/StatConfig";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
@@ -108,9 +109,7 @@ export default function ModalCompare({
                   {firstPokemon.pokemonTypes.map((pokemonType) => (
                     <TypeCard
                       key={PokemonConfig[pokemonType.type.name].typeColor}
-                      typeColor={
-                        PokemonConfig[pokemonType.type.name].typeColor
-                      }
+                      typeColor={PokemonConfig[pokemonType.type.name].typeColor}
                     >
                       <TypeName
                         fontSize="1.6rem"
@@ -137,14 +136,18 @@ export default function ModalCompare({
                       <StatName>
                         {StatConfig[stat.stat.name.replace("-", "")].name}
                       </StatName>
-                      <ProgressBar
-                        max="100"
-                        value={stat.base_stat}
-                        barColor={colors.modalProgressBackground}
-                        valueColor={
-                          StatConfig[stat.stat.name.replace("-", "")].color
-                        }
-                      />
+                      <BoxProgressBar>
+                        <ProgressRevealer>
+                          <ProgressBar
+                            max="100"
+                            value={stat.base_stat}
+                            barColor={colors.modalProgressBackground}
+                            valueColor={
+                              StatConfig[stat.stat.name.replace("-", "")].color
+                            }
+                          />
+                        </ProgressRevealer>
+                      </BoxProgressBar>
                       <StatValue
                         valueColor={() => {
                           if (
@@ -197,9 +200,7 @@ export default function ModalCompare({
                   {secondPokemon.pokemonTypes.map((pokemonType) => (
                     <TypeCard
                       key={PokemonConfig[pokemonType.type.name].typeColor}
-                      typeColor={
-                        PokemonConfig[pokemonType.type.name].typeColor
-                      }
+                      typeColor={PokemonConfig[pokemonType.type.name].typeColor}
                     >
                       <TypeName
                         fontSize="1.6rem"
@@ -226,14 +227,18 @@ export default function ModalCompare({
                       <StatName>
                         {StatConfig[stat.stat.name.replace("-", "")].name}
                       </StatName>
-                      <ProgressBar
-                        max="100"
-                        value={stat.base_stat}
-                        barColor={colors.modalProgressBackground}
-                        valueColor={
-                          StatConfig[stat.stat.name.replace("-", "")].color
-                        }
-                      />
+                      <BoxProgressBar>
+                        <ProgressRevealer>
+                          <ProgressBar
+                            max="100"
+                            value={stat.base_stat}
+                            barColor={colors.modalProgressBackground}
+                            valueColor={
+                              StatConfig[stat.stat.name.replace("-", "")].color
+                            }
+                          />
+                        </ProgressRevealer>
+                      </BoxProgressBar>
                       <StatValue
                         valueColor={() => {
                           if (
