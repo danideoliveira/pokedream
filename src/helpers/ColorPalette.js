@@ -54,7 +54,7 @@ export const colors = {
   homeDescriptionColor: palette.white.dark,
   homeLineDivider: palette.grey.midSecondary,
   homeButtonBackground: palette.white.dark,
-  homeButtonBackgroundHover: palette.grey.mid,
+  homeButtonBackgroundHover: palette.red.light,
   homeButtonColor: palette.grey.dark,
   homeButtonColorHover: palette.white.mid,
 
@@ -108,6 +108,7 @@ export const colors = {
   paginationButtonColor: palette.white.dark,
   paginationButtonBorder: palette.grey.light,
   paginationButtonBackground: palette.black.dark,
+  paginationScrollbarColor: palette.white.light,
 
   // CARDS
   cardBackground: palette.grey.dark,
@@ -142,5 +143,5 @@ export const colors = {
   modalCompareButtonDisabledColor: palette.grey.dark,
 
   // LOADER
-  loaderColor: palette.green.light,
+  loaderColor: palette.yellow.light,
 };

@@ -34,6 +34,10 @@ export const ContainerPagination = styled.div`
     font-size: 1.8rem;
     font-weight: 700;
   }
+
+  .swiper-scrollbar-drag {
+    background: ${colors.paginationScrollbarColor};
+  }
 `;
 
 export const SwiperBox = styled.div`
