@@ -22,8 +22,8 @@ import {
   CompareButton,
 } from "./Modal.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
-import { images } from "../Images/Images";
 import { colors } from "../../helpers/ColorPalette";
+import { verifyPokemon } from "../../helpers/VerifyPokemon";
 ContainerModal.setAppElement("#root");
 
 export default function Modal({
@@ -33,36 +33,23 @@ export default function Modal({
   sendToCompare,
   isCompareFull,
 }) {
-  const verify = {
-    nidoranm: {
-      newName: "nidoran",
-      urlName: "nidoran",
-      img: images.iconMale,
-      altText: "icon male",
-    },
-    nidoranf: {
-      newName: "nidoran",
-      urlName: "nidoran-f",
-      img: images.iconFemale,
-      altText: "icon female",
-    },
-  };
-
   const pokemonVerifyName = (name) => {
     if (!name) return;
     const nameJoin = name.replace("-", "");
-    if (verify[nameJoin]) {
-      const { newName, img, altText } = verify[nameJoin];
+    if (verifyPokemon[nameJoin]) {
+      const { newName, img, altText } = verifyPokemon[nameJoin];
       return (
         <>
           {newName.charAt(0).toUpperCase() + newName.slice(1)}
-          <TypeIcon
-            width="4rem"
-            height="4rem"
-            marginLeft="7px"
-            src={img}
-            alt={altText}
-          />
+          {verifyPokemon[nameJoin].newName === "nidoran" && (
+            <TypeIcon
+              width="4rem"
+              height="4rem"
+              marginLeft="7px"
+              src={img}
+              alt={altText}
+            />
+          )}
         </>
       );
     } else {

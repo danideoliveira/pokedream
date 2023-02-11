@@ -13,6 +13,7 @@ import {
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { images } from "../Images/Images";
+import { verifyPokemon } from "../../helpers/VerifyPokemon";
 
 export default function Card({
   name,
@@ -24,33 +25,11 @@ export default function Card({
   handleOpenModal,
   isCompareFull,
 }) {
-  const verify = {
-    nidoranm: {
-      newName: "nidoran",
-      urlName: "nidoran",
-      img: images.iconMale,
-      altText: "icon male",
-    },
-    nidoranf: {
-      newName: "nidoran",
-      urlName: "nidoran-f",
-      img: images.iconFemale,
-      altText: "icon female",
-    },
-    hooh: {
-      newName: "ho-oh",
-      urlName: "hooh",
-    },
-    mrmime: {
-      newName: "mr mime",
-      urlName: "mrmime",
-    },
-  };
 
   const pokemonVerifyUrl = (name) => {
     const nameJoin = name.replace("-", "");
-    if (verify[nameJoin]) {
-      return verify[nameJoin].urlName;
+    if (verifyPokemon[nameJoin]) {
+      return verifyPokemon[nameJoin].urlName;
     } else {
       return name;
     }
@@ -58,12 +37,12 @@ export default function Card({
 
   const pokemonVerifyName = (name) => {
     const nameJoin = name.replace("-", "");
-    if (verify[nameJoin]) {
-      const { newName, img, altText } = verify[nameJoin];
+    if (verifyPokemon[nameJoin]) {
+      const { newName, img, altText } = verifyPokemon[nameJoin];
       return (
         <>
           {newName.charAt(0).toUpperCase() + newName.slice(1)}
-          {verify[nameJoin].newName === "nidoran" && (
+          {verifyPokemon[nameJoin].newName === "nidoran" && (
             <img src={img} alt={altText} />
           )}
         </>
