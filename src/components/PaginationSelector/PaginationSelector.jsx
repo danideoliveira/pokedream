@@ -9,10 +9,10 @@ export default function PaginationSelector({ itemsPerPage, setItemsPerPage }) {
           value={itemsPerPage}
           onChange={(e) => setItemsPerPage(Number(e.target.value))}
         >
-          <option value={3}>3</option>
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={25}>25</option>
+          <option value={12}>12</option>
+          <option value={18}>18</option>
+          <option value={24}>24</option>
+          <option value={30}>30</option>
         </select>
       </div>
     </SelectorContainer>
