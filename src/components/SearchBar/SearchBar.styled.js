@@ -95,8 +95,8 @@ export const IconSearch = styled.img`
 export const Dropdown = styled.div`
   width: 15%;
   min-width: 16rem;
+  max-width: 16rem;
   position: relative;
-  /* margin: 2rem; */
   border-radius: 5px;
   margin-right: 2rem;
 
@@ -107,6 +107,7 @@ export const Dropdown = styled.div`
 
   @media (min-width: 320px) and (max-width: 670px) {
     width: 100%;
+    max-width: initial;
     margin-right: 0;
     margin-top: 2rem;
   }

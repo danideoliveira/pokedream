@@ -35,6 +35,8 @@ export default function SearchBar({
   setFirstPokemon,
   setSecondPokemon,
   handleOpenModalCompare,
+  setCurrentPage,
+  setLoading,
 }) {
   const [menuValue, setMenuValue] = useState("Busca por tipo...");
   const [genValue, setGenValue] = useState("Busca por geração...");
@@ -45,10 +47,42 @@ export default function SearchBar({
   const [pokemonTypes, setPokemonTypes] = useState([]);
 
   const generations = [
-    { name: "Todas", size: [140, 151] },
-    { name: "Gen 1", size: [1, 9] },
-    { name: "Gen 2", size: [152, 160] },
+    { name: "Todas", size: [1, 251] },
+    { name: "Gen 1", size: [1, 151] },
+    { name: "Gen 2", size: [152, 251] },
   ];
+
+  const verify = {
+    nidoranm: {
+      newName: "nidoran",
+      urlName: "nidoran",
+      img: images.iconMale,
+      altText: "icon male",
+    },
+    nidoranf: {
+      newName: "nidoran",
+      urlName: "nidoran-f",
+      img: images.iconFemale,
+      altText: "icon female",
+    },
+    hooh: {
+      newName: "ho-oh",
+      urlName: "hooh",
+    },
+    mrmime: {
+      newName: "mr mime",
+      urlName: "mrmime",
+    },
+  };
+
+  const pokemonVerifyUrl = (name) => {
+    const nameJoin = name.replace("-", "");
+    if (verify[nameJoin]) {
+      return verify[nameJoin].urlName;
+    } else {
+      return name;
+    }
+  };
 
   useEffect(() => {
     const pokemonTypesArr = [];
@@ -78,8 +112,10 @@ export default function SearchBar({
             type="text"
             placeholder="Nome ou id do pokemon"
             onChange={async (e) => {
+              setLoading(false);
               await pokemonFilter(e.target.value);
               setMenuValue("Busca por tipo...");
+              setCurrentPage(0);
             }}
           />
           <BoxIconSearch>
@@ -112,7 +148,9 @@ export default function SearchBar({
             <Item
               onClick={async (e) => {
                 setMenuValue(e.target.textContent);
+                setLoading(false);
                 await typeFilter(e.target.textContent.toLowerCase());
+                setCurrentPage(0);
               }}
               value=""
             >
@@ -124,7 +162,9 @@ export default function SearchBar({
                 key={type}
                 onClick={async (e) => {
                   setMenuValue(e.target.textContent);
+                  setLoading(false);
                   await typeFilter(e.target.textContent.toLowerCase());
+                  setCurrentPage(0);
                 }}
               >
                 {type.charAt(0).toUpperCase() + type.slice(1)}
@@ -161,9 +201,11 @@ export default function SearchBar({
                 key={gen.name}
                 onClick={async (e) => {
                   setGenValue(e.target.textContent);
+                  setLoading(false);
                   await genFilter(generations[index].size);
                   setListSize(generations[index].size);
                   setMenuValue("Busca por tipo...");
+                  setCurrentPage(0);
                 }}
               >
                 {gen.name}
@@ -194,7 +236,9 @@ export default function SearchBar({
               </ButtonRemovePokemon>
               {firstPokemon.length !== 0 ? (
                 <PokemonCompareImage
-                  src={`https://play.pokemonshowdown.com/sprites/ani/${firstPokemon.name}.gif`}
+                  src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
+                    firstPokemon.name
+                  )}.gif`}
                   alt="first pokemon"
                   style={{ transform: "rotateY(180deg)" }}
                 />
@@ -222,8 +266,10 @@ export default function SearchBar({
 
               {secondPokemon.length !== 0 ? (
                 <PokemonCompareImage
-                  src={`https://play.pokemonshowdown.com/sprites/ani/${secondPokemon.name}.gif`}
-                  alt="first pokemon"
+                  src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
+                    secondPokemon.name
+                  )}.gif`}
+                  alt="second pokemon"
                 />
               ) : (
                 <></>
