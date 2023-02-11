@@ -1,7 +1,11 @@
-import { Loader } from "./PreLoader.styled"
+import { Loader, LoadingText } from "./PreLoader.styled";
+import PokeballLoading from "../PokeballLoading/PokeballLoading";
 
 export default function PreLoader() {
-  return <Loader>
-    <p>Loading...</p>
-  </Loader>
+  return (
+    <Loader>
+      <PokeballLoading />
+      <LoadingText>Loading...</LoadingText>
+    </Loader>
+  );
 }
