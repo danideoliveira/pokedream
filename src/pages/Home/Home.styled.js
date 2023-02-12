@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { setFlexbox } from "../../helpers/Mixins";
 import { colors } from "../../helpers/ColorPalette";
+import { FadeLeft } from "../../helpers/Animations";
 
 export const Container = styled.div`
   ${setFlexbox("center", "center", "row")}
@@ -132,6 +133,8 @@ export const TypeBackground = styled.img`
 export const PokemonImage = styled.img`
   width: 70%;
   z-index: 1;
+  animation: ${FadeLeft};
+  animation-duration: 1s;
 
   @media (min-width: 320px) and (max-width: 780px) {
     width: 50%;

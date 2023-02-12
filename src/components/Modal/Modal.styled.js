@@ -2,27 +2,7 @@ import styled, { keyframes } from "styled-components";
 import ReactModal from "react-modal";
 import { colors } from "../../helpers/ColorPalette";
 import { setFlexbox } from "../../helpers/Mixins";
-
-//ANIMATIONS
-export const AnimationProgressValue = keyframes`
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-`;
-
-export const FadePokemonImage = keyframes`
- 0% {
-  opacity: 0;
-  margin-left: -20px;
- }
- 100% {
-  opacity: 1;
-  margin-left: 0;
- }
-`;
+import { AnimationProgressValue, FadeLeft } from "../../helpers/Animations";
 
 // CONTAINER MODAL
 export const ContainerModal = styled(ReactModal)`
@@ -81,7 +61,7 @@ export const ContainerPokemonImage = styled.div`
 export const PokemonImage = styled.img`
   width: 35rem;
   z-index: 999;
-  animation: ${FadePokemonImage};
+  animation: ${FadeLeft};
   animation-duration: 1s;
 
   @media (min-width: 320px) and (max-width: 480px) {
