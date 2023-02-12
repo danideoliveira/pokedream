@@ -146,7 +146,7 @@ export default function Modal({
         </ContainerType>
       </LeftContent>
       {loading ? (
-        <PreLoader marginTop={"70%"} />
+        <PreLoader marginTop={"10rem"} />
       ) : (
         <>
           <RightContent>
