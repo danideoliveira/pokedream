@@ -27,7 +27,7 @@ export default function Card({
 }) {
 
   const pokemonVerifyUrl = (name) => {
-    const nameJoin = name.replace("-", "");
+    const nameJoin = name.replace(/\-/g, "");
     if (verifyPokemon[nameJoin]) {
       return verifyPokemon[nameJoin].urlName;
     } else {
@@ -36,7 +36,7 @@ export default function Card({
   };
 
   const pokemonVerifyName = (name) => {
-    const nameJoin = name.replace("-", "");
+    const nameJoin = name.replace(/\-/g, "");
     if (verifyPokemon[nameJoin]) {
       const { newName, img, altText } = verifyPokemon[nameJoin];
       return (
