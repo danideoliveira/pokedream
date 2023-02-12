@@ -68,7 +68,7 @@ export const PokemonConfig = {
   dragon: {
     name: "dragon",
     typeColor: "#6244e4",
-    gradientColor: "linear-gradient(180deg, #42A4FF 0%, #CB5CFF 100%)",
+    gradientColor: "linear-gradient(180deg, #5e2ee4 0%, #CB5CFF 100%)",
     description:
       "Os Pokémon do tipo Dragão têm vantagem contra a própria espécie e são imunes a ataques do tipo Terrestre. No entanto, eles são vulneráveis aos ataques dos tipos Gelo, Fada e Dragão. Isso os torna uma escolha estratégica interessante em batalhas, especialmente contra outros Pokémon do tipo Dragão.",
     img: images.dragon,
@@ -124,7 +124,7 @@ export const PokemonConfig = {
   psychic: {
     name: "psychic",
     typeColor: "#FF239A",
-    gradientColor: "linear-gradient(180deg, #FFA9F1 0%, #FF239A 100%)",
+    gradientColor: "linear-gradient(180deg, #ff60e5 0%, #f82495 100%)",
     description:
       "Os Pokémon do tipo Psíquico eram considerados os mais fortes na primeira geração dos jogos Pokémon. Isso se deve em grande parte ao fato de que havia poucos Pokémon do tipo Noturno ou Inseto para contrabalancear seus poderes, o que levou a um desequilíbrio no jogo. ",
     img: images.psychic,
@@ -140,7 +140,7 @@ export const PokemonConfig = {
   normal: {
     name: "normal",
     typeColor: "#6B5B33",
-    gradientColor: "linear-gradient(180deg, #FFF1BF 0%, #6B5B33 100%)",
+    gradientColor: "linear-gradient(180deg, #e0cd87 0%, #6B5B33 100%)",
     description:
       "Os Pokémon do tipo Normal têm uma mecânica especial chamada de STAB, que significa Same Type Attack Bonus (bônus de ataque do mesmo tipo). Isso significa que, quando um Pokémon do tipo Normal usa um ataque que é do mesmo tipo, ele recebe um bônus de poder adicional.",
     img: images.normal,
