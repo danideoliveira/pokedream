@@ -15,11 +15,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { PokemonConfig } from "../../components/PokemonConfig/PokemonConfig";
 
-export default function Home() {
+export default function Home({ isLoading, setIsLoading }) {
   const [pokemonId, setPokemonId] = useState();
   const [pokemon, setPokemon] = useState([]);
 
-  function getRandomId(max = 1, min = 252) {
+  function getRandomId(max = 1, min = 649) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <>
       {pokemon.map((currentPokemon) => (
-        <Container key={currentPokemon.name}>
+        <Container key={currentPokemon.name} style={{ display: isLoading ? "none" : "flex" }}>
           <LeftContent>
             <Gradient
               background={
@@ -58,6 +58,13 @@ export default function Home() {
             <PokemonImage
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`}
               alt={`pokemon`}
+              onLoad={(e) => {
+                const image = e.target;
+                image.complete &&
+                  setTimeout(() => {
+                    setIsLoading(false);
+                  }, 500);
+              }}
             />
           </LeftContent>
           <LineDivider />
