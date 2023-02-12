@@ -27,6 +27,8 @@ import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { StatConfig } from "../StatConfig/StatConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
+import PreLoader from "../PreLoader/PreLoader";
+import { useState } from "react";
 ContainerModal.setAppElement("#root");
 
 export default function Modal({
@@ -34,8 +36,9 @@ export default function Modal({
   handleCloseModal,
   pokemonInfo,
   sendToCompare,
-  isCompareFull,
 }) {
+  const [loading, setLoading] = useState(true);
+
   const pokemonVerifyName = (name) => {
     if (!name) return;
     const nameJoin = name.replace("-", "");
@@ -71,7 +74,10 @@ export default function Modal({
   return (
     <ContainerModal
       isOpen={modalIsOpen}
-      onRequestClose={handleCloseModal}
+      onRequestClose={() => {
+        handleCloseModal();
+        setLoading(true);
+      }}
       style={{
         overlay: {
           display: "flex",
@@ -82,8 +88,14 @@ export default function Modal({
         },
       }}
     >
-      <CloseButton onClick={handleCloseModal}>X</CloseButton>
-
+      <CloseButton
+        onClick={() => {
+          handleCloseModal();
+          setLoading(true);
+        }}
+      >
+        X
+      </CloseButton>
       {pokemonInfo.pokemonTypes && (
         <Gradient
           background={
@@ -92,9 +104,17 @@ export default function Modal({
         />
       )}
 
-      <LeftContent>
+      <LeftContent style={{ display: !loading ? "flex" : "none" }}>
         <ContainerPokemonImage>
           <PokemonImage
+            onLoad={(e) => {
+              const image = e.target;
+              if (image.complete) {
+                setTimeout(() => {
+                  setLoading(false);
+                }, 500);
+              }
+            }}
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonInfo.id}.png`}
             alt={`${pokemonInfo.name}`}
           />
@@ -125,69 +145,76 @@ export default function Modal({
           )}
         </ContainerType>
       </LeftContent>
+      {loading ? (
+        <PreLoader marginTop={"70%"} />
+      ) : (
+        <>
+          <RightContent>
+            <ContainerNameId>
+              <PokemonName>{pokemonVerifyName(pokemonInfo.name)}</PokemonName>
+              <PokemonId>#{pokemonInfo.id}</PokemonId>
+            </ContainerNameId>
 
-      <RightContent>
-        <ContainerNameId>
-          <PokemonName>{pokemonVerifyName(pokemonInfo.name)}</PokemonName>
-          <PokemonId>#{pokemonInfo.id}</PokemonId>
-        </ContainerNameId>
+            <ContainerStats>
+              {pokemonInfo.stats && (
+                <>
+                  {pokemonInfo.stats.map((stat, index) => (
+                    <ContainerStatName key={Number(index)}>
+                      <StatName>
+                        {StatConfig[stat.stat.name.replace("-", "")].name}
+                      </StatName>
+                      <BoxProgressBar>
+                        <ProgressRevealer>
+                          <ProgressBar
+                            max="100"
+                            value={stat.base_stat}
+                            barColor={colors.modalProgressBackground}
+                            valueColor={
+                              StatConfig[stat.stat.name.replace("-", "")].color
+                            }
+                          />
+                        </ProgressRevealer>
+                      </BoxProgressBar>
 
-        <ContainerStats>
-          {pokemonInfo.stats && (
-            <>
-              {pokemonInfo.stats.map((stat, index) => (
-                <ContainerStatName key={Number(index)}>
-                  <StatName>
-                    {StatConfig[stat.stat.name.replace("-", "")].name}
-                  </StatName>
-                  <BoxProgressBar>
-                    <ProgressRevealer>
-                      <ProgressBar
-                        max="100"
-                        value={stat.base_stat}
-                        barColor={colors.modalProgressBackground}
-                        valueColor={
-                          StatConfig[stat.stat.name.replace("-", "")].color
-                        }
-                      />
-                    </ProgressRevealer>
-                  </BoxProgressBar>
+                      <StatValue
+                        valueColor={() => {
+                          if (
+                            stat.base_stat >
+                            secondPokemon.stats[index].base_stat
+                          ) {
+                            return colors.statsHigherValue;
+                          } else if (
+                            stat.base_stat <
+                            secondPokemon.stats[index].base_stat
+                          ) {
+                            return colors.statsLowerValue;
+                          } else {
+                            return colors.statsEqualValue;
+                          }
+                        }}
+                      >
+                        {stat.base_stat}
+                      </StatValue>
+                    </ContainerStatName>
+                  ))}
+                </>
+              )}
+            </ContainerStats>
 
-                  <StatValue
-                    valueColor={() => {
-                      if (
-                        stat.base_stat > secondPokemon.stats[index].base_stat
-                      ) {
-                        return colors.statsHigherValue;
-                      } else if (
-                        stat.base_stat < secondPokemon.stats[index].base_stat
-                      ) {
-                        return colors.statsLowerValue;
-                      } else {
-                        return colors.statsEqualValue;
-                      }
-                    }}
-                  >
-                    {stat.base_stat}
-                  </StatValue>
-                </ContainerStatName>
-              ))}
-            </>
-          )}
-        </ContainerStats>
-
-        <BoxCompareButton>
-          <CompareButton
-            disabled={pokemonInfo && verifyCompareFull()}
-            onClick={() => {
-              sendToCompare(pokemonInfo);
-              handleCloseModal();
-            }}
-          >
-            Comparar
-          </CompareButton>
-        </BoxCompareButton>
-      </RightContent>
+            <BoxCompareButton>
+              <CompareButton
+                disabled={pokemonInfo && verifyCompareFull()}
+                onClick={() => {
+                  sendToCompare(pokemonInfo);
+                  handleCloseModal();
+                }}
+              >
+                Comparar
+              </CompareButton>
+            </BoxCompareButton>
+          </RightContent>
+        </>
+      )}
     </ContainerModal>
   );
 }
