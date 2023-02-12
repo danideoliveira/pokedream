@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 import { colors } from "../../helpers/ColorPalette";
 import { setFlexbox } from "../../helpers/Mixins";
 
-//ANIMATION
+//ANIMATIONS
 export const AnimationProgressValue = keyframes`
   0% {
     width: 0%;
@@ -11,6 +11,17 @@ export const AnimationProgressValue = keyframes`
   100% {
     width: 100%;
   }
+`;
+
+export const FadePokemonImage = keyframes`
+ 0% {
+  opacity: 0;
+  margin-left: -20px;
+ }
+ 100% {
+  opacity: 1;
+  margin-left: 0;
+ }
 `;
 
 // CONTAINER MODAL
@@ -70,6 +81,8 @@ export const ContainerPokemonImage = styled.div`
 export const PokemonImage = styled.img`
   width: 35rem;
   z-index: 999;
+  animation: ${FadePokemonImage};
+  animation-duration: 1s;
 
   @media (min-width: 320px) and (max-width: 480px) {
     width: 20rem;
