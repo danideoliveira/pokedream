@@ -107,7 +107,7 @@ export const CardPokemonType = styled.div`
   height: 100%;
   gap: 5px;
   background: ${(props) => props.typeColor};
-  padding: 15px;
+  padding: 15px 8px;
   border-radius: 5px;
 
   @media (min-width: 320px) and (max-width: 480px) {
