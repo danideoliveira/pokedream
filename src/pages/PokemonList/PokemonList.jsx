@@ -8,6 +8,7 @@ import Modal from "../../components/Modal/Modal";
 import ModalCompare from "../../components/ModalCompare/ModalCompare";
 import PaginationSelector from "../../components/PaginationSelector/PaginationSelector";
 import PaginationComponent from "../../components/Pagination/Pagination";
+import PokemonNotFound from "../../components/PokemonNotFound/PokemonNotFound";
 
 export default function PokemonList() {
   const [pokemons, setPokemons] = useState([]);
@@ -18,7 +19,6 @@ export default function PokemonList() {
   const [pokemonInfo, setPokemonInfo] = useState({});
   const [firstPokemon, setFirstPokemon] = useState([]);
   const [secondPokemon, setSecondPokemon] = useState([]);
-
   const [itemsPerPage, setItemsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -156,7 +156,8 @@ export default function PokemonList() {
           currentPage={currentPage}
           pages={pages}
         />
-        {!loading && <PreLoader marginBox="2.5rem 0 8rem 0"/>}
+        {!loading && <PreLoader marginBox="2.5rem 0 8rem 0" />}
+        {loading && pokemons.length === 0 && <PokemonNotFound />}
 
         <Grid style={{ display: !loading ? "none" : "grid" }}>
           {currentItems.map((pokemon) => (
