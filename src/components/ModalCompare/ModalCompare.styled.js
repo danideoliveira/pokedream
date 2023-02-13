@@ -1,17 +1,9 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { colors } from "../../helpers/ColorPalette";
 import { setFlexbox } from "../../helpers/Mixins";
 import ReactModal from "react-modal";
+import { AnimationProgressValue, OpenBoxPokemonCompare } from "../../helpers/Animations";
 
-//ANIMATION
-export const AnimationProgressValue = keyframes`
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-`;
 
 // CONTAINER MODAL
 export const ContainerModal = styled(ReactModal)`
@@ -42,7 +34,7 @@ export const ContainerModal = styled(ReactModal)`
     outline: none;
   }
 
-  @media (min-width: 721px) and (max-width: 1000px) {
+  @media (min-width: 791px) and (max-width: 1000px) {
     ${setFlexbox("space-around", "flex-start", "row")}
     height: auto;
     max-height: 90%;
@@ -50,8 +42,9 @@ export const ContainerModal = styled(ReactModal)`
     overflow-y: auto;
   }
 
-  @media (min-width: 320px) and (max-width: 720px) {
+  @media (min-width: 320px) and (max-width: 790px) {
     ${setFlexbox("flex-start", "center", "column")}
+    max-height: 90%;
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -71,19 +64,13 @@ export const ContentContainer = styled.div`
 export const ContainerPokemonImage = styled.div`
   ${setFlexbox("center", "center", "row")}
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 120px;
   border-radius: 10px;
   background: ${(props) => props.gradientColor};
   overflow: hidden;
-
-  @media (min-width: 721px) and (max-width: 850px) {
-    width: 60%;
-  }
-
-  @media (min-width: 320px) and (max-width: 720px) {
-    width: 80%;
-  }
+  animation: ${OpenBoxPokemonCompare};
+  animation-duration: 1s;
 `;
 
 export const PokemonImage = styled.img`
@@ -183,6 +170,10 @@ export const StatValue = styled.p`
 export const BoxProgressBar = styled.div`
   ${setFlexbox("flex-start", "center", "row")};
   margin: 0 1.5rem;
+
+  @media (min-width: 481px) and (max-width: 900px) {
+    width: 40%;
+  }
 
   @media (min-width: 320px) and (max-width: 480px) {
     width: 12rem;

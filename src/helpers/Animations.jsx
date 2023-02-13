@@ -19,3 +19,12 @@ export const FadeLeft = keyframes`
   margin-left: 0;
  }
 `;
+
+export const OpenBoxPokemonCompare = keyframes`
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+`;
