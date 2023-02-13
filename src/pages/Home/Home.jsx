@@ -48,7 +48,10 @@ export default function Home({ isLoading, setIsLoading }) {
   return (
     <>
       {pokemon.map((currentPokemon) => (
-        <Container key={currentPokemon.name} style={{ display: isLoading ? "none" : "flex" }}>
+        <Container
+          key={currentPokemon.name}
+          style={{ display: isLoading ? "none" : "flex" }}
+        >
           <LeftContent>
             <Gradient
               background={

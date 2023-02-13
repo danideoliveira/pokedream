@@ -19,7 +19,7 @@ export default function PokemonList() {
   const [firstPokemon, setFirstPokemon] = useState([]);
   const [secondPokemon, setSecondPokemon] = useState([]);
 
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(0);
 
   const pages = Math.ceil(pokemons.length / itemsPerPage);
@@ -36,10 +36,10 @@ export default function PokemonList() {
           .then((response) => response.data)
           .then((data) => {
             pokemonData.push(data);
-            setLoading(true);
           });
       }
       setPokemons(pokemonData);
+      setLoading(true);
       return pokemonData;
     } catch (e) {
       console.log(e);
@@ -100,6 +100,7 @@ export default function PokemonList() {
       return;
     }
     await getApi(min, max);
+    setCurrentPage(0);
   };
 
   function handleOpenModal(info) {
@@ -129,7 +130,7 @@ export default function PokemonList() {
   };
 
   return (
-    <Container>
+    <Container id="pokemon-list">
       <ContainerSecondary>
         <SearchBar
           pokemonFilter={pokemonFilter}
@@ -141,14 +142,23 @@ export default function PokemonList() {
           setFirstPokemon={setFirstPokemon}
           setSecondPokemon={setSecondPokemon}
           handleOpenModalCompare={handleOpenModalCompare}
+          setCurrentPage={setCurrentPage}
+          itemsPerPage={itemsPerPage}
+          setLoading={setLoading}
         />
-        {!loading && <PreLoader />}
 
-        
-        <PaginationSelector setItemsPerPage={setItemsPerPage} itemsPerPage={itemsPerPage}/>
-        <PaginationComponent setCurrentPage={setCurrentPage} currentPage={currentPage} pages={pages}/>
+        <PaginationSelector
+          setItemsPerPage={setItemsPerPage}
+          itemsPerPage={itemsPerPage}
+        />
+        <PaginationComponent
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          pages={pages}
+        />
+        {!loading && <PreLoader marginBox="2.5rem 0 8rem 0"/>}
 
-        <Grid>
+        <Grid style={{ display: !loading ? "none" : "grid" }}>
           {currentItems.map((pokemon) => (
             <Card
               key={pokemon.name}
@@ -163,6 +173,11 @@ export default function PokemonList() {
             />
           ))}
         </Grid>
+        <PaginationComponent
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          pages={pages}
+        />
         <Modal
           modalIsOpen={modalIsOpen}
           handleCloseModal={handleCloseModal}
