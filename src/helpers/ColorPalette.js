@@ -145,6 +145,9 @@ export const colors = {
   // LOADER
   loaderColor: palette.yellow.light,
 
+  // POKEMON NOT FOUND
+  pokemonNotFoundColor: palette.white.mid,
+
   // SCROLLBARS
   scrollbarDropdownBackground: palette.grey.dark,
   scrollbarDropdownColor: palette.grey.light,
