@@ -80,7 +80,9 @@ export const InputNameId = styled.input`
   }
 `;
 
-export const BoxIconSearch = styled.div``;
+export const BoxIconSearch = styled.div`
+  cursor: pointer;
+`;
 
 export const IconSearch = styled.img`
   ${setFlexbox("center", "center", "row")}
@@ -131,6 +133,19 @@ export const List = styled.ul`
   height: auto;
   max-height: 200px;
   overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${colors.scrollbarDropdownColor};
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${colors.scrollbarDropdownBackground};
+  }
 `;
 
 export const Item = styled.li`

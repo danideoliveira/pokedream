@@ -24,6 +24,7 @@ import {
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
+import { verifyPokemon } from "../../helpers/VerifyPokemon";
 
 export default function SearchBar({
   pokemonFilter,
@@ -45,40 +46,21 @@ export default function SearchBar({
   const [toggleMenu, setToggleMenu] = useState(true);
   const [toggleGenSearch, setToggleGenSearch] = useState(true);
   const [pokemonTypes, setPokemonTypes] = useState([]);
+  const [inputValue, setInputValue] = useState([]);
 
   const generations = [
-    { name: "Todas", size: [1, 251] },
+    { name: "Todas", size: [1, 386] },
     { name: "Gen 1", size: [1, 151] },
     { name: "Gen 2", size: [152, 251] },
+    { name: "Gen 3", size: [252, 386] },
+    { name: "Gen 4", size: [387, 493] },
+    { name: "Gen 5", size: [494, 649] },
   ];
-
-  const verify = {
-    nidoranm: {
-      newName: "nidoran",
-      urlName: "nidoran",
-      img: images.iconMale,
-      altText: "icon male",
-    },
-    nidoranf: {
-      newName: "nidoran",
-      urlName: "nidoran-f",
-      img: images.iconFemale,
-      altText: "icon female",
-    },
-    hooh: {
-      newName: "ho-oh",
-      urlName: "hooh",
-    },
-    mrmime: {
-      newName: "mr mime",
-      urlName: "mrmime",
-    },
-  };
 
   const pokemonVerifyUrl = (name) => {
     const nameJoin = name.replace("-", "");
-    if (verify[nameJoin]) {
-      return verify[nameJoin].urlName;
+    if (verifyPokemon[nameJoin]) {
+      return verifyPokemon[nameJoin].urlName;
     } else {
       return name;
     }
@@ -111,14 +93,24 @@ export default function SearchBar({
           <InputNameId
             type="text"
             placeholder="Nome ou id do pokemon"
-            onChange={async (e) => {
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={async (e) => {
+              if (e.key === "Enter") {
+                setLoading(false);
+                await pokemonFilter(inputValue);
+                setMenuValue("Busca por tipo...");
+                setCurrentPage(0);
+              }
+            }}
+          />
+          <BoxIconSearch
+            onClick={async () => {
               setLoading(false);
-              await pokemonFilter(e.target.value);
+              await pokemonFilter(inputValue);
               setMenuValue("Busca por tipo...");
               setCurrentPage(0);
             }}
-          />
-          <BoxIconSearch>
+          >
             <IconSearch src={images.iconSearch} alt="search icon" />
           </BoxIconSearch>
         </InputSearch>
