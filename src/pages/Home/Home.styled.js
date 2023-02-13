@@ -7,6 +7,7 @@ export const Container = styled.div`
   ${setFlexbox("center", "center", "row")}
   width: 100%;
   height: 100vh;
+  min-height: 550px;
   background: ${colors.homeBackground};
 
   @media (min-width: 320px) and (max-width: 780px) {
