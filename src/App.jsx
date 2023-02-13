@@ -12,7 +12,7 @@ function App() {
     <>
       <Home isLoading={isLoading} setIsLoading={setIsLoading} />
       {isLoading ? (
-        <PreLoader marginTop="10rem"/>
+        <PreLoader height="100vh" />
       ) : (
         <>
           <PokemonList />
