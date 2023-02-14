@@ -72,6 +72,14 @@ export default function SearchBar({
     }
   };
 
+  const verifyNotifyPokemonName = (pokemonName) => {
+    if (verifyPokemon[pokemonName.replace(/\-/g, "")]) {
+      return verifyPokemon[pokemonName.replace(/\-/g, "")].newName;
+    } else {
+      return pokemonName;
+    }
+  };
+
   useEffect(() => {
     const pokemonTypesArr = [];
     for (let type in PokemonConfig) {
@@ -228,7 +236,7 @@ export default function SearchBar({
                 onClick={() => {
                   setFirstPokemon([]);
                   notify(
-                    verifyPokemon[firstPokemon.name.replace(/\-/g, "")].newName,
+                    verifyNotifyPokemonName(firstPokemon.name),
                     1,
                     "remove"
                   );
@@ -265,8 +273,7 @@ export default function SearchBar({
                 onClick={() => {
                   setSecondPokemon([]);
                   notify(
-                    verifyPokemon[secondPokemon.name.replace(/\-/g, "")]
-                      .newName,
+                    verifyNotifyPokemonName(secondPokemon.name),
                     2,
                     "remove"
                   );

@@ -122,23 +122,32 @@ export default function PokemonList({ notify }) {
     setModalCompareIsOpen(false);
   }
 
+  const verifyNotifyPokemonName = (pokemonName) => {
+    if (verifyPokemon[pokemonName.replace(/\-/g, "")]) {
+      return verifyPokemon[pokemonName.replace(/\-/g, "")].newName;
+    } else {
+      return pokemonName;
+    }
+  };
+
   const sendToCompare = (pokemonInfo) => {
     if (firstPokemon.length === 0) {
       setFirstPokemon(pokemonInfo);
       notify(
-        verifyPokemon[pokemonInfo.name.replace(/\-/g, "")].newName,
+        verifyNotifyPokemonName(pokemonInfo.name),
         1,
         "add"
       );
     } else if (secondPokemon.length === 0) {
       setSecondPokemon(pokemonInfo);
       notify(
-        verifyPokemon[pokemonInfo.name.replace(/\-/g, "")].newName,
+        verifyNotifyPokemonName(pokemonInfo.name),
         2,
         "add"
       );
     }
   };
+  
 
   return (
     <Container id="pokemon-list">
