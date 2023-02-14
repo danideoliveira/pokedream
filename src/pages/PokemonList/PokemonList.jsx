@@ -10,7 +10,7 @@ import PaginationSelector from "../../components/PaginationSelector/PaginationSe
 import PaginationComponent from "../../components/Pagination/Pagination";
 import PokemonNotFound from "../../components/PokemonNotFound/PokemonNotFound";
 
-export default function PokemonList() {
+export default function PokemonList({ notify }) {
   const [pokemons, setPokemons] = useState([]);
   const [listSize, setListSize] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -124,8 +124,10 @@ export default function PokemonList() {
   const sendToCompare = (pokemonInfo) => {
     if (firstPokemon.length === 0) {
       setFirstPokemon(pokemonInfo);
+      notify(pokemonInfo.name, 1, "add");
     } else if (secondPokemon.length === 0) {
       setSecondPokemon(pokemonInfo);
+      notify(pokemonInfo.name, 2, "add");
     }
   };
 
@@ -145,6 +147,7 @@ export default function PokemonList() {
           setCurrentPage={setCurrentPage}
           itemsPerPage={itemsPerPage}
           setLoading={setLoading}
+          notify={notify}
         />
 
         <PaginationSelector
