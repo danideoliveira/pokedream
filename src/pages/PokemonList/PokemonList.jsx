@@ -9,6 +9,7 @@ import ModalCompare from "../../components/ModalCompare/ModalCompare";
 import PaginationSelector from "../../components/PaginationSelector/PaginationSelector";
 import PaginationComponent from "../../components/Pagination/Pagination";
 import PokemonNotFound from "../../components/PokemonNotFound/PokemonNotFound";
+import { verifyPokemon } from "../../helpers/VerifyPokemon";
 
 export default function PokemonList({ notify }) {
   const [pokemons, setPokemons] = useState([]);
@@ -124,10 +125,18 @@ export default function PokemonList({ notify }) {
   const sendToCompare = (pokemonInfo) => {
     if (firstPokemon.length === 0) {
       setFirstPokemon(pokemonInfo);
-      notify(pokemonInfo.name, 1, "add");
+      notify(
+        verifyPokemon[pokemonInfo.name.replace(/\-/g, "")].newName,
+        1,
+        "add"
+      );
     } else if (secondPokemon.length === 0) {
       setSecondPokemon(pokemonInfo);
-      notify(pokemonInfo.name, 2, "add");
+      notify(
+        verifyPokemon[pokemonInfo.name.replace(/\-/g, "")].newName,
+        2,
+        "add"
+      );
     }
   };
 

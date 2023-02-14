@@ -40,7 +40,7 @@ export default function SearchBar({
   handleOpenModalCompare,
   setCurrentPage,
   setLoading,
-  notify
+  notify,
 }) {
   const [menuValue, setMenuValue] = useState("Busca por tipo...");
   const [genValue, setGenValue] = useState("Busca por geração...");
@@ -227,7 +227,11 @@ export default function SearchBar({
               <ButtonRemovePokemon
                 onClick={() => {
                   setFirstPokemon([]);
-                  notify(firstPokemon.name, 1, "remove");
+                  notify(
+                    verifyPokemon[firstPokemon.name.replace(/\-/g, "")].newName,
+                    1,
+                    "remove"
+                  );
                 }}
                 style={{
                   visibility: firstPokemon.length === 0 && "hidden",
@@ -260,7 +264,12 @@ export default function SearchBar({
               <ButtonRemovePokemon
                 onClick={() => {
                   setSecondPokemon([]);
-                  notify(secondPokemon.name, 2, "remove");
+                  notify(
+                    verifyPokemon[secondPokemon.name.replace(/\-/g, "")]
+                      .newName,
+                    2,
+                    "remove"
+                  );
                 }}
                 style={{
                   visibility: secondPokemon.length === 0 && "hidden",

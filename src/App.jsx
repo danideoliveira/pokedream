@@ -9,10 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const notify = (name, slot, status = "adicionado ao") => {
+  const notify = (name, slot, status) => {
     const newStatus = {
-      add: "adicionado ao",
-      remove: "removido do"
+      add: "adicionado(a) ao",
+      remove: "removido(a) do"
     }
     toast.success(
       `${name.charAt(0).toUpperCase() + name.slice(1)} ${newStatus[status]} slot ${slot}`,
