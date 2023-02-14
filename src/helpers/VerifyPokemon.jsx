@@ -68,5 +68,101 @@ export const verifyPokemon = {
   thundurusincarnate: {
     newName: "thundurus",
     urlName: "thundurus",
-  }
+  },
+  zygarde50: {
+    newName: "zygarde",
+    urlName: "zygarde",
+  },
+  gourgeistaverage: {
+    newName: "gourgeist",
+    urlName: "gourgeist",
+  },
+  pumpkabooaverage: {
+    newName: "pumpkaboo",
+    urlName: "pumpkaboo",
+  },
+  meowsticmale: {
+    newName: "meowstic",
+    urlName: "meowstic",
+  },
+  lycanrocmidday: {
+    newName: "lycanroc",
+    urlName: "lycanroc",
+  },
+  oricoriobaile: {
+    newName: "oricorio",
+    urlName: "oricorio",
+  },
+  wishiwashisolo: {
+    newName: "wishiwashi",
+    urlName: "wishiwashi",
+  },
+  typenull: {
+    newName: "type null",
+    urlName: "typenull",
+  },
+  miniorredmeteor: {
+    newName: "minior",
+    urlName: "minior",
+  },
+  mimikyudisguised: {
+    newName: "mimikyu",
+    urlName: "mimikyu",
+  },
+  jangmoo: {
+    newName: "jangmo-o",
+    urlName: "jangmoo",
+  },
+  hakamoo: {
+    newName: "hakamo-o",
+    urlName: "hakamoo",
+  },
+  kommoo: {
+    newName: "kommo-o",
+    urlName: "kommoo",
+  },
+  tapukoko: {
+    newName: "tapu koko",
+    urlName: "tapukoko",
+  },
+  tapulele: {
+    newName: "tapu lele",
+    urlName: "tapulele",
+  },
+  tapubulu: {
+    newName: "tapu bulu",
+    urlName: "tapubulu",
+  },
+  tapufini: {
+    newName: "tapu fini",
+    urlName: "tapufini",
+  },
+  toxtricityamped: {
+    newName: "toxtricity",
+    urlName: "toxtricity",
+  },
+  mrrime: {
+    newName: "mr rime",
+    urlName: "mrrime",
+  },
+  eiscueice: {
+    newName: "eiscue",
+    urlName: "eiscue",
+  },
+  indeedeemale: {
+    newName: "indeedee",
+    urlName: "indeedee",
+  },
+  morpekofullbelly: {
+    newName: "morpeko",
+    urlName: "morpeko",
+  },
+  urshifusinglestrike: {
+    newName: "urshifu",
+    urlName: "urshifu",
+  },
+  basculegionmale: {
+    newName: "basculegion",
+    urlName: "basculegion",
+  },
 };
