@@ -23,6 +23,7 @@ import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { StatConfig } from "../StatConfig/StatConfig";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
+import { withoutGif } from "../../helpers/WithoutGif";
 ContainerModal.setAppElement("#root");
 
 export default function ModalCompare({
@@ -64,6 +65,19 @@ export default function ModalCompare({
       return name.charAt(0).toUpperCase() + name.slice(1);
     }
   };
+
+  const verifyWithoutGif = (name) => {
+    const nameJoin = name.replace(/\-/g, "");
+
+    if (withoutGif[nameJoin]) {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${withoutGif[nameJoin].id}.png`;
+    } else {
+      return `https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
+        name
+      )}.gif`;
+    }
+  };
+
   return (
     <ContainerModal
       isOpen={modalCompareIsOpen}
@@ -90,9 +104,8 @@ export default function ModalCompare({
               }
             >
               <PokemonImage
-                src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
-                  firstPokemon.name
-                )}.gif`}
+                width={withoutGif[firstPokemon.name.replace(/\-/g, "")] && 100}
+                src={verifyWithoutGif(firstPokemon.name)}
                 alt={`${firstPokemon.name}`}
                 style={{ transform: "rotateY(180deg)" }}
               />
@@ -182,9 +195,8 @@ export default function ModalCompare({
               }
             >
               <PokemonImage
-                src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
-                  secondPokemon.name
-                )}.gif`}
+                width={withoutGif[secondPokemon.name.replace(/\-/g, "")] && 100}
+                src={verifyWithoutGif(secondPokemon.name)}
                 alt={`${secondPokemon.name}`}
               />
             </ContainerPokemonImage>

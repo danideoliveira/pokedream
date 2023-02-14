@@ -169,6 +169,7 @@ export const PokemonName = styled.h2`
   font-size: 4.8rem;
   color: ${colors.modalPokemonNameColor};
   margin-right: 15px;
+  text-align: center;
   z-index: 2;
 
   @media (min-width: 320px) and (max-width: 1200px) {

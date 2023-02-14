@@ -25,6 +25,7 @@ import {
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
+import { withoutGif } from "../../helpers/WithoutGif";
 
 export default function SearchBar({
   pokemonFilter,
@@ -50,11 +51,15 @@ export default function SearchBar({
 
   const generations = [
     { name: "Todas", size: [1, 386] },
-    { name: "Gen 1", size: [1, 151] },
-    { name: "Gen 2", size: [152, 251] },
-    { name: "Gen 3", size: [252, 386] },
-    { name: "Gen 4", size: [387, 493] },
-    { name: "Gen 5", size: [494, 649] },
+    { name: "1ª Geração", size: [1, 151] },
+    { name: "2ª Geração", size: [152, 251] },
+    { name: "3ª Geração", size: [252, 386] },
+    { name: "4ª Geração", size: [387, 493] },
+    { name: "5ª Geração", size: [494, 649] },
+    { name: "6ª Geração", size: [650, 721] },
+    { name: "7ª Geração", size: [722, 809] },
+    { name: "8ª Geração", size: [810, 905] },
+    { name: "9ª Geração", size: [906, 1008] },
   ];
 
   const pokemonVerifyUrl = (name) => {
@@ -63,6 +68,18 @@ export default function SearchBar({
       return verifyPokemon[nameJoin].urlName;
     } else {
       return name;
+    }
+  };
+
+  const verifyWithoutGif = (name) => {
+    const nameJoin = name.replace(/\-/g, "");
+
+    if (withoutGif[nameJoin]) {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${withoutGif[nameJoin].id}.png`;
+    } else {
+      return `https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
+        name
+      )}.gif`;
     }
   };
 
@@ -228,9 +245,10 @@ export default function SearchBar({
               </ButtonRemovePokemon>
               {firstPokemon.length !== 0 ? (
                 <PokemonCompareImage
-                  src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
-                    firstPokemon.name
-                  )}.gif`}
+                  width={
+                    withoutGif[firstPokemon.name.replace(/\-/g, "")] && 100
+                  }
+                  src={verifyWithoutGif(firstPokemon.name)}
                   alt="first pokemon"
                   style={{ transform: "rotateY(180deg)" }}
                 />
@@ -258,9 +276,10 @@ export default function SearchBar({
 
               {secondPokemon.length !== 0 ? (
                 <PokemonCompareImage
-                  src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
-                    secondPokemon.name
-                  )}.gif`}
+                  width={
+                    withoutGif[secondPokemon.name.replace(/\-/g, "")] && 100
+                  }
+                  src={verifyWithoutGif(secondPokemon.name)}
                   alt="second pokemon"
                 />
               ) : (

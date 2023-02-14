@@ -12,7 +12,7 @@ import {
 } from "./Card.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
-import { images } from "../Images/Images";
+import { withoutGif } from "../../helpers/WithoutGif";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
 
 export default function Card({
@@ -25,7 +25,6 @@ export default function Card({
   handleOpenModal,
   isCompareFull,
 }) {
-
   const pokemonVerifyUrl = (name) => {
     const nameJoin = name.replace(/\-/g, "");
     if (verifyPokemon[nameJoin]) {
@@ -52,6 +51,18 @@ export default function Card({
     }
   };
 
+  const verifyWithoutGif = (name) => {
+    const nameJoin = name.replace(/\-/g, "");
+
+    if (withoutGif[nameJoin]) {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${withoutGif[nameJoin].id}.png`;
+    } else {
+      return `https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
+        name
+      )}.gif`;
+    }
+  };
+
   return (
     <CardContainer
       key={name}
@@ -71,12 +82,7 @@ export default function Card({
         <BoxPokemonImage
           background={PokemonConfig[pokemonTypes[0].type.name].gradientColor}
         >
-          <PokemonImage
-            src={`https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
-              name
-            )}.gif`}
-            alt={`${name} gif`}
-          />
+          <PokemonImage width={withoutGif[name.replace(/\-/g, "")] && 100} src={verifyWithoutGif(name)} alt={`${name} gif`} />
         </BoxPokemonImage>
       </LeftContent>
       <RightContent>
