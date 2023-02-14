@@ -19,7 +19,7 @@ export default function Home({ isLoading, setIsLoading }) {
   const [pokemonId, setPokemonId] = useState();
   const [pokemon, setPokemon] = useState([]);
 
-  function getRandomId(max = 1, min = 649) {
+  function getRandomId(max = 1, min = 1008) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
