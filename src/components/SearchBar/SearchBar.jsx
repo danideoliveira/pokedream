@@ -24,7 +24,7 @@ import {
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
-import { verifyPokemon } from "../../helpers/VerifyPokemon";
+import { verifyPokemon, verifyNotifyPokemonName } from "../../helpers/VerifyPokemon";
 import { withoutGif } from "../../helpers/WithoutGif";
 import { generations } from "../../helpers/Generations";
 
@@ -69,14 +69,6 @@ export default function SearchBar({
       return `https://play.pokemonshowdown.com/sprites/ani/${pokemonVerifyUrl(
         name
       )}.gif`;
-    }
-  };
-
-  const verifyNotifyPokemonName = (pokemonName) => {
-    if (verifyPokemon[pokemonName.replace(/\-/g, "")]) {
-      return verifyPokemon[pokemonName.replace(/\-/g, "")].newName;
-    } else {
-      return pokemonName;
     }
   };
 

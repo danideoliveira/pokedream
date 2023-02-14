@@ -1,5 +1,11 @@
 import { images } from "../components/Images/Images";
 
+export const verifyNotifyPokemonName = (pokemonName) => {
+  return verifyPokemon[pokemonName.replace(/\-/g, "")]
+    ? verifyPokemon[pokemonName.replace(/\-/g, "")].newName
+    : pokemonName;
+};
+
 export const verifyPokemon = {
   nidoranm: {
     newName: "nidoran",
