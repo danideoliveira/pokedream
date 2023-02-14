@@ -69,6 +69,10 @@ export const verifyPokemon = {
     newName: "thundurus",
     urlName: "thundurus",
   },
+  aegislashshield: {
+    newName: "aegislash",
+    urlName: "aegislash",
+  },
   zygarde50: {
     newName: "zygarde",
     urlName: "zygarde",
