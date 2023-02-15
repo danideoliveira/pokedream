@@ -167,7 +167,7 @@ export default function PokemonList({ notify }) {
           loading={loading}
         />
 
-        <PokemonCounter pokemonCounter={pokemonCounter} loading={loading}/>
+        {loading && <PokemonCounter pokemonCounter={pokemonCounter} />}
 
         {!loading && <PreLoader />}
         {loading && pokemons.length === 0 && <PokemonNotFound />}

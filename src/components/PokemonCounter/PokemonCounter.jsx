@@ -1,9 +1,9 @@
 import { CounterContainer, CounterText } from "./PokemonCounter.styled";
 
-export default function PokemonCounter({ pokemonCounter, loading }) {
+export default function PokemonCounter({ pokemonCounter }) {
   return (
     <CounterContainer>
-      <CounterText style={{ visibility: loading ? "visible" : "hidden" }}>
+      <CounterText>
         {pokemonCounter} Pokemon encontrados
       </CounterText>
     </CounterContainer>
