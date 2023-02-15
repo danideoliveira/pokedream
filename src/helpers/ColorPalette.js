@@ -151,6 +151,9 @@ export const colors = {
   // POKEMON NOT FOUND
   pokemonNotFoundColor: palette.white.mid,
 
+  // POKEMON COUNTER
+  pokemonCounterColor: palette.white.dark,
+
   // SCROLLBARS
   scrollbarDropdownBackground: palette.grey.dark,
   scrollbarDropdownColor: palette.grey.light,
