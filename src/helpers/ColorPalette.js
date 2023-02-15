@@ -99,7 +99,7 @@ export const colors = {
 
   // POKEMON PER PAGE
   perPageBackground: palette.yellow.light,
-  perPageColor: palette.black.mid,
+  perPageColor: palette.white.dark,
   perPageOptionBackground: palette.white.dark,
 
   // PAGINATION
