@@ -233,11 +233,11 @@ export const Gradient = styled.div`
   height: 100%;
   background: ${(props) => props.background};
   z-index: 0;
-  clip-path: polygon(0% 40%, 0% 0%, 0% 0%, 20% 0%);
+  clip-path: polygon(0% 200px, 0% 0%, 0% 0%, 200px 0%);
   border-radius: 5px;
 
   @media (min-width: 320px) and (max-width: 1200px) {
-    clip-path: polygon(0% 20%, 0% 0%, 0% 0%, 20% 0%);
+    clip-path: polygon(0% 80px, 0% 0%, 0% 0%, 80px 0%);
     top: 0;
   }
 `;
