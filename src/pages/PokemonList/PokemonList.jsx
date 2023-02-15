@@ -9,6 +9,8 @@ import ModalCompare from "../../components/ModalCompare/ModalCompare";
 import PaginationSelector from "../../components/PaginationSelector/PaginationSelector";
 import PaginationComponent from "../../components/Pagination/Pagination";
 import PokemonNotFound from "../../components/PokemonNotFound/PokemonNotFound";
+import PokemonCounter from "../../components/PokemonCounter/PokemonCounter";
+
 import { verifyNotifyPokemonName } from "../../helpers/VerifyPokemon";
 
 export default function PokemonList({ notify }) {
@@ -22,6 +24,7 @@ export default function PokemonList({ notify }) {
   const [secondPokemon, setSecondPokemon] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(0);
+  const [pokemonCounter, setPokemonCounter] = useState();
 
   const pages = Math.ceil(pokemons.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
@@ -41,6 +44,7 @@ export default function PokemonList({ notify }) {
       }
       setPokemons(pokemonData);
       setLoading(true);
+      setPokemonCounter(pokemonData.length);
       return pokemonData;
     } catch (e) {
       console.log(e);
@@ -92,6 +96,7 @@ export default function PokemonList({ notify }) {
     });
 
     setPokemons(filteredPokemons);
+    setPokemonCounter(filteredPokemons.length);
   };
 
   const genFilter = async (genSize) => {
@@ -161,6 +166,9 @@ export default function PokemonList({ notify }) {
           pages={pages}
           loading={loading}
         />
+
+        <PokemonCounter pokemonCounter={pokemonCounter} loading={loading}/>
+
         {!loading && <PreLoader />}
         {loading && pokemons.length === 0 && <PokemonNotFound />}
 
