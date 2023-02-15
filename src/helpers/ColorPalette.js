@@ -47,6 +47,9 @@ const palette = {
 };
 
 export const colors = {
+  // BODY
+  bodyBackground: palette.black.light,
+
   // HOME
   homeBackground: palette.black.light,
   homeButton: palette.grey.mid,

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "./ColorPalette";
 
 export const GlobalStyle = createGlobalStyle`  
   * {
@@ -8,14 +9,18 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     text-decoration: none;
     font-family: "Nunito", sans-serif, Arial, Helvetica;
-    /* outline: 1px solid rebeccapurple; */
+    scroll-behavior: smooth;
   }
 
   body {
-    background-color: #141414;
+    background-color: ${colors.bodyBackground};
   }
 
   html {
     font-size: 64.7%;
+
+    @media (min-width: 320px) and (max-width: 480px) {
+      font-size: 60%;   
+    }
   }
 `;
