@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   SearchBarContainer,
   InputSearch,
@@ -24,7 +24,10 @@ import {
 } from "./SearchBar.styled";
 import { images } from "../Images/Images";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
-import { verifyPokemon, verifyNotifyPokemonName } from "../../helpers/VerifyPokemon";
+import {
+  verifyPokemon,
+  verifyNotifyPokemonName,
+} from "../../helpers/VerifyPokemon";
 import { withoutGif } from "../../helpers/WithoutGif";
 import { generations } from "../../helpers/Generations";
 
@@ -51,6 +54,9 @@ export default function SearchBar({
   const [pokemonTypes, setPokemonTypes] = useState([]);
   const [inputValue, setInputValue] = useState([]);
 
+  const refTypeSearch = useRef();
+  const refGenSearch = useRef();
+
   const pokemonVerifyUrl = (name) => {
     const nameJoin = name.replace("-", "");
     if (verifyPokemon[nameJoin]) {
@@ -71,6 +77,24 @@ export default function SearchBar({
       )}.gif`;
     }
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        !refTypeSearch.current.contains(e.target) &&
+        !refGenSearch.current.contains(e.target)
+      ) {
+        setActiveTypeDropdown("");
+        setActiveGenDropdown("");
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener();
+    };
+  }, []);
 
   useEffect(() => {
     const pokemonTypesArr = [];
@@ -122,6 +146,7 @@ export default function SearchBar({
         </InputSearch>
 
         <Dropdown
+          ref={refTypeSearch}
           onClick={(e) => {
             if (toggleMenu) {
               setToggleGenSearch(true);
@@ -172,6 +197,7 @@ export default function SearchBar({
         </Dropdown>
 
         <Dropdown
+          ref={refGenSearch}
           onClick={() => {
             if (toggleGenSearch) {
               setToggleGenSearch(false);
