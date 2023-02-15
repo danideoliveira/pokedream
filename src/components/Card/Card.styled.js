@@ -13,6 +13,7 @@ export const CardContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
   transition: 0.1s;
+  box-shadow: 1px 1px 5px 1px #101010;
 
   &:hover {
     background: ${colors.cardBackgroundHover};
