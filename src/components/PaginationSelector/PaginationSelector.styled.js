@@ -6,40 +6,39 @@ export const SelectorContainer = styled.div`
   ${setFlexbox("center", "center", "row")};
   margin: 0 auto;
   width: 90%;
+`;
 
-  .select-container {
-    ${setFlexbox("center", "center", "row")};
-    margin-bottom: 2rem;
+export const BoxSelect = styled.div`
+  ${setFlexbox("center", "center", "row")};
+  margin-bottom: 2rem;
+`;
 
-    p {
-      color: gray;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-right: 1rem;
-    }
+export const Title = styled.p`
+  color: ${colors.perPageColor};
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-right: 1rem;
+`;
 
-    select {
-      font-size: 1.7rem;
-      font-weight: 700;
-      background: ${colors.perPageBackground};
-      padding: 0 5px;
-      border-radius: 5px;
-      cursor: pointer;
+export const SelectBox = styled.select`
+  font-size: 1.7rem;
+  font-weight: 700;
+  background: ${colors.perPageBackground};
+  padding: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
 
-      &:focus {
-        border: none;
-        outline: none;
-      }
-    }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+`;
+export const Option = styled.option`
+  font-weight: 700;
+  background: ${colors.perPageOptionBackground};
 
-    option {
-      font-weight: 700;
-      background: ${colors.perPageOptionBackground};
-
-      &:focus {
-        border: none;
-        outline: none;
-      }
-    }
+  &:focus {
+    border: none;
+    outline: none;
   }
 `;
