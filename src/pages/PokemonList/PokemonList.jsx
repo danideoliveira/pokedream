@@ -125,18 +125,10 @@ export default function PokemonList({ notify }) {
   const sendToCompare = (pokemonInfo) => {
     if (firstPokemon.length === 0) {
       setFirstPokemon(pokemonInfo);
-      notify(
-        verifyNotifyPokemonName(pokemonInfo.name),
-        1,
-        "add"
-      );
+      notify(verifyNotifyPokemonName(pokemonInfo.name), 1, "add");
     } else if (secondPokemon.length === 0) {
       setSecondPokemon(pokemonInfo);
-      notify(
-        verifyNotifyPokemonName(pokemonInfo.name),
-        2,
-        "add"
-      );
+      notify(verifyNotifyPokemonName(pokemonInfo.name), 2, "add");
     }
   };
 
@@ -167,8 +159,9 @@ export default function PokemonList({ notify }) {
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
           pages={pages}
+          loading={loading}
         />
-        {!loading && <PreLoader marginBox="2.5rem 0 8rem 0" />}
+        {!loading && <PreLoader />}
         {loading && pokemons.length === 0 && <PokemonNotFound />}
 
         <Grid style={{ display: !loading ? "none" : "grid" }}>
@@ -190,6 +183,7 @@ export default function PokemonList({ notify }) {
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
           pages={pages}
+          loading={loading}
         />
         <Modal
           modalIsOpen={modalIsOpen}

@@ -35,6 +35,11 @@ export const ContainerPagination = styled.div`
     font-weight: 700;
   }
 
+  .swiper-horizontal > .swiper-scrollbar,
+  .swiper-scrollbar.swiper-scrollbar-horizontal {
+    overflow: hidden;
+  }
+
   .swiper-scrollbar-drag {
     background: ${colors.paginationScrollbarColor};
   }

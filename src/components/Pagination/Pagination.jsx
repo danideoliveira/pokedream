@@ -4,12 +4,8 @@ import {
   SwiperBox,
 } from "./Pagination.styled";
 import { colors } from "../../helpers/ColorPalette";
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -19,12 +15,13 @@ export default function PaginationComponent({
   setCurrentPage,
   currentPage,
   pages,
+  loading
 }) {
   return (
     <ContainerPagination>
       <SwiperBox>
         <Swiper
-          style={{ position: "initial" }}
+          style={{ position: "initial", visibility: loading ? "visible" : "hidden" }}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
           slidesPerView={4}
