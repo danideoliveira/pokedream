@@ -86,6 +86,8 @@ export default function SearchBar({
       ) {
         setActiveTypeDropdown("");
         setActiveGenDropdown("");
+      } else {
+        return;
       }
     };
 
