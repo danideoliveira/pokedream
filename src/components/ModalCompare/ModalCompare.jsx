@@ -18,12 +18,31 @@ import {
   ProgressRevealer,
   BoxProgressBar,
   ProgressBar,
+  SwiperBox,
+  ContainerOtherInfos,
+  BoxWeightHeight,
+  Weight,
+  Height,
+  BoxWeight,
+  IconWeight,
+  BoxHeight,
+  IconHeight,
+  BoxAbilities,
+  Ability,
+  AbilityLabel,
 } from "./ModalCompare.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { StatConfig } from "../StatConfig/StatConfig";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
 import { withoutGif } from "../../helpers/WithoutGif";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { images } from "../Images/Images";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 ContainerModal.setAppElement("#root");
 
 export default function ModalCompare({
@@ -141,50 +160,129 @@ export default function ModalCompare({
               )}
             </ContainerType>
 
-            <ContainerStats>
-              {firstPokemon.stats && (
-                <>
-                  {firstPokemon.stats.map((stat, index) => (
-                    <ContainerStatName key={Number(index)}>
-                      <StatName>
-                        {StatConfig[stat.stat.name.replace("-", "")].name}
-                      </StatName>
-                      <BoxProgressBar>
-                        <ProgressRevealer>
-                          <ProgressBar
-                            max="100"
-                            value={stat.base_stat}
-                            barColor={colors.modalProgressBackground}
-                            valueColor={
-                              StatConfig[stat.stat.name.replace("-", "")].color
+            <SwiperBox>
+              <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                spaceBetween={10}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+              >
+                <SwiperSlide>
+                  <ContainerStats>
+                    {firstPokemon.stats && (
+                      <>
+                        {firstPokemon.stats.map((stat, index) => (
+                          <ContainerStatName key={Number(index)}>
+                            <StatName>
+                              {StatConfig[stat.stat.name.replace("-", "")].name}
+                            </StatName>
+                            <BoxProgressBar>
+                              <ProgressRevealer>
+                                <ProgressBar
+                                  max="100"
+                                  value={stat.base_stat}
+                                  barColor={colors.modalProgressBackground}
+                                  valueColor={
+                                    StatConfig[stat.stat.name.replace("-", "")]
+                                      .color
+                                  }
+                                />
+                              </ProgressRevealer>
+                            </BoxProgressBar>
+                            <StatValue
+                              valueColor={() => {
+                                if (
+                                  stat.base_stat >
+                                  secondPokemon.stats[index].base_stat
+                                ) {
+                                  return colors.statsHigherValue;
+                                } else if (
+                                  stat.base_stat <
+                                  secondPokemon.stats[index].base_stat
+                                ) {
+                                  return colors.statsLowerValue;
+                                } else {
+                                  return colors.statsEqualValue;
+                                }
+                              }}
+                            >
+                              {stat.base_stat}
+                            </StatValue>
+                          </ContainerStatName>
+                        ))}
+                      </>
+                    )}
+                  </ContainerStats>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <ContainerOtherInfos>
+                    <BoxWeightHeight>
+                      <BoxWeight>
+                        <IconWeight src={images.iconWeight} />
+                        <Weight
+                          valueColor={() => {
+                            if (
+                              firstPokemon.weight / 10 >
+                              secondPokemon.weight / 10
+                            ) {
+                              return colors.statsHigherValue;
+                            } else if (
+                              firstPokemon.weight / 10 <
+                              secondPokemon.weight / 10
+                            ) {
+                              return colors.statsLowerValue;
+                            } else {
+                              return colors.statsEqualValue;
                             }
-                          />
-                        </ProgressRevealer>
-                      </BoxProgressBar>
-                      <StatValue
-                        valueColor={() => {
-                          if (
-                            stat.base_stat >
-                            secondPokemon.stats[index].base_stat
-                          ) {
-                            return colors.statsHigherValue;
-                          } else if (
-                            stat.base_stat <
-                            secondPokemon.stats[index].base_stat
-                          ) {
-                            return colors.statsLowerValue;
-                          } else {
-                            return colors.statsEqualValue;
-                          }
-                        }}
-                      >
-                        {stat.base_stat}
-                      </StatValue>
-                    </ContainerStatName>
-                  ))}
-                </>
-              )}
-            </ContainerStats>
+                          }}
+                        >
+                          {firstPokemon.weight / 10} KG
+                        </Weight>
+                      </BoxWeight>
+                      <BoxHeight>
+                        <IconHeight src={images.iconHeight} />
+                        <Height
+                          valueColor={() => {
+                            if (
+                              firstPokemon.height / 10 >
+                              secondPokemon.height / 10
+                            ) {
+                              return colors.statsHigherValue;
+                            } else if (
+                              firstPokemon.height / 10 <
+                              secondPokemon.height / 10
+                            ) {
+                              return colors.statsLowerValue;
+                            } else {
+                              return colors.statsEqualValue;
+                            }
+                          }}
+                        >
+                          {firstPokemon.height / 10} M
+                        </Height>
+                      </BoxHeight>
+                    </BoxWeightHeight>
+                    <AbilityLabel>Habilidades</AbilityLabel>
+                    <BoxAbilities>
+                      {firstPokemon.abilities &&
+                        firstPokemon.abilities.map((currentAbility) => (
+                          <Ability
+                            key={currentAbility.ability.name}
+                            background={
+                              PokemonConfig[
+                                firstPokemon.pokemonTypes[0].type.name
+                              ].typeColor
+                            }
+                          >
+                            {currentAbility.ability.name.replace(/-/g, " ")}
+                          </Ability>
+                        ))}
+                    </BoxAbilities>
+                  </ContainerOtherInfos>
+                </SwiperSlide>
+              </Swiper>
+            </SwiperBox>
           </ContentContainer>
 
           <ContentContainer>
@@ -231,48 +329,129 @@ export default function ModalCompare({
               )}
             </ContainerType>
 
-            <ContainerStats>
-              {secondPokemon.stats && (
-                <>
-                  {secondPokemon.stats.map((stat, index) => (
-                    <ContainerStatName key={Number(index)}>
-                      <StatName>
-                        {StatConfig[stat.stat.name.replace("-", "")].name}
-                      </StatName>
-                      <BoxProgressBar>
-                        <ProgressRevealer>
-                          <ProgressBar
-                            max="100"
-                            value={stat.base_stat}
-                            barColor={colors.modalProgressBackground}
-                            valueColor={
-                              StatConfig[stat.stat.name.replace("-", "")].color
+            <SwiperBox>
+              <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                spaceBetween={10}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+              >
+                <SwiperSlide>
+                  <ContainerStats>
+                    {secondPokemon.stats && (
+                      <>
+                        {secondPokemon.stats.map((stat, index) => (
+                          <ContainerStatName key={Number(index)}>
+                            <StatName>
+                              {StatConfig[stat.stat.name.replace("-", "")].name}
+                            </StatName>
+                            <BoxProgressBar>
+                              <ProgressRevealer>
+                                <ProgressBar
+                                  max="100"
+                                  value={stat.base_stat}
+                                  barColor={colors.modalProgressBackground}
+                                  valueColor={
+                                    StatConfig[stat.stat.name.replace("-", "")]
+                                      .color
+                                  }
+                                />
+                              </ProgressRevealer>
+                            </BoxProgressBar>
+                            <StatValue
+                              valueColor={() => {
+                                if (
+                                  stat.base_stat >
+                                  firstPokemon.stats[index].base_stat
+                                ) {
+                                  return colors.statsHigherValue;
+                                } else if (
+                                  stat.base_stat <
+                                  firstPokemon.stats[index].base_stat
+                                ) {
+                                  return colors.statsLowerValue;
+                                } else {
+                                  return colors.statsEqualValue;
+                                }
+                              }}
+                            >
+                              {stat.base_stat}
+                            </StatValue>
+                          </ContainerStatName>
+                        ))}
+                      </>
+                    )}
+                  </ContainerStats>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <ContainerOtherInfos>
+                    <BoxWeightHeight>
+                      <BoxWeight>
+                        <IconWeight src={images.iconWeight} />
+                        <Weight
+                          valueColor={() => {
+                            if (
+                              secondPokemon.weight / 10 >
+                              firstPokemon.weight / 10
+                            ) {
+                              return colors.statsHigherValue;
+                            } else if (
+                              secondPokemon.weight / 10 <
+                              firstPokemon.weight / 10
+                            ) {
+                              return colors.statsLowerValue;
+                            } else {
+                              return colors.statsEqualValue;
                             }
-                          />
-                        </ProgressRevealer>
-                      </BoxProgressBar>
-                      <StatValue
-                        valueColor={() => {
-                          if (
-                            stat.base_stat > firstPokemon.stats[index].base_stat
-                          ) {
-                            return colors.statsHigherValue;
-                          } else if (
-                            stat.base_stat < firstPokemon.stats[index].base_stat
-                          ) {
-                            return colors.statsLowerValue;
-                          } else {
-                            return colors.statsEqualValue;
-                          }
-                        }}
-                      >
-                        {stat.base_stat}
-                      </StatValue>
-                    </ContainerStatName>
-                  ))}
-                </>
-              )}
-            </ContainerStats>
+                          }}
+                        >
+                          {secondPokemon.weight / 10} KG
+                        </Weight>
+                      </BoxWeight>
+                      <BoxHeight>
+                        <IconHeight src={images.iconHeight} />
+                        <Height
+                          valueColor={() => {
+                            if (
+                              secondPokemon.height / 10 >
+                              firstPokemon.height / 10
+                            ) {
+                              return colors.statsHigherValue;
+                            } else if (
+                              secondPokemon.height / 10 <
+                              firstPokemon.height / 10
+                            ) {
+                              return colors.statsLowerValue;
+                            } else {
+                              return colors.statsEqualValue;
+                            }
+                          }}
+                        >
+                          {secondPokemon.height / 10} M
+                        </Height>
+                      </BoxHeight>
+                    </BoxWeightHeight>
+                    <AbilityLabel>Habilidades</AbilityLabel>
+                    <BoxAbilities>
+                      {secondPokemon.abilities &&
+                        secondPokemon.abilities.map((currentAbility) => (
+                          <Ability
+                            key={currentAbility.ability.name}
+                            background={
+                              PokemonConfig[
+                                secondPokemon.pokemonTypes[0].type.name
+                              ].typeColor
+                            }
+                          >
+                            {currentAbility.ability.name.replace(/-/g, " ")}
+                          </Ability>
+                        ))}
+                    </BoxAbilities>
+                  </ContainerOtherInfos>
+                </SwiperSlide>
+              </Swiper>
+            </SwiperBox>
           </ContentContainer>
         </>
       )}

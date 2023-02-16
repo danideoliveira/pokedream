@@ -21,6 +21,7 @@ export default function Card({
   weight,
   height,
   stats,
+  abilities,
   pokemonTypes,
   handleOpenModal,
   isCompareFull,
@@ -73,6 +74,7 @@ export default function Card({
           weight,
           height,
           stats,
+          abilities,
           pokemonTypes,
           isCompareFull,
         })

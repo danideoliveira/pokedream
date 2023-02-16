@@ -77,6 +77,7 @@ export default function PokemonList({ notify }) {
     });
 
     setPokemons(filteredPokemons);
+    setPokemonCounter(filteredPokemons.length);
   };
 
   const typeFilter = async (pokemonType) => {
@@ -168,7 +169,6 @@ export default function PokemonList({ notify }) {
         />
 
         {loading && <PokemonCounter pokemonCounter={pokemonCounter} />}
-
         {!loading && <PreLoader />}
         {loading && pokemons.length === 0 && <PokemonNotFound />}
 
@@ -181,6 +181,7 @@ export default function PokemonList({ notify }) {
               weight={pokemon.weight}
               height={pokemon.height}
               stats={pokemon.stats}
+              abilities={pokemon.abilities}
               pokemonTypes={pokemon.types}
               handleOpenModal={handleOpenModal}
               isCompareFull={{ first: firstPokemon, second: secondPokemon }}

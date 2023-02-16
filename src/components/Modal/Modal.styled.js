@@ -222,7 +222,7 @@ export const StatValue = styled.p`
   color: ${colors.modalStatsColor};
 
   @media (min-width: 320px) and (max-width: 1200px) {
-    ${setFlexbox("center", "center", "row")}
+    ${setFlexbox("flex-end", "center", "row")}
   }
 `;
 
@@ -278,7 +278,7 @@ export const CompareButton = styled.button`
     cursor: default;
   }
 
-  @media (min-width: 481px) and (max-width: 1200px) {
+  @media (min-width: 481px) and (max-width: 870px) {
     margin: 3rem 0;
     width: 100%;
   }
@@ -287,4 +287,97 @@ export const CompareButton = styled.button`
     margin: 3rem 0;
     width: 70%;
   }
+`;
+
+export const SwiperBox = styled.div`
+  ${setFlexbox("center", "center", "row")}
+  position: relative;
+  width: 40rem;
+
+  @media (min-width: 481px) and (max-width: 1200px) {
+    width: 35rem;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 25rem;
+  }
+
+  .swiper-pagination {
+    position: relative;
+  }
+
+  .swiper-pagination-bullet {
+    background: white;
+  }
+`;
+
+// WEIGHT, HEIGHT AND ABILITIES
+export const ContainerOtherInfos = styled.div`
+  ${setFlexbox("center", "center", "column")}
+  width: 100%;
+  height: 25rem;
+`;
+
+export const BoxWeightHeight = styled.div`
+  ${setFlexbox("space-evenly", "center", "row")}
+  width: 100%;
+`;
+
+export const BoxWeight = styled.div`
+  ${setFlexbox("center", "center", "column")}
+`;
+
+export const IconWeight = styled.img`
+  width: 2rem;
+  margin-bottom: 1rem;
+`;
+
+export const Weight = styled.p`
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: ${colors.weightColor};
+`;
+
+export const BoxHeight = styled.div`
+  ${setFlexbox("center", "center", "column")}
+`;
+
+export const IconHeight = styled.img`
+  width: 2rem;
+  margin-bottom: 1rem;
+`;
+
+export const Height = styled.p`
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: ${colors.heightColor};
+`;
+
+export const AbilityLabel = styled.label`
+  font-size: 1.4rem;
+  color: white;
+  margin: 3rem 0 1rem 0;
+`;
+
+export const BoxAbilities = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 40%;
+`;
+
+export const Ability = styled.div`
+  ${setFlexbox("center", "center", "row")}
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 auto;
+  width: 90%;
+  height: 40px;
+  text-align: center;
+  color: ${colors.abilitiesColor};
+  padding: 10px;
+  background-color: ${(props) => props.background};
+  border-radius: 5px;
 `;
