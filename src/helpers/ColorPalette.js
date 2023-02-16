@@ -132,6 +132,11 @@ export const colors = {
   statsLowerValue: palette.red.light,
   statsEqualValue: palette.white.dark,
 
+  // WEIGHT, HEIGHT AND ABILITIES
+  weightColor: palette.white.mid,
+  heightColor: palette.white.mid,
+  abilitiesColor: palette.white.light,
+
   // MODAL
   modalBackground: palette.grey.dark,
   modalPokemonNameColor: palette.white.mid,
