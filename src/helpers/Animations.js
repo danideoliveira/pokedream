@@ -25,6 +25,6 @@ export const OpenBoxPokemonCompare = keyframes`
     width: 0%;
   }
   100% {
-    width: 90%;
+    width: 75%;
   }
 `;
