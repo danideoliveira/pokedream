@@ -14,8 +14,22 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${colors.bodyBackground};
-  }
 
+    .Toastify__zoom-enter {
+      path {
+        fill: #AEAEAE
+      }
+    }
+
+    .Toastify__progress-bar--info {
+      background: #FFC800;
+    }
+
+    .Toastify__progress-bar--success {
+      background: ${colors.statsHigherValue};
+    }
+  }
+  
   html {
     font-size: 64.7%;
 
