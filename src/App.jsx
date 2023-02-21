@@ -9,13 +9,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const notify = (name, slot, status) => {
+  const notifyCompare = (name, slot, status) => {
     const newStatus = {
       add: "adicionado(a) ao",
-      remove: "removido(a) do"
-    }
+      remove: "removido(a) do",
+    };
+
     toast.success(
-      `${name.charAt(0).toUpperCase() + name.slice(1)} ${newStatus[status]} slot ${slot}`,
+      `${name.charAt(0).toUpperCase() + name.slice(1)} ${
+        newStatus[status]
+      } slot ${slot}`,
       {
         position: "top-right",
         autoClose: 3000,
@@ -27,6 +30,34 @@ function App() {
         theme: "dark",
       }
     );
+  };
+
+  const notifyFavorite = (name, status) => {
+    const newStatus = {
+      add: "adicionado(a) aos",
+      remove: "removido(a) dos",
+    };
+
+    toast.info(
+      `${name.charAt(0).toUpperCase() + name.slice(1)} ${
+        newStatus[status]
+      } favoritos`,
+      {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
+  };
+
+  const notify = {
+    compare: notifyCompare,
+    favorite: notifyFavorite,
   };
 
   return (
