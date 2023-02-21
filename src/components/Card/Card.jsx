@@ -9,11 +9,16 @@ import {
   RightContent,
   Text,
   Icon,
+  BoxFavoriteStar,
+  FavoriteButton,
+  IconGender,
 } from "./Card.styled";
 import { PokemonConfig } from "../PokemonConfig/PokemonConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { withoutGif } from "../../helpers/WithoutGif";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
+import { AiFillStar } from "react-icons/ai";
+import { useRef } from "react";
 
 export default function Card({
   name,
@@ -23,9 +28,15 @@ export default function Card({
   stats,
   abilities,
   pokemonTypes,
+  isFavorite,
+  listFavorites,
   handleOpenModal,
+  sendToFavorites,
   isCompareFull,
+  showButtonClose,
 }) {
+  const refFavorite = useRef();
+
   const pokemonVerifyUrl = (name) => {
     const nameJoin = name.replace(/\-/g, "");
     if (verifyPokemon[nameJoin]) {
@@ -43,7 +54,7 @@ export default function Card({
         <>
           {newName.charAt(0).toUpperCase() + newName.slice(1)}
           {verifyPokemon[nameJoin].newName === "nidoran" && (
-            <img src={img} alt={altText} />
+            <IconGender src={img} alt={altText} />
           )}
         </>
       );
@@ -67,24 +78,66 @@ export default function Card({
   return (
     <CardContainer
       key={name}
-      onClick={() =>
-        handleOpenModal({
-          name,
-          id,
-          weight,
-          height,
-          stats,
-          abilities,
-          pokemonTypes,
-          isCompareFull,
-        })
-      }
+      onClick={(e) => {
+        if (!refFavorite.current.contains(e.target)) {
+          handleOpenModal({
+            name,
+            id,
+            weight,
+            height,
+            stats,
+            abilities,
+            pokemonTypes,
+            isCompareFull,
+          });
+        }
+      }}
     >
+      <BoxFavoriteStar>
+        <FavoriteButton
+          ref={refFavorite}
+          style={{
+            background: isFavorite ? "#FFC800" : "grey",
+          }}
+          onClick={(e) => {
+            sendToFavorites({
+              name,
+              id,
+              weight,
+              height,
+              stats,
+              abilities,
+              pokemonTypes,
+              isCompareFull,
+              isFavorite: true,
+            });
+            if (refFavorite.current.style.background === "grey") {
+              refFavorite.current.style.background = "#FFC800";
+            } else {
+              refFavorite.current.style.background = "grey";
+            }
+          }}
+        >
+          <AiFillStar
+            style={{
+              position: "relative",
+              height: "15px",
+              width: "15px",
+              fill: colors.cardBackground,
+            }}
+          />
+        </FavoriteButton>
+      </BoxFavoriteStar>
+
       <LeftContent>
         <BoxPokemonImage
           background={PokemonConfig[pokemonTypes[0].type.name].gradientColor}
         >
-          <PokemonImage width={withoutGif[name.replace(/\-/g, "")] && 100} src={verifyWithoutGif(name)} alt={`${name} gif`} />
+          <PokemonImage
+            width={withoutGif[name.replace(/\-/g, "")] && 100}
+            src={verifyWithoutGif(name)}
+            alt={`${name} gif`}
+          />
         </BoxPokemonImage>
       </LeftContent>
       <RightContent>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { setFlexbox } from "../../helpers/Mixins";
 import { colors } from "../../helpers/ColorPalette";
+import { AiFillStar } from "react-icons/ai";
 
 // CONTAINER
 export const CardContainer = styled.div`
@@ -13,6 +14,7 @@ export const CardContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
   transition: 0.1s;
+  position: relative;
   box-shadow: 1px 1px 5px 1px #101010;
 
   &:hover {
@@ -129,10 +131,29 @@ export const Text = styled.p`
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.color};
+`;
 
-  img {
-    width: 2.2rem;
+export const IconGender = styled.img`
+width: 2.2rem;
     height: 2.2rem;
     margin-left: 5px;
-  }
+`;
+
+// FAVORITE STAR
+export const BoxFavoriteStar = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 10px;
+`;
+
+export const FavoriteButton = styled.button`
+  ${setFlexbox("center", "center", "row")}
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
 `;
