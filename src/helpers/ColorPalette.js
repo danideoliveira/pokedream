@@ -113,6 +113,11 @@ export const colors = {
   paginationButtonBackground: palette.black.dark,
   paginationScrollbarColor: palette.white.light,
 
+  // FAVORITE
+  favoriteButtonBackground: palette.yellow.light,
+  favoriteButtonCloseBackground: palette.red.light,
+  favoriteButtonColor: palette.black.mid,
+
   // CARDS
   cardBackground: palette.grey.dark,
   cardBackgroundHover: palette.black.mid,
@@ -136,6 +141,10 @@ export const colors = {
   weightColor: palette.white.mid,
   heightColor: palette.white.mid,
   abilitiesColor: palette.white.light,
+
+  // FAVORITE STAR
+  favoriteStarColor: palette.grey.light,
+  favoriteStarSelectedColor: palette.yellow.light,
 
   // MODAL
   modalBackground: palette.grey.dark,
