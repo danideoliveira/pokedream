@@ -9,7 +9,10 @@ export const ContainerPagination = styled.div`
   max-width: 225px;
   gap: 10px;
   margin: 0 auto;
-  margin-bottom: 50px;
+
+  @media (min-width: 320px) and (max-width: 850px) {
+    margin-bottom: 30px;
+  }
 
   .swiper-button-next {
     margin-right: -50px;
