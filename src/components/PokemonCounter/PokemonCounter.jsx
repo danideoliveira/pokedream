@@ -6,7 +6,7 @@ export default function PokemonCounter({ pokemonCounter }) {
   };
 
   return (
-    <CounterContainer style={{ display: pokemonCounter < 1 ? "none" : "flex" }}>
+    <CounterContainer>
       <CounterText>{pokemonCounter} Pokemon {verifyNumber(pokemonCounter)}</CounterText>
     </CounterContainer>
   );
