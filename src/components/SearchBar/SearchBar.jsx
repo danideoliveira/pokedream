@@ -255,7 +255,7 @@ export default function SearchBar({
               <ButtonRemovePokemon
                 onClick={() => {
                   setFirstPokemon([]);
-                  notify(
+                  notify.compare(
                     verifyNotifyPokemonName(firstPokemon.name),
                     1,
                     "remove"
@@ -292,7 +292,7 @@ export default function SearchBar({
               <ButtonRemovePokemon
                 onClick={() => {
                   setSecondPokemon([]);
-                  notify(
+                  notify.compare(
                     verifyNotifyPokemonName(secondPokemon.name),
                     2,
                     "remove"

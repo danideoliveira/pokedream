@@ -14,7 +14,7 @@ export const ContainerModal = styled(ReactModal)`
   position: relative;
   padding: 25px;
   border-radius: 5px;
-  z-index: 2;
+  z-index: 5;
 
   &::-webkit-scrollbar {
     width: 5px;

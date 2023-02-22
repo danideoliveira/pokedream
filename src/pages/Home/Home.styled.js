@@ -54,6 +54,7 @@ export const RightContent = styled.div`
   overflow: hidden;
 
   @media (min-width: 320px) and (max-width: 780px) {
+    ${setFlexbox("flex-start", "center", "column")}
     width: 100%;
     height: 50%;
   }
