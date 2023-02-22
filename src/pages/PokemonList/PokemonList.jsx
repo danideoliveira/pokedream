@@ -204,7 +204,7 @@ export default function PokemonList({ notify }) {
         return;
       }
 
-      localFavoriteList.forEach((currentPokemon) => {
+      pokemons.forEach((currentPokemon) => {
         currentPokemon.pokemonTypes.map((currentType) => {
           if (currentType.type.name === pokemonType) {
             filteredPokemons.push(currentPokemon);
