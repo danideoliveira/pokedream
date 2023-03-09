@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { PokemonConfig } from "../../components/PokemonConfig/PokemonConfig";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function Home({ isLoading, setIsLoading }) {
   const [pokemonId, setPokemonId] = useState();
@@ -52,6 +53,13 @@ export default function Home({ isLoading, setIsLoading }) {
           key={currentPokemon.name}
           style={{ display: isLoading ? "none" : "flex" }}
         >
+          <Navbar
+            background={
+              PokemonConfig[currentPokemon.types[0].type.name].typeColor
+            }
+            position="absolute"
+          />
+
           <LeftContent>
             <Gradient
               background={

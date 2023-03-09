@@ -25,6 +25,7 @@ import {
   SlotContainer,
   SlotGrid,
 } from "../../components/ModalDreamTeam/ModalDreamTeam.styled";
+import Navbar from "../../components/Navbar/Navbar";
 
 const DreamTeam = () => {
   const [modalDreamTeamIsOpen, setModalDreamTeamIsOpen] = useState(false);
@@ -50,7 +51,7 @@ const DreamTeam = () => {
     document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener();
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -130,6 +131,7 @@ const DreamTeam = () => {
 
   return (
     <Container>
+      <Navbar />
       <div className="box">
         <div className="box-title">
           <h3>DREAM TEAM</h3>
@@ -159,7 +161,6 @@ const DreamTeam = () => {
                   key={gen.name}
                   onClick={async (e) => {
                     handleOpenModalDreamTeam(gen.size);
-                    console.log(gen.size);
                   }}
                 >
                   {gen.name}
@@ -170,7 +171,6 @@ const DreamTeam = () => {
         </div>
 
         <div className="container-grid-team">
-          {console.log(teamSelected)}
           {teamSelected &&
             teamSelected.map((pokemonOnTheTeam, index) => (
               <>
