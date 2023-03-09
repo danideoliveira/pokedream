@@ -94,7 +94,7 @@ export default function SearchBar({
     document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener();
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 

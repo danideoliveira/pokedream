@@ -134,6 +134,7 @@ export default function ModalDreamTeam({
 
   useEffect(() => {
     const handleClickOutside = (e) => {
+      if (!refTypeSearch.current) return;
       if (!refTypeSearch.current.contains(e.target)) {
         setActiveTypeDropdown("");
       } else {
@@ -144,7 +145,7 @@ export default function ModalDreamTeam({
     document.addEventListener("click", handleClickOutside);
 
     return () => {
-      document.removeEventListener();
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
