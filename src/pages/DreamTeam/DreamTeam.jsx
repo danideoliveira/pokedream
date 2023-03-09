@@ -26,6 +26,7 @@ import {
   SlotGrid,
 } from "../../components/ModalDreamTeam/ModalDreamTeam.styled";
 import Navbar from "../../components/Navbar/Navbar";
+import { motion } from "framer-motion";
 
 const DreamTeam = () => {
   const [modalDreamTeamIsOpen, setModalDreamTeamIsOpen] = useState(false);
@@ -36,8 +37,8 @@ const DreamTeam = () => {
   const [toggleGenSearch, setToggleGenSearch] = useState(true);
   const [genSize, setGenSize] = useState([]);
   const [teamSelected, setTeamSelected] = useState([]);
-
   const refGenSearch = useRef();
+  const MotionContainer = motion(Container);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -130,7 +131,11 @@ const DreamTeam = () => {
   };
 
   return (
-    <Container>
+    <MotionContainer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Navbar />
       <div className="box">
         <div className="box-title">
@@ -395,7 +400,7 @@ const DreamTeam = () => {
           setTeamSelected={setTeamSelected}
         />
       </div>
-    </Container>
+    </MotionContainer>
   );
 };
 
