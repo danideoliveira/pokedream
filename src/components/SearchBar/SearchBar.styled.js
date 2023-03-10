@@ -5,14 +5,14 @@ import { images } from "../Images/Images";
 
 // SEARCH BAR CONTAINER
 export const SearchBarContainer = styled.div`
-  ${setFlexbox("center", "center", "row")}
+  ${setFlexbox("space-evenly", "center", "row")}
   width: 100%;
   height: auto;
   margin-bottom: 50px;
   background-color: ${colors.searchBarBackground};
   padding: 5rem 0;
 
-  @media (min-width: 320px) and (max-width: 1100px) {
+  @media (min-width: 320px) and (max-width: 1200px) {
     ${setFlexbox("center", "center", "column")}
   }
 `;
@@ -26,7 +26,7 @@ export const BoxAllSearch = styled.div`
     margin-right: 0;
   }
 
-  @media (min-width: 320px) and (max-width: 670px) {
+  @media (min-width: 320px) and (max-width: 745px) {
     ${setFlexbox("center", "center", "column")}
     width: 80%;
     margin-right: 0;
@@ -36,7 +36,7 @@ export const BoxAllSearch = styled.div`
 export const BoxCompare = styled.div`
   ${setFlexbox("center", "center", "row")}
 
-  @media (min-width: 616px) and (max-width: 1100px) {
+  @media (min-width: 616px) and (max-width: 1200px) {
     width: 50%;
     margin-top: 3rem;
   }
@@ -53,7 +53,7 @@ export const InputSearch = styled.div`
   height: auto;
   margin-right: 2rem;
 
-  @media (min-width: 320px) and (max-width: 670px) {
+  @media (min-width: 320px) and (max-width: 745px) {
     width: 100%;
     margin-right: 0;
     margin-top: 2rem;
@@ -74,7 +74,7 @@ export const InputNameId = styled.input`
     outline: none;
   }
 
-  @media (min-width: 320px) and (max-width: 670px) {
+  @media (min-width: 320px) and (max-width: 745px) {
     width: 100%;
     margin-right: 0;
   }
@@ -95,9 +95,7 @@ export const IconSearch = styled.img`
 
 // DROPDOWN MENU
 export const Dropdown = styled.div`
-  width: 15%;
-  min-width: 16rem;
-  max-width: 16rem;
+  width: 21rem;
   position: relative;
   border-radius: 5px;
   margin-right: 2rem;
@@ -107,7 +105,7 @@ export const Dropdown = styled.div`
     opacity: 1;
   }
 
-  @media (min-width: 320px) and (max-width: 670px) {
+  @media (min-width: 320px) and (max-width: 745px) {
     width: 100%;
     max-width: initial;
     margin-right: 0;
@@ -200,7 +198,7 @@ export const PokemonCompare = styled.div`
     margin-top: 3rem;
   }
 
-  @media (min-width: 320px) and (max-width: 670px) {
+  @media (min-width: 320px) and (max-width: 745px) {
     ${setFlexbox("center", "center", "column")}
     width: 100%;
     margin-right: 0;
@@ -220,7 +218,7 @@ export const BoxCompareButton = styled.div`
   ${setFlexbox("center", "center", "row")}
   width: 80%;
 
-  @media (min-width: 320px) and (max-width: 670px) {
+  @media (min-width: 320px) and (max-width: 745px) {
     margin-top: 3rem;
   }
 `;
@@ -251,7 +249,7 @@ export const CompareButton = styled.button`
     height: 50px;
   }
 
-  @media (min-width: 320px) and (max-width: 670px) {
+  @media (min-width: 320px) and (max-width: 745px) {
     width: 70%;
     margin-left: 0;
   }
