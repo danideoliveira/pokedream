@@ -131,11 +131,7 @@ const DreamTeam = () => {
   };
 
   return (
-    <MotionContainer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <Container>
       <Navbar />
       <div className="box">
         <div className="box-title">
@@ -148,7 +144,6 @@ const DreamTeam = () => {
             onClick={() => {
               if (toggleGenSearch) {
                 setToggleGenSearch(false);
-                setToggleMenu(true);
               } else {
                 setToggleGenSearch(true);
               }
@@ -400,7 +395,7 @@ const DreamTeam = () => {
           setTeamSelected={setTeamSelected}
         />
       </div>
-    </MotionContainer>
+    </Container>
   );
 };
 
