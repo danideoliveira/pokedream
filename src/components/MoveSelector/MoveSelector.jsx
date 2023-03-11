@@ -63,6 +63,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { images } from "../Images/Images";
 import axios from "axios";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import WeaknessAndAdvantage from "../WeaknessAndAdvantage/WeaknessAndAdvantage";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -443,6 +444,9 @@ export default function MoveSelector({
                       ))}
                   </BoxAbilities>
                 </ContainerOtherInfos>
+              </SwiperSlide>
+              <SwiperSlide>
+                <WeaknessAndAdvantage pokemonInfo={pokemonInfo}/>
               </SwiperSlide>
             </Swiper>
           </SwiperBox>

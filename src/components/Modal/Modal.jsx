@@ -40,6 +40,7 @@ import { StatConfig } from "../StatConfig/StatConfig";
 import { colors } from "../../helpers/ColorPalette";
 import { verifyPokemon } from "../../helpers/VerifyPokemon";
 import PreLoader from "../PreLoader/PreLoader";
+import WeaknessAndAdvantage from "../WeaknessAndAdvantage/WeaknessAndAdvantage";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
@@ -48,7 +49,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
 ContainerModal.setAppElement("#root");
 
 export default function Modal({
@@ -260,6 +260,10 @@ export default function Modal({
                         ))}
                     </BoxAbilities>
                   </ContainerOtherInfos>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <WeaknessAndAdvantage pokemonInfo={pokemonInfo} />
                 </SwiperSlide>
               </Swiper>
             </SwiperBox>

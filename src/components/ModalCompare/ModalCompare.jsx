@@ -39,6 +39,7 @@ import { withoutGif } from "../../helpers/WithoutGif";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { images } from "../Images/Images";
+import WeaknessAndAdvantage from "../WeaknessAndAdvantage/WeaknessAndAdvantage";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -281,6 +282,9 @@ export default function ModalCompare({
                     </BoxAbilities>
                   </ContainerOtherInfos>
                 </SwiperSlide>
+                <SwiperSlide>
+                  <WeaknessAndAdvantage pokemonInfo={firstPokemon} />
+                </SwiperSlide>
               </Swiper>
             </SwiperBox>
           </ContentContainer>
@@ -449,6 +453,9 @@ export default function ModalCompare({
                         ))}
                     </BoxAbilities>
                   </ContainerOtherInfos>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <WeaknessAndAdvantage pokemonInfo={secondPokemon} />
                 </SwiperSlide>
               </Swiper>
             </SwiperBox>
