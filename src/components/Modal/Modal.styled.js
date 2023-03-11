@@ -381,3 +381,4 @@ export const Ability = styled.div`
   background-color: ${(props) => props.background};
   border-radius: 5px;
 `;
+
