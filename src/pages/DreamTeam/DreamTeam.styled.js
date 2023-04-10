@@ -15,10 +15,47 @@ export const Container = styled.div`
 
   .box-title {
     ${setFlexbox("center", "center", "row")}
+    width: 100%;
+    height: 25rem;
+    margin: 0 auto;
     margin-top: 2rem;
-    h3 {
-      font-size: 2.5rem;
-      color: white;
+    margin-bottom: 2rem;
+    background: #3e3e3e;
+    border-radius: 5px;
+    border-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    gap: 10px;
+
+    .box-title-left-content {
+      ${setFlexbox("center", "center", "column")}
+      width: 50%;
+      height: 100%;
+
+      h3 {
+        font-size: 4.6rem;
+        color: white;
+      }
+
+      p {
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+        width: 90%;
+      }
+    }
+
+    img {
+      z-index: 999;
+    }
+
+    .box-title-divider {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: #0a0a0a;
+      clip-path: polygon(0% 100%,0% 100%,100% 0%,100% 100%);
     }
   }
 

@@ -39,6 +39,7 @@ const DreamTeam = () => {
   const [teamSelected, setTeamSelected] = useState([]);
   const refGenSearch = useRef();
   const MotionContainer = motion(Container);
+  const [randomNumber, setRandomNumber] = useState();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -130,12 +131,32 @@ const DreamTeam = () => {
     }
   };
 
+  const getRandomNumber = () => {
+    setRandomNumber(Math.floor(Math.random() * 301));
+  };
+
+  useEffect(() => {
+    getRandomNumber();
+  }, []);
+
   return (
     <Container>
       <Navbar />
       <div className="box">
         <div className="box-title">
-          <h3>DREAM TEAM</h3>
+          <div className="box-title-left-content">
+            <h3>DREAM TEAM</h3>
+            <p>
+              Monte sua equipe ideal com os mais de 1000 pokemons disponíveis!
+            </p>
+          </div>
+
+          <img
+            width={250}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomNumber}.png`}
+            alt="Pokemon Image"
+          />
+          <div className="box-title-divider"></div>
         </div>
 
         <div className="create-team">
