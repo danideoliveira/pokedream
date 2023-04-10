@@ -140,7 +140,7 @@ const WeaknessAndAdvantage = ({ pokemonInfo }) => {
       {advantages.length !== 0 ? (
         <div
           className="box-advantages"
-          style={{ width: "100%", height: "100%", margin: "5px 0" }}
+          style={{ width: "80%", height: "100%", margin: "0 auto" }}
         >
           <p style={{ color: "white", fontSize: "1.6rem" }}>Fraquezas</p>
 
