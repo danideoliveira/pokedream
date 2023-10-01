@@ -34,6 +34,8 @@ export default function Card({
   sendToFavorites,
   isCompareFull,
   showButtonClose,
+  newWidth,
+  newHeight,
 }) {
   const refFavorite = useRef();
 
@@ -78,6 +80,7 @@ export default function Card({
   return (
     <CardContainer
       key={name}
+      style={newWidth && newHeight && { width: newWidth, height: newHeight }}
       onClick={(e) => {
         if (!refFavorite.current.contains(e.target)) {
           handleOpenModal({

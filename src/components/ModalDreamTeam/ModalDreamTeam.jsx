@@ -113,15 +113,18 @@ export default function ModalDreamTeam({
 
   async function getApi(min, max) {
     try {
+      const nullPokemons = [980, 987];
       const pokemonData = [];
       let localFavoriteList = [];
       for (let i = min; i <= max; i++) {
-        await axios
-          .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-          .then((response) => response.data)
-          .then((data) => {
-            pokemonData.push(data);
-          });
+        if (!nullPokemons.includes(i)) {
+          await axios
+            .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+            .then((response) => response.data)
+            .then((data) => {
+              pokemonData.push(data);
+            });
+        }
       }
 
       setPokemons(pokemonData);

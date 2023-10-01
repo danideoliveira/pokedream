@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     font-family: "Nunito", sans-serif, Arial, Helvetica;
     scroll-behavior: smooth;
+    /* outline: 1px solid rebeccapurple; */
   }
 
   body {

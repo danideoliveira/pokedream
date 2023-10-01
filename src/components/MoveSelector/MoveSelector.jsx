@@ -445,7 +445,7 @@ export default function MoveSelector({
                   </BoxAbilities>
                 </ContainerOtherInfos>
               </SwiperSlide>
-              <SwiperSlide>
+              <SwiperSlide style={{ width: "auto" }}>
                 <WeaknessAndAdvantage pokemonInfo={pokemonInfo}/>
               </SwiperSlide>
             </Swiper>
