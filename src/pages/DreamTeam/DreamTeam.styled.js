@@ -27,10 +27,19 @@ export const Container = styled.div`
     overflow: hidden;
     gap: 10px;
 
+    @media (min-width: 320px) and (max-width: 720px) {
+      height: auto;
+      flex-direction: column;
+      padding: 5rem 0;
+
+    }
+
+
     .box-title-left-content {
       ${setFlexbox("center", "center", "column")}
       width: 50%;
       height: 100%;
+      z-index: 1;
 
       h3 {
         font-size: 4.6rem;
@@ -43,10 +52,16 @@ export const Container = styled.div`
         text-align: center;
         width: 90%;
       }
+
+      @media (min-width: 320px) and (max-width: 720px) {
+        width: 100%;
+    }
+
+
     }
 
     img {
-      z-index: 999;
+      z-index: 1;
     }
 
     .box-title-divider {
