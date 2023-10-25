@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import AnimatedRoutes from "./components/AnimatedRoutes/AnimatedRoutes";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           style={{ fontSize: "1.8rem" }}
         />
         <AnimatedRoutes />
+      <Footer/>
       </Router>
       <GlobalStyle />
     </>
