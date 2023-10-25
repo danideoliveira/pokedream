@@ -173,4 +173,7 @@ export const colors = {
   scrollbarDropdownColor: palette.grey.light,
   scrollbarModalBackground: palette.grey.dark,
   scrollbarModalColor: palette.grey.light,
+
+  // FOOTER
+  footerColor: palette.white.dark,
 };
