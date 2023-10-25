@@ -3,6 +3,7 @@ import PokemonList from "../PokemonList/PokemonList";
 import PreLoader from "../../components/PreLoader/PreLoader";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import Footer from "../../components/Footer/Footer";
 
 const HomeBase = () => {
   const [isLoading, setIsLoading] = useState(true);
