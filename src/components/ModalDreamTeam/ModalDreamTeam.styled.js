@@ -229,6 +229,7 @@ export const SlotGrid = styled.div`
   place-items: center;
   overflow-x: hidden;
   overflow-y: auto;
+  gap: 15px 0;
 
   &::-webkit-scrollbar {
     width: 5px;
