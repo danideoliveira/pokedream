@@ -290,9 +290,6 @@ export default function MoveSelector({
           </BoxMoveDescription>
 
           <MoveList>
-            {pokemonInfo.moves.map((currentMove) => {
-              teste.push(currentMove);
-            })}
             {pokemonInfo.moves
               .toSorted(function (x, y) {
                 let a = x.move.name.toUpperCase();
