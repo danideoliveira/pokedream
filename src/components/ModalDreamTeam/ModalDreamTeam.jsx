@@ -332,11 +332,10 @@ export default function ModalDreamTeam({
 
   const confirmTeam = () => {
     if (!isTeamComplete) return;
-    let teste = [];
+    let teamInfo = [];
     const allPokemons = allSelected;
-    teste = { teamName, allPokemons };
-    console.log(teste);
-    setTeamSelected((prevTeam) => [...prevTeam, teste]);
+    teamInfo = { teamName, allPokemons };
+    setTeamSelected((prevTeam) => [...prevTeam, teamInfo]);
     clearSlots();
     handleCloseModalConfirmTeam();
     handleCloseModalDreamTeam();

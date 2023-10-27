@@ -290,31 +290,41 @@ export default function MoveSelector({
           </BoxMoveDescription>
 
           <MoveList>
-            {pokemonInfo.moves.map((currentMove) => (
-              <Item
-                key={currentMove.move.name}
-                onClick={async (e) => {
-                  const moveData = await getMoveData(currentMove.move.url);
-                  setMoveConfig({
-                    name: e.target.textContent,
-                    background: PokemonConfig[moveData.type.name].typeColor,
-                    img: PokemonConfig[moveData.type.name].img,
-                    description:
-                      moveData.effect_entries.length !== 0
-                        ? moveData.effect_entries[0].effect.replace(
-                            /\$effect_chance/g,
-                            moveData.effect_chance
-                          )
-                        : "",
-                    pp: moveData.pp,
-                    power: moveData.power,
-                    class: moveData.damage_class.name,
-                  });
-                }}
-              >
-                {currentMove.move.name.replace(/-/g, " ")}
-              </Item>
-            ))}
+            {pokemonInfo.moves.map((currentMove) => {
+              teste.push(currentMove);
+            })}
+            {pokemonInfo.moves
+              .toSorted(function (x, y) {
+                let a = x.move.name.toUpperCase();
+                let b = y.move.name.toUpperCase();
+
+                return a == b ? 0 : a > b ? 1 : -1;
+              })
+              .map((currentMove) => (
+                <Item
+                  key={currentMove.move.name}
+                  onClick={async (e) => {
+                    const moveData = await getMoveData(currentMove.move.url);
+                    setMoveConfig({
+                      name: e.target.textContent,
+                      background: PokemonConfig[moveData.type.name].typeColor,
+                      img: PokemonConfig[moveData.type.name].img,
+                      description:
+                        moveData.effect_entries.length !== 0
+                          ? moveData.effect_entries[0].effect.replace(
+                              /\$effect_chance/g,
+                              moveData.effect_chance
+                            )
+                          : "",
+                      pp: moveData.pp,
+                      power: moveData.power,
+                      class: moveData.damage_class.name,
+                    });
+                  }}
+                >
+                  {currentMove.move.name.replace(/-/g, " ")}
+                </Item>
+              ))}
           </MoveList>
 
           <ButtonAddMove
@@ -446,7 +456,7 @@ export default function MoveSelector({
                 </ContainerOtherInfos>
               </SwiperSlide>
               <SwiperSlide style={{ width: "auto" }}>
-                <WeaknessAndAdvantage pokemonInfo={pokemonInfo}/>
+                <WeaknessAndAdvantage pokemonInfo={pokemonInfo} />
               </SwiperSlide>
             </Swiper>
           </SwiperBox>

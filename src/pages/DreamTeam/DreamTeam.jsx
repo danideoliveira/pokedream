@@ -262,7 +262,6 @@ const DreamTeam = () => {
                             currentPokemonOnTeam.initialValue !== "" && (
                               <Slot key={index}>
                                 <>
-                                  {console.log(currentPokemonOnTeam)}
                                   <BoxPokemonInfo>
                                     <div className="container-pokemon-image">
                                       <img
