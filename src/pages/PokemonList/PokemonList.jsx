@@ -37,10 +37,10 @@ export default function PokemonList({ notify }) {
   const [isFavoriteFilter, setIsFavoriteFilter] = useState(false);
   const [isButtonFavoriteClicked, setIsButtonFavoriteClicked] = useState(false);
 
-  const pages = Math.ceil(pokemons.length / itemsPerPage);
+  const pages = pokemons ? Math.ceil(pokemons.length / itemsPerPage) : 0;
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = pokemons.slice(startIndex, endIndex);
+  const currentItems = pokemons ? pokemons.slice(startIndex, endIndex) : [];
 
   async function getApi(min = 1, max = 151) {
     try {
@@ -130,7 +130,6 @@ export default function PokemonList({ notify }) {
       setPokemons(filteredPokemons);
       setPokemonCounter(filteredPokemons.length);
     } else {
-      console.log("é favorito!");
       const filteredPokemons = [];
       let localFavoriteList = [];
 
@@ -249,7 +248,6 @@ export default function PokemonList({ notify }) {
 
       localFavoriteList.forEach((currentPokemon) => {
         if (currentPokemon.id >= min && currentPokemon.id <= max) {
-          console.log(currentPokemon);
           filteredPokemons.push(currentPokemon);
         }
       });
@@ -314,8 +312,8 @@ export default function PokemonList({ notify }) {
     const getSavedPokemons = JSON.parse(localStorage.getItem("savedPokemons"));
     localFavoriteList = getSavedPokemons;
 
-    setPokemons(localFavoriteList);
-    setPokemonCounter(localFavoriteList.length);
+    setPokemonCounter(localFavoriteList ? localFavoriteList.length : 0);
+    setPokemons(localFavoriteList || []);
   };
 
   return (
